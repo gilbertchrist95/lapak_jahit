@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/custom_bg"
+    android:clickable="true"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:padding="12dp"
+        android:id="@+id/list_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_person_identity"
+        />
+
+    <TextView
+        android:layout_gravity="center_vertical"
+        android:padding="12dp"
+        android:id="@+id/list_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dummy Text"/>
+
+
+</LinearLayout>
