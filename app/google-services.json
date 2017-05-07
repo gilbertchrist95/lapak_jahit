@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "78844387861",
+    "project_id": "lapakjahit-cilok"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78844387861:android:ee430cbea827c715",
+        "android_client_info": {
+          "package_name": "cilok.com.lapakjahit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78844387861-hhgl8qoi1t5m05djjv34841fbncml2bi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "cilok.com.lapakjahit",
+            "certificate_hash": "31591d713ec83d5d56aa2882851d7bb5cad65b13"
+          }
+        },
+        {
+          "client_id": "78844387861-4g9ouekrt988itahlms3lvbem2f0qr1c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx4VPBO2j1C5caS2gxrXMMpUUlLKdiWzs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

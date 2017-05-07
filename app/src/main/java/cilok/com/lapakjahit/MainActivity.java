@@ -17,11 +17,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar)findViewById(R.id.app_bar);
+        toolbar = (Toolbar)findViewById(R.id.app_bar); //set home button enabled
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setHomeButtonEnabled(true);
-        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment)
+        NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) //inisialisasi nego cincai
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout),toolbar);
     }
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.item_belanja){
-            startActivity(new Intent(this, ShoppingCartActivity.class));
+            startActivity(new Intent(this, ShoppingCartActivity.class)); //pindah kelas
         }
 
         return super.onOptionsItemSelected(item);

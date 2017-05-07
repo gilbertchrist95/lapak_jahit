@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">LapakJahit</string>
+    <string name="facebook_app_id">425743917805867</string>
     <string name="keranjangbelanja">Keranjang Belanja</string>
     <string name="title_activity_shopping_cart">ShoppingCartActivity</string>
     <string name="action_settings">Settings</string>
