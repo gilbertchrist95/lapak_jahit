@@ -14,8 +14,8 @@ public class SplashScreenActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
-        TextView logo = (TextView)findViewById(R.id.text_logo);
+        setContentView(R.layout.activity_splash_screen); //tampilan awal
+        TextView logo = (TextView)findViewById(R.id.text_logo); //inisialisasi dari si logo di xmlnya
         logo.setTextSize(100);
         Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/Paralucent.ttf");
         logo.setTypeface(custom_font,Typeface.BOLD);
