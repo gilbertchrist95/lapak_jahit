@@ -32,7 +32,22 @@ public class FashionPriaActivity extends AppCompatActivity {
 
         mViewPager = (ViewPager)findViewById(R.id.pager);
         mViewPager.setAdapter(new PriaPagerAdapter(getSupportFragmentManager()));
+
+        // Assiging the Sliding Tab Layout View
         mTabs = (SlidingTabLayout)findViewById(R.id.tabs);
+        mTabs.setDistributeEvenly(true);// To make the Tabs Fixed set this true, This makes the tabs Space Evenly in Available width
+
+
+
+        // Setting Custom Color for the Scroll bar indicator of the Tab View
+        mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+            @Override
+            public int getIndicatorColor(int position) {
+                return getResources().getColor(R.color.colorAccent);
+            }
+        });
+
+        // Setting the ViewPager For the SlidingTabsLayout
         mTabs.setViewPager(mViewPager);
 
     }
