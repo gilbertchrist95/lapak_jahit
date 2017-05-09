@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cilok.com.lapakjahit">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -19,7 +20,7 @@
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
         <activity android:name=".SplashScreenActivity">
-            <intent-filter>
+            <intent-filter> <!--make class first running-->
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -36,6 +37,9 @@
         </activity>
         <activity android:name=".ProdukPriaActivity" />
         <activity android:name=".CustomPriaActivity"></activity>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
     </application>
 
 </manifest>
