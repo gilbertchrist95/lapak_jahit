@@ -13,14 +13,19 @@
         android:orientation="vertical"
         tools:context="cilok.com.lapakjahit.MainActivity">
 
-        <!--bar atasan-->
         <include
             android:id="@+id/app_bar"
-            layout="@layout/app_bar" />
+            layout="@layout/app_bar" />'
+
+        <Button
+            android:id="@+id/buttonaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"/>
     </LinearLayout>
 
 
-    <!--Nego cincai-->
+
     <fragment
         android:id="@+id/fragment_navigation_drawer"
         android:name="cilok.com.lapakjahit.NavigationDrawerFragment"

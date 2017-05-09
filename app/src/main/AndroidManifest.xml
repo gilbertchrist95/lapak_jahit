@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cilok.com.lapakjahit">
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+
         <activity
             android:name=".ShoppingCartActivity"
             android:label="@string/title_activity_shopping_cart"
@@ -20,10 +25,7 @@
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
         <activity android:name=".SplashScreenActivity">
-            <intent-filter> <!--make class first running-->
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".FashionPriaActivity">
             <meta-data
@@ -35,11 +37,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
-        <activity android:name=".ProdukPriaActivity" />
-        <activity android:name=".CustomPriaActivity"></activity>
-        <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit.tabs;
+package cilok.com.lapakjahit.Tabs;
 
 /**
  * Created by Gilbert on 4/25/2017.

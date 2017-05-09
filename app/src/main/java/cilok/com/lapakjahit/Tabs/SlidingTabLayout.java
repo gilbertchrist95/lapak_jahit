@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit.tabs;
+package cilok.com.lapakjahit.Tabs;
 
 /**
  * Created by Gilbert on 4/25/2017.
@@ -35,8 +35,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import cilok.com.lapakjahit.R;
 
 /**
  * To be used with ViewPager to provide a tab indicator component which give constant feedback as to
