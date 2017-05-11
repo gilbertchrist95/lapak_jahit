@@ -4,10 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+
     tools:context="cilok.com.lapakjahit.PreLoginSignUpActivity">
 
+    <include
+        android:id="@+id/app_bar_login_signup"
+        layout="@layout/app_bar_login_signup" />
+
     <LinearLayout
+        android:layout_margin="16dp"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="horizontal"
