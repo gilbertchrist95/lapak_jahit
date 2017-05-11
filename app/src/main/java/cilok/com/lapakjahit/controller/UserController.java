@@ -7,12 +7,12 @@ import android.content.SharedPreferences;
  * Created by Gilbert on 5/11/2017.
  */
 
-public class UserLocalStore {
+public class UserController {
 
     public static final String SP_NAME = "user";
     SharedPreferences userLocalDatabase;
 
-    public UserLocalStore(Context context) {
+    public UserController(Context context) {
         userLocalDatabase = context.getSharedPreferences(SP_NAME, 0);
     }
 

@@ -29,7 +29,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
-        <activity android:name=".SplashScreenActivity"></activity>
+        <activity android:name=".SplashScreenActivity" />
         <activity android:name=".FashionPriaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,8 +40,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
-        <activity android:name=".LoginActivity"></activity>
-        <activity android:name=".PreLoginSignUpActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".PreLoginSignUpActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>
