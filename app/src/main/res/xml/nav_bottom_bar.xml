@@ -1,0 +1,23 @@
+<tabs>
+    <tab
+        id="@+id/bottom_tab_home"
+        icon="@drawable/ic_home"
+        title="Home"
+        activeColor="@color/colorAccent"
+        />
+    <tab
+        id="@+id/bottom_tab_favorite"
+        icon="@drawable/ic_favorite"
+        title="Favorit"
+        activeColor="@color/colorAccent" />
+    <tab
+        id="@+id/bottom_tab_transaction"
+        icon="@drawable/ic_transaction"
+        title="Transaksi"
+        activeColor="@color/colorAccent"/>
+    <tab
+        id="@+id/bottom_tab_profile"
+        icon="@drawable/ic_profile"
+        title="Profil"
+        activeColor="@color/colorAccent"/>
+</tabs>
