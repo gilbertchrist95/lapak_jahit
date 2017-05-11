@@ -22,4 +22,7 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Dark" />
 
+    <style name="AppTheme.TransNav" parent="AppTheme" />
+
+
 </resources>
