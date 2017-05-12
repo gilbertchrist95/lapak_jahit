@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     Map<String, String> map = new HashMap<String, String>();
                     String key = "Authorization";
-                    String encodedString = Base64.encodeToString(String.format("%s:%s", "gilbertchrist95", "10Gil1995").getBytes(), Base64.NO_WRAP);
+                    String encodedString = Base64.encodeToString(String.format("%s:%s", "gilbertchrist95", "vcyvuv").getBytes(), Base64.NO_WRAP);
                     String value = String.format("Basic %s", encodedString);
                     map.put(key, value);
                     return map;
