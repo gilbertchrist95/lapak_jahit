@@ -93,11 +93,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 try {
                     Map<String, String> map = new HashMap<String, String>();
                     String key = "Authorization";
-<<<<<<< HEAD
-                    String encodedString = Base64.encodeToString(String.format("%s:%s", "gilbertchrist95", "vcyvuv").getBytes(), Base64.NO_WRAP);
-=======
+
                     String encodedString = Base64.encodeToString(String.format("%s:%s", email, password).getBytes(), Base64.NO_WRAP);
->>>>>>> e913330c57344989961bb0663852a9be70733a99
+
                     String value = String.format("Basic %s", encodedString);
                     map.put(key, value);
                     return map;
