@@ -16,4 +16,13 @@
         <item>Produk</item>
         <item>Kustom</item>
     </string-array>
+    <string name="fw_kebaya">Kebaya</string>
+    <string name="fw_blazer">Blazer</string>
+    <string name="fw_dress">Dress</string>
+    <string name="fw_gaun">Gaun</string>
+    <string name="fw_kemeja">Kemeja</string>
+    <string name="fw_jeans">Jeans</string>
+    <string name="fw_celanadsr">Celana Dasar</string>
+    <string name="fw_rok">Rok</string>
+    <string name="fw_kaos">Kaos</string>
 </resources>
