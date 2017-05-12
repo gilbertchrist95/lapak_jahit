@@ -14,5 +14,7 @@
     <dimen name="size_byte">8dp</dimen>
     <dimen name="movie_thumbnail_width">54dp</dimen>
     <dimen name="movie_thumbnail_height">80dp</dimen>
-
+    <dimen name="custom_imageview_height">100dp</dimen>
+    <dimen name="custom_textview_height">20dp</dimen>
+    <dimen name="custom_linearlayout_width">120dp</dimen>
 </resources>

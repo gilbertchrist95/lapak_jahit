@@ -13,11 +13,10 @@
 
     <item
         android:id="@+id/item_belanja"
-        android:title="@string/keranjangbelanja"
-        android:orderInCategory="200"
         android:icon="@drawable/ic_shopping_cart"
-        app:showAsAction="always"/>
-
+        android:orderInCategory="200"
+        android:title="@string/keranjangbelanja"
+        app:showAsAction="always" />
 
 
 </menu>
