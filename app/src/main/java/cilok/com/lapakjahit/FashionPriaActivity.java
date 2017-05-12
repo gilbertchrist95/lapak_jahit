@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 
 import cilok.com.lapakjahit.Tabs.SlidingTabLayout;
 
+
 public class FashionPriaActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
