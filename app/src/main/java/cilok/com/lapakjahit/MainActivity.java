@@ -12,13 +12,14 @@ import android.view.MenuItem;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.log.L;
 
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private BottomBar bottomBar;
-
+    private UserController userController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar)findViewById(R.id.app_bar); //set home button enabled
         setSupportActionBar(toolbar);
+
+        userController = new UserController(this);
 
         bottomBar = (BottomBar)findViewById(R.id.bottom_bar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
@@ -42,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (tabId == R.id.bottom_tab_profile){
 //                    L.m("Fi in Profil fi -___-");
-                    bukaActivity("Login");
+                    bukaActivity();
                 }
             }
         });
@@ -55,8 +58,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void bukaActivity(String login) {
-        startActivity(new Intent(this, LoginActivity.class)); //pindah kelas
+    private void bukaActivity() {
+        if (authenticate() == true){
+            startActivity(new Intent(this, ProfileActivity.class)); //pindah kelas
+        }else{
+            startActivity(new Intent(this, PreLoginSignUpActivity.class)); //pindah kelas
+        }
+//        startActivity(new Intent(this, LoginActivity.class)); //pindah kelas
     }
 
     @Override
@@ -79,5 +87,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean authenticate() {
+        return userController.getUserLoggedIn();
     }
 }

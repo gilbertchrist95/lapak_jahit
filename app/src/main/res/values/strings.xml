@@ -12,6 +12,7 @@
     <string name="login">Login</string>
     <string name="username">EMAIL/USERNAME</string>
     <string name="action_sign_in_short">Login</string>
+    <string name="password">PASSWORD</string>
     <string-array name="tabs">
         <item>Produk</item>
         <item>Kustom</item>
