@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.application;
 
 import android.app.Application;
 import android.content.Context;
@@ -9,6 +9,8 @@ import android.content.Context;
 
 public class MyApplication extends Application{
 
+    public static  String API_KEY_USER_ID = "";
+    public static  String API_KEY_TOKEN = "";
     private static MyApplication sInstance;
 
     @Override

@@ -22,8 +22,9 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cilok.com.lapakjahit.application.MyApplication;
 import cilok.com.lapakjahit.controller.UserController;
-import cilok.com.lapakjahit.database.User;
+import cilok.com.lapakjahit.entity.User;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
@@ -119,7 +120,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String confirmedPhone = jsonObjectUserProfile.getString(KEY_CONFIRMED_PHONE);
                 String omniKey = jsonObjectUserProfile.getString(KEY_OMNIKEY);
                 user = new User(userId, userName, confirmed, token, email, confirmedPhone, omniKey);
-
+                MyApplication.API_KEY_USER_ID = userId;
+                MyApplication.API_KEY_TOKEN = userId;
                 L.t(getApplicationContext(), "Selamat datang " +userName);
                 userController.setUserLoggedIn(true                                                                                                                                                                                         );
                 goToMainActivity();

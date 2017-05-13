@@ -7,7 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
-import cilok.com.lapakjahit.MyApplication;
+import cilok.com.lapakjahit.application.MyApplication;
 
 
 /**

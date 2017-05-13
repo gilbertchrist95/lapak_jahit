@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit.database;
+package cilok.com.lapakjahit.entity;
 
 /**
  * Created by Gilbert on 5/11/2017.
