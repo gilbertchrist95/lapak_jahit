@@ -1,53 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="cilok.com.lapakjahit.ShoppingCartActivity">
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@android:color/white"
+    app:theme="@style/MyCostumToolbarTheme"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <include
-        android:id="@+id/app_bar"
-        layout="@layout/app_bar" />
-
-    <TextView
-        android:layout_below="@id/app_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daftar Akun"
-        android:textSize="60px"
-        android:id="@+id/text_daftar"
-        android:layoutmargin/>
-
-    <TextView
-        android:layout_below="@id/text_daftar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email"
-        android:textSize="30px"
-        android:id="@+id/text_email"/>
-
-    <EditText
-        android:id="@+id/edit_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_email"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/text_nama"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_email"
-        android:text="Nama Lengkap"
-        android:textSize="30px"/>
-
-    <EditText
-        android:id="@+id/edit_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_nama"
-        android:inputType="textPassword"/>
-
-
-</RelativeLayout>
+</android.support.v7.widget.Toolbar>
