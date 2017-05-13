@@ -15,11 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.TransNav">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ShoppingCartActivity"
@@ -40,9 +36,20 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
+<<<<<<< HEAD
         <activity android:name=".LoginActivity" />
         <activity android:name=".PreLoginSignUpActivity" />
         <activity android:name=".ProfileActivity"></activity>
+=======
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".PreLoginSignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> 1e0dbd42a0691d0c96c2628bd3d3f4e9ab7b6b31
     </application>
 
 </manifest>

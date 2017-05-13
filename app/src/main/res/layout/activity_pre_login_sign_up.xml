@@ -4,12 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
 
     tools:context="cilok.com.lapakjahit.PreLoginSignUpActivity">
 
     <include
         android:id="@+id/app_bar_login_signup"
         layout="@layout/app_bar_login_signup" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_below="@+id/app_bar_login_signup"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"/>
+
+        <LinearLayout
+            android:id="@+id/SliderDots"
+            android:layout_below="@+id/pager"
+            android:orientation="horizontal"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
 
     <LinearLayout
         android:layout_margin="16dp"
@@ -19,23 +35,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="8dp"
+        android:id="@+id/linearLayout">
+
 
         <Button
+<<<<<<< HEAD
             android:id="@+id/button_daftar"
+=======
+            android:id="@+id/button_masuk"
+            android:background="@color/colorLogin"
+>>>>>>> 1e0dbd42a0691d0c96c2628bd3d3f4e9ab7b6b31
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="Login"
+            android:textColor="@android:color/black"/>
+        <Button
+<<<<<<< HEAD
+            android:id="@+id/button_masuk"
+            android:background="@color/colorLogin"
+=======
+            android:id="@+id/button_daftar"
+            android:background="@color/colorDaftar"
+>>>>>>> 1e0dbd42a0691d0c96c2628bd3d3f4e9ab7b6b31
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
             android:text="Daftar Akun"
             android:textColor="@android:color/white"/>
-        <Button
-            android:id="@+id/button_masuk"
-            android:background="@color/colorLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:text="Login"
-            android:textColor="@android:color/white"/>
+
 
     </LinearLayout>
 
