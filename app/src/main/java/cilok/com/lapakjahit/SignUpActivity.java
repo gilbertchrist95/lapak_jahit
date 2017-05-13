@@ -10,10 +10,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
@@ -22,7 +24,6 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import cilok.com.lapakjahit.application.MyApplication;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.User;
 import cilok.com.lapakjahit.log.L;
@@ -30,40 +31,45 @@ import cilok.com.lapakjahit.network.VolleySingleton;
 
 import static cilok.com.lapakjahit.extras.Keys.EndpointAuthentication.*;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    EditText mEditTextEmail, mEditTextPassword;
-    Button mButtonLogin;
+/**
+ * Created by User on 12/05/2017.
+ */
+
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener{
+    EditText mEditTextEmail, mEditTextNama, mEditTextUsername, mEditTextPassword;
+    Button mButtonSignUp;
     User user;
     private UserController userController;
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup);
 
         userController = new UserController(this);
 
-        mEditTextEmail = (EditText) findViewById(R.id.edittext_email);
-        mEditTextPassword = (EditText) findViewById(R.id.edittext_password);
-        mButtonLogin = (Button) findViewById(R.id.button_sign_in);
+        mEditTextEmail = (EditText) findViewById(R.id.edittext_email_signup);
+        mEditTextNama = (EditText) findViewById(R.id.edittext_nama_signup);
+        mEditTextUsername = (EditText) findViewById(R.id.edittext_username_signup);
+        mEditTextPassword = (EditText) findViewById(R.id.edittext_password_signup);
+        mButtonSignUp = (Button) findViewById(R.id.button_sign_in);
 
-        mButtonLogin.setOnClickListener(this);
+        mButtonSignUp.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.button_sign_in:
+            case R.id.button_sign_up:
                 String email = mEditTextEmail.getText().toString();
                 String password = mEditTextPassword.getText().toString();
                 if (email.isEmpty() || password.isEmpty()) {
                     showMessageError("Username or password is null");
                 } else {
-                    authenticate(email, password, new VolleyCallback() {
+                    authenticate(email, password, new LoginActivity.VolleyCallback() {
                         @Override
                         public void onSuccess(String response) {
-                           parsingJson(response);
+                            parsingJson(response);
                         }
                     });
                 }
@@ -71,41 +77,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
-
-
-    private void authenticate(final String email, final String password, final VolleyCallback callback) {
-        VolleySingleton volleySingleton = new VolleySingleton();
-        RequestQueue requestQueue = volleySingleton.getRequestQueue();
-
-        requestQueue.add(new StringRequest(Request.Method.POST, "https://api.bukalapak.com/v2/authenticate.json", new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                callback.onSuccess(response);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                L.m("" + error.networkResponse.statusCode);
-            }
-        }) {
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-                try {
-                    Map<String, String> map = new HashMap<String, String>();
-                    String key = "Authorization";
-
-                    String encodedString = Base64.encodeToString(String.format("%s:%s", email, password).getBytes(), Base64.NO_WRAP);
-
-                    String value = String.format("Basic %s", encodedString);
-                    map.put(key, value);
-                    return map;
-                } catch (Exception e) {
-                    L.m("Authentication Failure");
-                }
-                return super.getHeaders();
-            }
-        });
+    private void showMessageError(String message) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SignUpActivity.this);
+        dialogBuilder.setMessage(message);
+        dialogBuilder.setPositiveButton("Ok", null);
+        dialogBuilder.show();
     }
 
     private void parsingJson(String response) {
@@ -122,8 +98,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String confirmedPhone = jsonObjectUserProfile.getString(KEY_CONFIRMED_PHONE);
                 String omniKey = jsonObjectUserProfile.getString(KEY_OMNIKEY);
                 user = new User(userId, userName, confirmed, token, email, confirmedPhone, omniKey);
-                MyApplication.API_KEY_USER_ID = userId;
-                MyApplication.API_KEY_TOKEN = userId;
+
                 L.t(getApplicationContext(), "Selamat datang " +userName);
                 userController.setUserLoggedIn(true                                                                                                                                                                                         );
                 goToMainActivity();
@@ -138,18 +113,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void goToMainActivity() {
         startActivity(new Intent(this, MainActivity.class));
-        LoginActivity.this.finish();
+        SignUpActivity.this.finish();
     }
 
-
-    private void showMessageError(String message) {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
-        dialogBuilder.setMessage(message);
-        dialogBuilder.setPositiveButton("Ok", null);
-        dialogBuilder.show();
-    }
-
-    public interface VolleyCallback{
-        void onSuccess(String response);
+    private void authenticate(final String email, final String password, final LoginActivity.VolleyCallback callback) {
     }
 }
+

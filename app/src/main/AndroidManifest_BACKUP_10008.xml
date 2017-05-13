@@ -15,6 +15,7 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.TransNav">
+
         </activity>
         <activity
             android:name=".ShoppingCartActivity"
@@ -24,12 +25,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
-        <activity android:name=".SplashScreenActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SplashScreenActivity" />
         <activity android:name=".FashionPriaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -40,14 +36,26 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.MainActivity" />
         </activity>
-
+<<<<<<< HEAD
         <activity android:name=".LoginActivity" />
+        <activity android:name=".PreLoginSignUpActivity" />
+<<<<<<< HEAD
         <activity android:name=".ProfileActivity">
 
         </activity>
+=======
+        <activity android:name=".ProfileActivity"></activity>
+=======
+        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".PreLoginSignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+>>>>>>> 1e0dbd42a0691d0c96c2628bd3d3f4e9ab7b6b31
+>>>>>>> c8b05369e4c42f5fc5b297ea8000247231d9b7bd
     </application>
 
 </manifest>
