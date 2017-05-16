@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context="cilok.com.lapakjahit.LoginActivity">
+    tools:context="cilok.com.lapakjahit.activities.LoginActivity">
 
     <include
         android:id="@+id/app_bar_login_signup"
-        layout="@layout/app_bar_login_signup" />
+        layout="@layout/app_bar_2" />
 
     <LinearLayout
         android:layout_margin="@dimen/fab_margin"

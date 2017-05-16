@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/app_bar_login_signup"
-        layout="@layout/app_bar_login_signup" />
+        layout="@layout/app_bar_2" />
 
     <LinearLayout
         android:id="@+id/linear"

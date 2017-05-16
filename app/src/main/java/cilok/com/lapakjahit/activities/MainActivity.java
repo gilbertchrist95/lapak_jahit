@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 import android.content.Intent;
 import android.support.annotation.IdRes;
@@ -12,6 +12,10 @@ import android.view.MenuItem;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+import cilok.com.lapakjahit.NavigationDrawerFragment;
+import cilok.com.lapakjahit.PreLoginSignUpActivity;
+import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.ShoppingCartActivity;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.log.L;
 

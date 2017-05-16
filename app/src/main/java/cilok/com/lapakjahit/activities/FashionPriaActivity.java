@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import cilok.com.lapakjahit.Tabs.SlidingTabLayout;
+import cilok.com.lapakjahit.CustomPriaActivity;
+import cilok.com.lapakjahit.fragments.FragmentProdukPria;
+import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.tabs.SlidingTabLayout;
 
 
 public class FashionPriaActivity extends AppCompatActivity {
@@ -61,8 +64,8 @@ public class FashionPriaActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position) {
             if (position==0){
-                ProdukPriaActivity mProdukPriaActivity = new ProdukPriaActivity();
-                return  mProdukPriaActivity;
+                FragmentProdukPria mFragmentProdukPria = new FragmentProdukPria();
+                return mFragmentProdukPria;
             }else if (position==1){
                 CustomPriaActivity mCustomPriaActivity = new CustomPriaActivity();
                 return mCustomPriaActivity;

@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import cilok.com.lapakjahit.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

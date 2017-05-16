@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -22,9 +22,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.application.MyApplication;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.User;
+import cilok.com.lapakjahit.json.Endpoints;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
@@ -35,6 +37,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     Button mButtonLogin;
     User user;
     private UserController userController;
+
+    String urlAuth = Endpoints.getRequestURLAuthenticationBL();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         VolleySingleton volleySingleton = new VolleySingleton();
         RequestQueue requestQueue = volleySingleton.getRequestQueue();
 
-        requestQueue.add(new StringRequest(Request.Method.POST, "https://api.bukalapak.com/v2/authenticate.json", new Response.Listener<String>() {
+        requestQueue.add(new StringRequest(Request.Method.POST, urlAuth, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 callback.onSuccess(response);
@@ -122,8 +126,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 String confirmedPhone = jsonObjectUserProfile.getString(KEY_CONFIRMED_PHONE);
                 String omniKey = jsonObjectUserProfile.getString(KEY_OMNIKEY);
                 user = new User(userId, userName, confirmed, token, email, confirmedPhone, omniKey);
-                MyApplication.API_KEY_USER_ID = userId;
-                MyApplication.API_KEY_TOKEN = userId;
                 L.t(getApplicationContext(), "Selamat datang " +userName);
                 userController.setUserLoggedIn(true                                                                                                                                                                                         );
                 goToMainActivity();

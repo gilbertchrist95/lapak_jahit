@@ -27,18 +27,18 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
         <activity android:name=".SplashScreenActivity" />
         <activity android:name=".FashionPriaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
         <activity android:name=".FashionWanitaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".PreLoginSignUpActivity" />

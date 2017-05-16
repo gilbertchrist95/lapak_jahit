@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import cilok.com.lapakjahit.activities.FashionPriaActivity;
+import cilok.com.lapakjahit.activities.FashionWanitaActivity;
+
 
 /**
  * A simple {@link Fragment} subclass.

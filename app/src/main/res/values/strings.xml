@@ -14,7 +14,10 @@
     <string name="username_mail">EMAIL/USERNAME</string>
     <string name="password">PASSWORD</string>
     <string name="action_sign_in_short">Login</string>
-
+    <string name="error_timeout">Oops! Your Connection Timed Out</string>
+    <string name="error_auth_failure">Oops! RottenTomatoes Says It Doesn\'t Recognize You</string>
+    <string name="error_network">Oops! RottenTomatoes Server Just Messed Up</string>
+    <string name="error_parser">Oops! Data Received Was An Unreadable Mess</string>
 
     <!--daftar-->
     <string name="daftar">Daftar</string>
@@ -36,4 +39,5 @@
     <string name="fw_celanadsr">Celana Dasar</string>
     <string name="fw_rok">Rok</string>
     <string name="fw_kaos">Kaos</string>
+    <string name="chat">Chat</string>
 </resources>

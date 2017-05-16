@@ -3,22 +3,18 @@ package cilok.com.lapakjahit.application;
 import android.app.Application;
 import android.content.Context;
 
+import cilok.com.lapakjahit.database.DBInboxMessage;
+
 /**
  * Created by Gilbert on 5/8/2017.
  */
 
 public class MyApplication extends Application{
 
-    public static  String API_KEY_USER_ID = "";
-    public static  String API_KEY_TOKEN = "";
+
     private static MyApplication sInstance;
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        sInstance = this;
-
-    }
+    private static DBInboxMessage mDatabaseInboxMessage;
 
     public static MyApplication getInstance() {
         return sInstance;
@@ -27,4 +23,22 @@ public class MyApplication extends Application{
     public static Context getAppContext() {
         return sInstance.getApplicationContext();
     }
+
+    public synchronized static  DBInboxMessage getWritableInboxDatabase(){
+        if (mDatabaseInboxMessage == null){
+            mDatabaseInboxMessage = new DBInboxMessage(getAppContext());
+        }
+        return  mDatabaseInboxMessage;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        sInstance = this;
+
+    }
+
+
+
+
 }

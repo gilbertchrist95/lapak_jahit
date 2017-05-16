@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import cilok.com.lapakjahit.activities.LoginActivity;
 import cilok.com.lapakjahit.log.L;
 import java.util.Timer;
 import java.util.TimerTask;
