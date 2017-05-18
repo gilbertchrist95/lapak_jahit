@@ -19,14 +19,20 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import cilok.com.lapakjahit.Main2Activity;
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.application.MyApplication;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.User;
+import cilok.com.lapakjahit.extras.Constants;
 import cilok.com.lapakjahit.json.Endpoints;
+import cilok.com.lapakjahit.json.Utils;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
@@ -123,11 +129,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 boolean confirmed = jsonObjectUserProfile.getBoolean(KEY_CONFIRMED);
                 String token = jsonObjectUserProfile.getString(KEY_TOKEN);
                 String email = jsonObjectUserProfile.getString(KEY_EMAIL);
-                String confirmedPhone = jsonObjectUserProfile.getString(KEY_CONFIRMED_PHONE);
+
+                String confirmedPhone = Constants.NA;
+                if (Utils.contains(jsonObjectUserProfile, KEY_CONFIRMED_PHONE)) {
+                 confirmedPhone = jsonObjectUserProfile.getString(KEY_CONFIRMED_PHONE);}
                 String omniKey = jsonObjectUserProfile.getString(KEY_OMNIKEY);
                 user = new User(userId, userName, confirmed, token, email, confirmedPhone, omniKey);
                 L.t(getApplicationContext(), "Selamat datang " +userName);
-                userController.setUserLoggedIn(true                                                                                                                                                                                         );
+                FileOutputStream fileOutputStream=null;
+                try {
+                    fileOutputStream = openFileOutput("User.txt",MODE_PRIVATE);
+                    fileOutputStream.write((userId+" ").getBytes());
+                    fileOutputStream.write(token.getBytes());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }finally{
+                    try {
+                        fileOutputStream.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                userController.setUserLoggedIn(true);
                 goToMainActivity();
 
             } else {
@@ -139,7 +164,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void goToMainActivity() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Main2Activity.class));
         LoginActivity.this.finish();
     }
 

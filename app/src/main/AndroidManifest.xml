@@ -14,7 +14,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/AppTheme.TransNav"></activity>
+            android:theme="@style/AppTheme.TransNav" />
         <activity
             android:name=".ShoppingCartActivity"
             android:label="@string/title_activity_shopping_cart"
@@ -24,11 +24,7 @@
                 android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
         <activity android:name=".activities.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.FashionPriaActivity">
             <meta-data
@@ -41,9 +37,19 @@
                 android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.ProfileActivity"></activity>
-        <activity android:name=".PreLoginSignUpActivity"></activity>
-        <activity android:name=".activities.InboxMessageActivity"></activity>
+        <activity android:name=".activities.ProfileActivity" />
+        <activity android:name=".activities.PreLoginSignUpActivity" />
+        <activity android:name=".activities.InboxMessageActivity" />
+        <activity
+            android:name=".Main2Activity"
+            android:label="@string/title_activity_main2">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

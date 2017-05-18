@@ -14,8 +14,13 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 
 import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.entity.InboxMessage;
@@ -34,7 +39,8 @@ public class AdapterInboxMessages extends RecyclerView.Adapter<AdapterInboxMessa
     private VolleySingleton mVolleySingleton;
     private ImageLoader mImageLoader;
     private DateFormat mFormatter1 = new SimpleDateFormat("dd/mm/yy");
-    private DateFormat mFormatter2 = new SimpleDateFormat("HH:mm");
+    private DateFormat mFormatter2 = new SimpleDateFormat("yyyy-MM-dd");
+    private DateFormat mFormatter3 = new SimpleDateFormat("HH:mm");
     //keep track of the previous position for animations where scrolling down requires a different animation compared to scrolling up
     private int mPreviousPosition = 0;
 
@@ -65,8 +71,24 @@ public class AdapterInboxMessages extends RecyclerView.Adapter<AdapterInboxMessa
         String urlThumbnailAvatarPartner = currentInboxMessage.getUrlPartnerAvatar();
         loadImages(urlThumbnailAvatarPartner, holder);
 
-//        Date updateAt = currentInboxMessage.getUpdatedAt();
-        holder.messageUpdateAt.setText(currentInboxMessage.getUpdatedAt());
+        //Date tidak support XXX since java 7
+
+//        mFormatter1.setTimeZone(TimeZone.getTimeZone("Asia/Jakarta"));
+//        Date date = new Date(currentInboxMessage.getUpdatedAt());
+////        try {
+////            date = dt.parse(currentInboxMessage.getUpdatedAt());
+////        } catch (ParseException e) {
+////            e.printStackTrace();
+////        }
+//        String stringDate = (currentInboxMessage.getUpdatedAt().substring(0,10));
+//        Date updatedAt=null;
+//        try {
+//            updatedAt = mFormatter2.parse(stringDate);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+
+        holder.messageUpdateAt.setText(currentInboxMessage.getUpdatedAt().substring(0,10));
 //
         holder.messageLastMessage.setText(currentInboxMessage.getLastMessage());
 

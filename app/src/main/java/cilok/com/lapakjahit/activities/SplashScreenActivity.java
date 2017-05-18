@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import cilok.com.lapakjahit.Main2Activity;
 import cilok.com.lapakjahit.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, Main2Activity.class));
                 SplashScreenActivity.this.finish();
             }
         }, SPLASH_TIME_OUT);

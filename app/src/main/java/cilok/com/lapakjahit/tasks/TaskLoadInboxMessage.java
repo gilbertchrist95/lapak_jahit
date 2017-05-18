@@ -1,5 +1,7 @@
 package cilok.com.lapakjahit.tasks;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.android.volley.RequestQueue;
@@ -19,8 +21,13 @@ public class TaskLoadInboxMessage extends AsyncTask<Void,Void, ArrayList<InboxMe
     private InboxMessageLoadedListener myComponent;
     private VolleySingleton volleySingleton;
     private RequestQueue requestQueue;
+    private ProgressDialog progressDialog;
+    public TaskLoadInboxMessage(InboxMessageLoadedListener myComponent, Context context){
 
-    public TaskLoadInboxMessage(InboxMessageLoadedListener myComponent){
+        progressDialog = new ProgressDialog(context);
+        progressDialog.setCancelable(false);
+        progressDialog.setTitle("Processing");
+        progressDialog.setMessage("Please Wait...");
         this.myComponent = myComponent;
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
@@ -34,6 +41,7 @@ public class TaskLoadInboxMessage extends AsyncTask<Void,Void, ArrayList<InboxMe
 
     @Override
     protected void onPostExecute(ArrayList<InboxMessage> listinboxMessages) {
+        progressDialog.dismiss();
         if (myComponent != null){
             myComponent.onInboxMessageLoadedListener(listinboxMessages);
         }

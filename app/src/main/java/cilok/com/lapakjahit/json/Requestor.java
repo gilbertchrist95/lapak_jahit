@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.log.L;
 
 /**
@@ -33,7 +34,7 @@ public class Requestor {
                     Map<String, String> map = new HashMap<String, String>();
                     String key = "Authorization";
 
-                    String encodedString = Base64.encodeToString(String.format("%s:%s", "3051175", "2z3qRd33d1hZqpdjUee").getBytes(), Base64.NO_WRAP);
+                    String encodedString = Base64.encodeToString(String.format("%s:%s", "3051175", "qYFEGyXVlo8uveKXurvJ").getBytes(), Base64.NO_WRAP);
 
                     String value = String.format("Basic %s", encodedString);
                     map.put(key, value);
@@ -54,7 +55,7 @@ public class Requestor {
         } catch (TimeoutException e) {
             L.m(e + "");
         }
-        L.m(response.toString());
+//        L.m(response.toString());
         return response;
     }
 }

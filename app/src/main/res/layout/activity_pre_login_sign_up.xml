@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
 
-    tools:context="cilok.com.lapakjahit.PreLoginSignUpActivity">
+    tools:context="cilok.com.lapakjahit.activities.PreLoginSignUpActivity">
 
     <include
         android:id="@+id/app_bar_login_signup"
