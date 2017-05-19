@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import cilok.com.lapakjahit.Main2Activity;
 import cilok.com.lapakjahit.R;
 
 public class SplashScreenActivity extends AppCompatActivity {

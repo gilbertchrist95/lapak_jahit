@@ -25,9 +25,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import cilok.com.lapakjahit.Main2Activity;
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.application.MyApplication;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.User;
 import cilok.com.lapakjahit.extras.Constants;

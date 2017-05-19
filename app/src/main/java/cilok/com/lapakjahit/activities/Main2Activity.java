@@ -1,4 +1,4 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import cilok.com.lapakjahit.NavigationDrawerFragment;
+import cilok.com.lapakjahit.ShoppingCartActivity;
 import cilok.com.lapakjahit.activities.PreLoginSignUpActivity;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.fragments.FragmentFavorit;
@@ -39,16 +41,16 @@ public class Main2Activity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case cilok.com.lapakjahit.R.id.navigation_home:
                     fragment = new FragmentHome();
                     break;
-                case R.id.navigation_favorit:
+                case cilok.com.lapakjahit.R.id.navigation_favorit:
                     fragment = new FragmentFavorit();
                     break;
-                case R.id.navigation_transaksi:
+                case cilok.com.lapakjahit.R.id.navigation_transaksi:
                     fragment = new FragmentTransaksi();
                     break;
-                case R.id.navigation_profil:
+                case cilok.com.lapakjahit.R.id.navigation_profil:
                     if(authenticate() == false){
                         bukaPreSignUpSignIn();
                         break;
@@ -59,7 +61,7 @@ public class Main2Activity extends AppCompatActivity {
                     }
             }
             final FragmentTransaction transaction = fragmentManager.beginTransaction();
-            transaction.replace(R.id.main_container, fragment).commit();
+            transaction.replace(cilok.com.lapakjahit.R.id.main_container, fragment).commit();
             return true;
         }
     };
@@ -71,12 +73,12 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(cilok.com.lapakjahit.R.layout.activity_main2);
 
-        toolbar = (Toolbar)findViewById(R.id.app_bar); //set home button enabled
+        toolbar = (Toolbar)findViewById(cilok.com.lapakjahit.R.id.app_bar); //set home button enabled
         setSupportActionBar(toolbar);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(cilok.com.lapakjahit.R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 //        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
         BottomNavigationViewHelper.disableShiftMode(navigation);
@@ -89,14 +91,14 @@ public class Main2Activity extends AppCompatActivity {
         fragmentManager = getSupportFragmentManager();
         fragment = new FragmentHome();
         final FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.add(R.id.main_container, fragment).commit();
+        transaction.add(cilok.com.lapakjahit.R.id.main_container, fragment).commit();
 
         userController = new UserController(this);
 
         getSupportActionBar().setHomeButtonEnabled(true);
         NavigationDrawerFragment drawerFragment = (NavigationDrawerFragment) //inisialisasi nego cincai
-                getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
-        drawerFragment.setUp(R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout),toolbar);
+                getSupportFragmentManager().findFragmentById(cilok.com.lapakjahit.R.id.fragment_navigation_drawer);
+        drawerFragment.setUp(cilok.com.lapakjahit.R.id.fragment_navigation_drawer,(DrawerLayout) findViewById(cilok.com.lapakjahit.R.id.drawer_layout),toolbar);
 
 
     }
@@ -104,7 +106,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(cilok.com.lapakjahit.R.menu.menu_main, menu);
         return true;
     }
 
@@ -115,7 +117,7 @@ public class Main2Activity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.item_belanja){
+        if (id == cilok.com.lapakjahit.R.id.item_belanja){
             startActivity(new Intent(this, ShoppingCartActivity.class)); //pindah kelas
         }
         return super.onOptionsItemSelected(item);

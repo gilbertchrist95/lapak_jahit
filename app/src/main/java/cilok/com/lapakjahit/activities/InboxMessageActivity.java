@@ -47,6 +47,7 @@ public class InboxMessageActivity extends AppCompatActivity implements InboxMess
     private MessageSorter messageSorter = new MessageSorter();
 
     Toolbar toolbar;
+    TextView mTextViewToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,14 @@ public class InboxMessageActivity extends AppCompatActivity implements InboxMess
         setContentView(R.layout.activity_inbox_message);
 
         toolbar = (Toolbar) findViewById(R.id.app_bar_2);
+        mTextViewToolbar = (TextView)findViewById(R.id.toolbar_title);
+
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Chat");
-        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+        mTextViewToolbar.setText("Chat");
+        getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_action_close);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mTextError = (TextView)findViewById(R.id.textVolleyError);
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeInboxMessage);
@@ -114,12 +119,12 @@ public class InboxMessageActivity extends AppCompatActivity implements InboxMess
         }
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return false;
-//        return super.onSupportNavigateUp();
-    }
+//    @Override
+//    public boolean onSupportNavigateUp() {
+//        finish();
+//        return false;
+////        return super.onSupportNavigateUp();
+//    }
 
     /**
      * Called when the AsyncTask finishes load the list of inbox from the web

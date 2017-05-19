@@ -14,10 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import cilok.com.lapakjahit.DaftarActivity;
 import cilok.com.lapakjahit.ImageViewActivity;
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.log.L;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -127,8 +125,7 @@ public class PreLoginSignUpActivity extends AppCompatActivity implements View.On
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.button_daftar:
-                startActivity(new Intent(this, DaftarActivity.class));
-//                L.t(getApplicationContext(), "ontheway");
+                startActivity(new Intent(this, SignUpActivity.class));
                 break;
         }
     }

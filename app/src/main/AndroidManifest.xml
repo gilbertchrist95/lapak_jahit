@@ -12,6 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activities.Main2Activity"
+            android:label="@string/title_activity_main2">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/AppTheme.TransNav" />
@@ -21,7 +32,7 @@
             android:theme="@style/AppTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.activities.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.Main2Activity" />
         </activity>
         <activity android:name=".activities.SplashScreenActivity">
 
@@ -29,27 +40,36 @@
         <activity android:name=".activities.FashionPriaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.activities.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.Main2Activity" />
         </activity>
         <activity android:name=".activities.FashionWanitaActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="cilok.com.lapakjahit.activities.MainActivity" />
+                android:value="cilok.com.lapakjahit.activities.Main2Activity" />
         </activity>
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.ProfileActivity" />
-        <activity android:name=".activities.PreLoginSignUpActivity" />
-        <activity android:name=".activities.InboxMessageActivity" />
-        <activity
-            android:name=".Main2Activity"
-            android:label="@string/title_activity_main2">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".activities.ProfileActivity" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
+        <activity android:name=".activities.PreLoginSignUpActivity" />
+        <activity android:name=".activities.SignUpActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cilok.com.lapakjahit.activities.Main2Activity"/>
+        </activity>
+        <activity android:name=".activities.InboxMessageActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cilok.com.lapakjahit.activities.Main2Activity"/>
+        </activity>
+
+
+
+
+
+
+
     </application>
 
 </manifest>

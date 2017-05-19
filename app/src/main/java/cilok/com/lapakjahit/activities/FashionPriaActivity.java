@@ -30,6 +30,7 @@ public class FashionPriaActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         mViewPager = (ViewPager)findViewById(R.id.pager);
         mViewPager.setAdapter(new PriaPagerAdapter(getSupportFragmentManager()));
 
