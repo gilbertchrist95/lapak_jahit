@@ -30,16 +30,16 @@ public class RetrofitClient {
 
     }
 
-    private static Retrofit retrofit = null;
+//    private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(final String userId,final String token) {
+    public static Retrofit getClient(final String userId, final String token) {
 
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request originalRequest = chain.request();
-
-                String encodedString = Base64.encodeToString(String.format("%s:%s", userId, token).getBytes(), Base64.NO_WRAP);
+                String append = "3051175:qYFEGyXVlo8uveKXurvJ";
+                String encodedString = Base64.encodeToString(append.getBytes(), Base64.NO_WRAP);
                 Request.Builder builder = originalRequest.newBuilder().header("Authorization", encodedString);
 
                 Request newRequest = builder.build();
@@ -48,13 +48,13 @@ public class RetrofitClient {
         }).build();
 
 
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+//        if (retrofit == null) {
+            Retrofit retrofit  = new Retrofit.Builder()
                     .baseUrl(URL_BL)
                     .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
-        }
+//        }
         return retrofit;
     }
 }

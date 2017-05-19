@@ -22,7 +22,6 @@ public class UserUtils {
 
     public static UserService getUserService(Context context){
         FileInputStream fileInputStream=null;
-
         try {
             fileInputStream = context.openFileInput("User.txt");
             int read = -1;

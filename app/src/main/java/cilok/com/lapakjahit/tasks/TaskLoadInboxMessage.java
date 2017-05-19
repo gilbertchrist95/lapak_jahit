@@ -8,6 +8,7 @@ import com.android.volley.RequestQueue;
 
 import java.util.ArrayList;
 
+import cilok.com.lapakjahit.callback.GetFavoritesCallback;
 import cilok.com.lapakjahit.callback.InboxMessageLoadedListener;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.extras.MessageUtils;
@@ -27,6 +28,7 @@ public class TaskLoadInboxMessage extends AsyncTask<Void,Void, ArrayList<InboxMe
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
+
 
 
 
