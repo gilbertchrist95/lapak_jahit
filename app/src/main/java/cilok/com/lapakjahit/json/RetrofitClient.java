@@ -1,5 +1,17 @@
 package cilok.com.lapakjahit.json;
 
+import android.util.Base64;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import cilok.com.lapakjahit.controller.UserController;
+import okhttp3.Interceptor;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -11,12 +23,35 @@ import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_BL;
 
 public class RetrofitClient {
 
+
+
+    public RetrofitClient() {
+
+
+    }
+
     private static Retrofit retrofit = null;
 
-    public static Retrofit getClient(){
-        if(retrofit==null){
+    public static Retrofit getClient(final String userId,final String token) {
+
+        OkHttpClient okHttpClient = new OkHttpClient().newBuilder().addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request originalRequest = chain.request();
+
+                String encodedString = Base64.encodeToString(String.format("%s:%s", userId, token).getBytes(), Base64.NO_WRAP);
+                Request.Builder builder = originalRequest.newBuilder().header("Authorization", encodedString);
+
+                Request newRequest = builder.build();
+                return chain.proceed(newRequest);
+            }
+        }).build();
+
+
+        if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(URL_BL)
+                    .client(okHttpClient)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }

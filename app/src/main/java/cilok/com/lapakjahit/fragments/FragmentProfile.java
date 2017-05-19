@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.io.File;
+import java.io.FileInputStream;
+
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.activities.InboxMessageActivity;
 
@@ -31,6 +34,8 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
         View layout = inflater.inflate(R.layout.fragment_profile, container, false);
         buttonChat = (Button)layout.findViewById(R.id.button_message);
         buttonChat.setOnClickListener(this);
+
+
         return  layout;
     }
 

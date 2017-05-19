@@ -135,6 +135,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 user = new User(userId, userName, confirmed, token, email, confirmedPhone, omniKey);
                 L.t(getApplicationContext(), "Selamat datang " +userName);
                 FileOutputStream fileOutputStream=null;
+
                 try {
                     fileOutputStream = openFileOutput("User.txt",MODE_PRIVATE);
                     fileOutputStream.write((userId+" ").getBytes());

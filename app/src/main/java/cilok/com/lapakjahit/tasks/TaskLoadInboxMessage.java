@@ -23,15 +23,12 @@ public class TaskLoadInboxMessage extends AsyncTask<Void,Void, ArrayList<InboxMe
     private RequestQueue requestQueue;
     private ProgressDialog progressDialog;
     public TaskLoadInboxMessage(InboxMessageLoadedListener myComponent, Context context){
-
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Processing");
-        progressDialog.setMessage("Please Wait...");
         this.myComponent = myComponent;
         volleySingleton = VolleySingleton.getInstance();
         requestQueue = volleySingleton.getRequestQueue();
     }
+
+
 
     @Override
     protected ArrayList<InboxMessage> doInBackground(Void... voids) {

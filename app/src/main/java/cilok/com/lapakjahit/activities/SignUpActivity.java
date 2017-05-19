@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        mUserService = UserUtils.getUserService();
+        mUserService = UserUtils.getUserService(this);
         userController = new UserController(this);
 
         toolbar = (Toolbar)findViewById(R.id.app_bar_login_signup);

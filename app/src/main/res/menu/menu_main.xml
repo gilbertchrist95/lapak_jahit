@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cilok.com.lapakjahit.activities.MainActivity">
+    tools:context="cilok.com.lapakjahit.activities.Main2Activity">
 
     <item
         android:id="@+id/item_search"
