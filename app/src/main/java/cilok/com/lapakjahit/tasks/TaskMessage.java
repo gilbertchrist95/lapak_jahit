@@ -3,6 +3,7 @@ package cilok.com.lapakjahit.tasks;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 
@@ -13,21 +14,20 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import cilok.com.lapakjahit.callback.GetFavoritesCallback;
-import cilok.com.lapakjahit.entity.ProductFavorite;
-import cilok.com.lapakjahit.extras.FavoritesUtils;
-import cilok.com.lapakjahit.log.L;
+import cilok.com.lapakjahit.callback.InboxMessageLoadedListener;
+import cilok.com.lapakjahit.entity.InboxMessage;
+import cilok.com.lapakjahit.extras.MessageUtils;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
 /**
- * Created by Gilbert on 5/19/2017.
+ * Created by Gilbert on 5/20/2017.
  */
 
-public class TaskFavorite {
+public class TaskMessage {
     private ProgressDialog progressDialog;
     String split[];
 
-    public TaskFavorite(Context context) {
+    public TaskMessage(Context context) {
         progressDialog = new ProgressDialog(context);
         progressDialog.setCancelable(false);
         progressDialog.setTitle("Processing");
@@ -49,47 +49,43 @@ public class TaskFavorite {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        L.m("UserId: " + split[0]);
     }
 
-    public TaskFavorite() {
+    public TaskMessage() {
+
     }
 
-
-    public void getFavoritesDataInBackground(GetFavoritesCallback callback) {
+    public void getInboxMessage(InboxMessageLoadedListener myComponent) {
         progressDialog.show();
-        new TaskLoadFavorites(callback, split[0], split[1]).execute();
+        new TaskGetnboxMessage(myComponent, split[0], split[1]).execute();
         progressDialog.dismiss();
     }
 
 
-    public class TaskLoadFavorites extends AsyncTask<Void, Void, ArrayList<ProductFavorite>> {
-        GetFavoritesCallback favoritesCallback;
+    public class TaskGetnboxMessage extends AsyncTask<Void, Void, ArrayList<InboxMessage>> {
+        private InboxMessageLoadedListener myComponent;
         private VolleySingleton volleySingleton;
         private RequestQueue requestQueue;
         String userId, token;
 
-        public TaskLoadFavorites(GetFavoritesCallback favoritesCallback, String userId, String token) {
-            this.favoritesCallback = favoritesCallback;
+        public TaskGetnboxMessage(InboxMessageLoadedListener myComponent, String userId, String token) {
             this.userId = userId;
             this.token = token;
+            this.myComponent = myComponent;
             volleySingleton = VolleySingleton.getInstance();
             requestQueue = volleySingleton.getRequestQueue();
         }
 
-
         @Override
-        protected ArrayList<ProductFavorite> doInBackground(Void... voids) {
-            ArrayList<ProductFavorite> productFavorites = FavoritesUtils.loadProductFavorites(requestQueue, userId, token);
-            return productFavorites;
+        protected ArrayList<InboxMessage> doInBackground(Void... voids) {
+            ArrayList<InboxMessage> listInbox = MessageUtils.loadInboxMessage(requestQueue, userId, token);
+            return listInbox;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<ProductFavorite> productFavorites) {
-//            super.onPostExecute(productFavorites);
-            if (favoritesCallback !=null){
-                favoritesCallback.onGetFavoritesLoadedListener(productFavorites);
+        protected void onPostExecute(ArrayList<InboxMessage> listinboxMessages) {
+            if (myComponent != null) {
+                myComponent.onInboxMessageLoadedListener(listinboxMessages);
             }
         }
     }
