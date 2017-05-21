@@ -1,12 +1,17 @@
 package cilok.com.lapakjahit.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
+
+import cilok.com.lapakjahit.log.L;
 
 /**
  * Created by Gilbert on 5/19/2017.
  */
 
-public class ProductFavorite {
+public class ProductFavorite implements Parcelable{
 
     private String deal_request_state; //ok
     private long price; //ok
@@ -52,11 +57,11 @@ public class ProductFavorite {
     private boolean favorited;
     private String created_at;
     private String updated_at;
-    //    private List<String> product_sin;//dak pake
+//    private List<String> product_sin;//dak pake
     private RatingBean rating;
 //    private String current_variant_name;
 //    private int current_product_sku_id;
-//private List<String> product_sku;
+//  private List<String> product_sku;
 //private List<String> options;
     private List<WholesaleBean> wholesale; //biso iyo bisa idak
     private List<InstallmentBean> installment; //biso iyo bisa idak
@@ -64,22 +69,21 @@ public class ProductFavorite {
     private int interest_count;
     private String last_relist_at;
     private int view_count;
-
-
-
-
-
 //    private List<LabelsBean> labels;
 //    private List<TagPagesBean> tag_pages;
 
 
+    public static final Creator<ProductFavorite> CREATOR = new Creator<ProductFavorite>() {
+        @Override
+        public ProductFavorite createFromParcel(Parcel in) {
+            return new ProductFavorite(in);
+        }
 
-
-
-
-
-
-
+        @Override
+        public ProductFavorite[] newArray(int size) {
+            return new ProductFavorite[size];
+        }
+    };
 
     public String getDeal_request_state() {
         return deal_request_state;
@@ -535,11 +539,13 @@ public class ProductFavorite {
         this.wholesale = wholesale;
     }
 
-
-
-
-    public static class SellerVoucherBean {
+    public ProductFavorite(Parcel input){
+        rating = input.readParcelable(getClass().getClassLoader());
     }
+
+
+
+
 
     public static class SpecsBean {
         /**
@@ -589,6 +595,8 @@ public class ProductFavorite {
         public void setUser_count(int user_count) {
             this.user_count = user_count;
         }
+
+
     }
 
     public static class LabelsBean {
@@ -754,5 +762,37 @@ public class ProductFavorite {
             this.price = price;
         }
     }
+
+    @Override
+    public int describeContents() {
+        L.m(" Contents Product");
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(deal_request_state);
+        parcel.writeLong(price);
+        parcel.writeInt(category_id);
+        parcel.writeString(category);
+        parcel.writeStringArray(category_structure);
+        parcel.writeStringArray(courier);
+        parcel.writeString(seller_username);
+        parcel.writeString(seller_name);
+        parcel.writeLong(seller_id);
+        parcel.writeString(seller_avatar);
+        parcel.writeString(seller_level);
+        parcel.writeString(seller_level_badge_url);
+        parcel.writeString(seller_delivery_time);
+        parcel.writeInt(seller_positive_feedback);
+        parcel.writeInt(seller_negative_feedback);
+        parcel.writeString(seller_term_condition);
+        parcel.writeString(seller_alert);
+        parcel.writeByte((byte)(for_sale?1:0));
+        parcel.writeStringArray(state_description);
+
+
+    }
+
 
 }

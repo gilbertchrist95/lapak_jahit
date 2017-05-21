@@ -208,7 +208,7 @@ public class InboxMessage implements Parcelable {
 
     @Override
     public int describeContents() {
-        L.m("describe Contents InboxMessage");
+        L.m(" Contents InboxMessage");
         return 0;
     }
 

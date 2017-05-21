@@ -46,14 +46,6 @@ public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHo
 
     @Override
     public AdapterFavorite.ViewHolderFavorites onCreateViewHolder(ViewGroup parent, int viewType) {
-//        if(viewType == TITLE){
-//            return new ViewHolderFavorites(LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_favorite, parent, false));
-//        }
-//        else if (viewType == LOAD_MORE){
-//            return new ViewHolderFavorites(LayoutInflater.from(parent.getContext()).inflate(R.layout.row_button_buy, parent, false));
-//        }else {
-//            return null;
-//        }
         View view = mInflater.inflate(R.layout.custom_favorite, parent, false);
         ViewHolderFavorites viewHolderFavorites = new ViewHolderFavorites(view);
         return viewHolderFavorites;

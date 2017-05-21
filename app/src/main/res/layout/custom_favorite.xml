@@ -62,7 +62,11 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/frame_layout_image"
                 android:maxLines="2"
-                android:text="Suzuki Toyota" />
+                android:textSize="@dimen/size_text_primary"
+                android:paddingTop="@dimen/margin_vertical"
+                android:textColor="@android:color/black"
+                android:text=""
+                />
 
             <TextView
                 android:id="@+id/text_view_harga_normal"
@@ -75,19 +79,19 @@
                 android:id="@+id/text_view_harga_fix"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="@android:color/black"
                 android:layout_below="@+id/text_view_harga_normal"
                 android:text="Rp 2990.000" />
 
             <TextView
                 android:id="@+id/text_view_cicilan"
                 android:layout_width="match_parent"
-
+                android:textColor="@color/colorAccent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/text_view_harga_fix"
                 android:maxLines="1"
                 android:text="Cicilan mulai dari 100rb/bulan"
-                android:textSize="@dimen/size_text_secondary" />
+                android:textSize="@dimen/size_text_thridary" />
 
             <RatingBar
                 android:id="@+id/rating_bar_average_rate"
