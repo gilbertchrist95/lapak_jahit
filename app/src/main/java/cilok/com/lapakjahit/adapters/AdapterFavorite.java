@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.android.volley.VolleyError;
@@ -22,13 +23,13 @@ import cilok.com.lapakjahit.network.VolleySingleton;
  * Created by Gilbert on 5/19/2017.
  */
 
-public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHolderFavorites> {
+public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHolderFavorites>  {
 
     private ArrayList<ProductFavorite> mListFavorite = new ArrayList<>();
     private LayoutInflater mInflater;
     private VolleySingleton mVolleySingleton;
     private ImageLoader mImageLoader;
-    private int mPreviousPosition = 0;
+
 
     public AdapterFavorite(Context context) {
         mInflater = LayoutInflater.from(context);
@@ -45,6 +46,14 @@ public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHo
 
     @Override
     public AdapterFavorite.ViewHolderFavorites onCreateViewHolder(ViewGroup parent, int viewType) {
+//        if(viewType == TITLE){
+//            return new ViewHolderFavorites(LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_favorite, parent, false));
+//        }
+//        else if (viewType == LOAD_MORE){
+//            return new ViewHolderFavorites(LayoutInflater.from(parent.getContext()).inflate(R.layout.row_button_buy, parent, false));
+//        }else {
+//            return null;
+//        }
         View view = mInflater.inflate(R.layout.custom_favorite, parent, false);
         ViewHolderFavorites viewHolderFavorites = new ViewHolderFavorites(view);
         return viewHolderFavorites;
@@ -52,11 +61,19 @@ public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHo
 
     @Override
     public void onBindViewHolder(AdapterFavorite.ViewHolderFavorites holder, int position) {
+
         L.m(position + "");
         ProductFavorite currentProduct = mListFavorite.get(position);
         String[] smallImage = currentProduct.getImages();
         L.m("SMmaal Image: " + smallImage[0]);
         loadImages(smallImage[0], holder);
+//        holder.buttonBuy.setOnClickListener(this);
+        holder.buttonBuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                L.m("button buy clicked");
+            }
+        });
 
     }
 
@@ -76,17 +93,25 @@ public class AdapterFavorite extends RecyclerView.Adapter<AdapterFavorite.ViewHo
         }
     }
 
+
+
+
     @Override
     public int getItemCount() {
-        return mListFavorite.size();
+
+            return mListFavorite.size();
+
     }
+
 
     static class ViewHolderFavorites extends RecyclerView.ViewHolder {
         ImageView imageViewProduct;
+        Button buttonBuy;
 
         public ViewHolderFavorites(View itemView) {
             super(itemView);
-            imageViewProduct = (ImageView) itemView.findViewById(R.id.imageViewProductFavorit);
+            imageViewProduct = (ImageView) itemView.findViewById(R.id.imageViewProduct);
+            buttonBuy = (Button)itemView.findViewById(R.id.button_buy_product);
         }
     }
 }

@@ -3,26 +3,152 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <!--<android.support.v7.widget.CardView-->
-        <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
-        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
-        <!--android:id="@+id/card_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--card_view:cardUseCompatPadding="true">-->
-        <!--card_view:cardCornerRadius="8dp"-->
-        <ImageView
-            android:src="@drawable/sample"
-            android:id="@+id/imageViewProductFavorit"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardCornerRadius="8dp">
+
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_margin="3dp">
 
-            android:padding="3dp" />
+            <FrameLayout
+                android:id="@+id/frame_layout_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-    <!--</android.support.v7.widget.CardView>-->
+                <ImageView
+                    android:id="@+id/imageViewProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/sample"
+                    android:scaleType="fitXY"
+                    />
+
+                <TextView
+                    android:id="@+id/text_view_diskon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_diskon"
+                    android:text=" 8% "
+                    android:layout_alignParentTop="true"
+                    android:textColor="@android:color/white" />
+
+                <ImageView
+                    android:id="@+id/imageview_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:src="@drawable/ic_favorite"
+                    />
+
+
+
+
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/text_view_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame_layout_image"
+                android:maxLines="2"
+                android:text="Suzuki Toyota" />
+
+            <TextView
+                android:id="@+id/text_view_harga_normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_name"
+                android:text="Rp 3000.000" />
+
+            <TextView
+                android:id="@+id/text_view_harga_fix"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_below="@+id/text_view_harga_normal"
+                android:text="Rp 2990.000" />
+
+            <TextView
+                android:id="@+id/text_view_cicilan"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_harga_fix"
+                android:maxLines="1"
+                android:text="Cicilan mulai dari 100rb/bulan"
+                android:textSize="@dimen/size_text_secondary" />
+
+            <RatingBar
+                android:id="@+id/rating_bar_average_rate"
+                style="@android:style/Widget.Holo.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_cicilan"
+                android:isIndicator="true"
+                android:max="5"
+                android:numStars="0"
+                android:paddingBottom="@dimen/margin_vertical" />
+
+            <TextView
+                android:id="@+id/text_view_rating_user_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_view_cicilan"
+                android:layout_toRightOf="@+id/rating_bar_average_rate"
+                android:paddingBottom="@dimen/margin_vertical"
+                android:text="(22)" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/text_view_rating_user_count"
+                android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/text_view_seller_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view_line"
+                android:paddingTop="@dimen/margin_vertical"
+                android:text="LapakJahit Store"
+                android:textSize="@dimen/size_text_thridary" />
+
+            <TextView
+                android:id="@+id/text_view_persen_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_seller_name"
+                android:text="100% (100 feeadback)"
+                android:textSize="@dimen/size_text_thridary"
+                android:paddingBottom="@dimen/margin_vertical"
+                />
+
+            <Button
+                android:background="@color/colorDaftar"
+                android:textColor="@android:color/white"
+                android:id="@+id/button_buy_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_view_persen_feedback"
+                android:text="Beli" />
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
 
 </LinearLayout>
