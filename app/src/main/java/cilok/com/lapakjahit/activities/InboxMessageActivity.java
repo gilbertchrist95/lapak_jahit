@@ -28,9 +28,9 @@ import cilok.com.lapakjahit.database.DBInboxMessage;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.extras.MessageSorter;
 import cilok.com.lapakjahit.log.L;
-import cilok.com.lapakjahit.tasks.TaskLoadInboxMessage;
+import cilok.com.lapakjahit.tasks.TaskMessage;
 
-public class InboxMessageActivity extends AppCompatActivity implements InboxMessageLoadedListener,SwipeRefreshLayout.OnRefreshListener {
+public class InboxMessageActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     //The key used to store arraylist of inbox messsage objects to and from parcelable
     private static final String STATE_INBOX = "state_inbox";
@@ -83,12 +83,22 @@ public class InboxMessageActivity extends AppCompatActivity implements InboxMess
             //if the database is empty, trigger an AsycnTask to download inbox list from the web
             if (mListInbox.isEmpty()){
                 L.m("InboxMessageActivity: executing task from activity");
-                new TaskLoadInboxMessage(this,getApplicationContext()).execute();
+                TaskMessage taskMessage = new TaskMessage(this);
+                taskMessage.getInboxMessage(new InboxMessageLoadedListener() {
+                    @Override
+                    public void onInboxMessageLoadedListener(ArrayList<InboxMessage> listInboxMessage) {
+                        mListInbox = listInboxMessage;
+                        if (mSwipeRefreshLayout.isRefreshing()) {
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                        mAdapter.setInboxMessage(mListInbox);
+                    }
+                });
             }
         }
         messageSorter.sortInboxMessageByDate(mListInbox);
         mAdapter.setInboxMessage(mListInbox);
-//        new TaskLoadInboxMessage(this).execute();
+//        new TaskGetnboxMessage(this).execute();
     }
 
     @Override
@@ -129,20 +139,31 @@ public class InboxMessageActivity extends AppCompatActivity implements InboxMess
     /**
      * Called when the AsyncTask finishes load the list of inbox from the web
      */
-    @Override
-    public void onInboxMessageLoadedListener(ArrayList<InboxMessage> listInbox){
-        L.m("InboxMessageActivity: onInboxMessageLoadedListener Activity");
-        //update the Adapter to contain the new movies downloaded from the web
-        if (mSwipeRefreshLayout.isRefreshing()) {
-            mSwipeRefreshLayout.setRefreshing(false);
-        }
-        mAdapter.setInboxMessage(listInbox);
-    }
+//    @Override
+//    public void onInboxMessageLoadedListener(ArrayList<InboxMessage> listInbox){
+//        L.m("InboxMessageActivity: onInboxMessageLoadedListener Activity");
+//        //update the Adapter to contain the new movies downloaded from the web
+//        if (mSwipeRefreshLayout.isRefreshing()) {
+//            mSwipeRefreshLayout.setRefreshing(false);
+//        }
+//        mAdapter.setInboxMessage(listInbox);
+//    }
 
     @Override
     public void onRefresh() {
         L.t(getApplicationContext(), "onRefresh");
         //load the whole feed again on refresh, dont try this at home :)
-        new TaskLoadInboxMessage(this,getApplicationContext()).execute();
+//        new TaskLoadInboxMessage(this,getApplicationContext()).execute();
+        TaskMessage taskMessage = new TaskMessage(this);
+        taskMessage.getInboxMessage(new InboxMessageLoadedListener() {
+            @Override
+            public void onInboxMessageLoadedListener(ArrayList<InboxMessage> listInboxMessage) {
+                mListInbox = listInboxMessage;
+                if (mSwipeRefreshLayout.isRefreshing()) {
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
+                mAdapter.setInboxMessage(mListInbox);
+            }
+        });
     }
 }
