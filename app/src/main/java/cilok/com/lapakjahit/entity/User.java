@@ -16,7 +16,7 @@ public class User {
     public User(){
 
     }
-    public User(String userId, String userName, boolean confirmed, String token, String email,String confirmedPhone, String omniKey){
+    public User(String userId, String userName, boolean confirmed, String token, String email, String confirmedPhone, String omniKey){
         this.userId = userId;
         this.userName = userName;
         this.confirmed = confirmed;
