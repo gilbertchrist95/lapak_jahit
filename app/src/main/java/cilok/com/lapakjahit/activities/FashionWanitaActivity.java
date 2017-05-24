@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import cilok.com.lapakjahit.CustomWanitaActivity;
 import cilok.com.lapakjahit.fragments.FragmentProdukWanita;
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.tabs.SlidingTabLayout;
+import cilok.com.lapakjahit.view.SlidingTabLayout;
 
 public class FashionWanitaActivity extends AppCompatActivity {
 

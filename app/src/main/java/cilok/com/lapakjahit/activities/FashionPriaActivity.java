@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import cilok.com.lapakjahit.CustomPriaActivity;
 import cilok.com.lapakjahit.fragments.FragmentProdukPria;
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.tabs.SlidingTabLayout;
+import cilok.com.lapakjahit.view.SlidingTabLayout;
 
 
 public class FashionPriaActivity extends AppCompatActivity {

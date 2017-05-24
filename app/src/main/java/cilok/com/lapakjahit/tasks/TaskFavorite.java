@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import cilok.com.lapakjahit.callback.GetFavoritesCallback;
-import cilok.com.lapakjahit.entity.ProductFavorite;
+import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.extras.FavoritesUtils;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
@@ -24,14 +24,12 @@ import cilok.com.lapakjahit.network.VolleySingleton;
  */
 
 public class TaskFavorite {
-    private ProgressDialog progressDialog;
+
     String split[];
 
-    public TaskFavorite(Context context) {
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Processing");
-        progressDialog.setMessage("Please Wait...");
+        public TaskFavorite(Context context) {
+
+
 
         FileInputStream fileInputStream = null;
         try {
@@ -50,7 +48,7 @@ public class TaskFavorite {
             e.printStackTrace();
         }
 
-        L.m("UserId: " + split[0]);
+
     }
 
     public TaskFavorite() {
@@ -58,13 +56,12 @@ public class TaskFavorite {
 
 
     public void getFavoritesDataInBackground(GetFavoritesCallback callback) {
-        progressDialog.show();
         new TaskLoadFavorites(callback, split[0], split[1]).execute();
-        progressDialog.dismiss();
     }
 
 
-    public class TaskLoadFavorites extends AsyncTask<Void, Void, ArrayList<ProductFavorite>> {
+
+    public class TaskLoadFavorites extends AsyncTask<Void, Void, ArrayList<Product>> {
         GetFavoritesCallback favoritesCallback;
         private VolleySingleton volleySingleton;
         private RequestQueue requestQueue;
@@ -80,16 +77,16 @@ public class TaskFavorite {
 
 
         @Override
-        protected ArrayList<ProductFavorite> doInBackground(Void... voids) {
-            ArrayList<ProductFavorite> productFavorites = FavoritesUtils.loadProductFavorites(requestQueue, userId, token);
-            return productFavorites;
+        protected ArrayList<Product> doInBackground(Void... voids) {
+            ArrayList<Product> products = FavoritesUtils.loadProductFavorites(requestQueue, userId, token);
+            return products;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<ProductFavorite> productFavorites) {
-//            super.onPostExecute(productFavorites);
+        protected void onPostExecute(ArrayList<Product> products) {
+//            super.onPostExecute(products);
             if (favoritesCallback !=null){
-                favoritesCallback.onGetFavoritesLoadedListener(productFavorites);
+                favoritesCallback.onGetFavoritesLoadedListener(products);
             }
         }
     }

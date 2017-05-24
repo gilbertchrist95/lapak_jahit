@@ -1,22 +1,117 @@
 package cilok.com.lapakjahit.json;
 
-import android.os.CpuUsageInfo;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cilok.com.lapakjahit.entity.InboxMessage;
-import cilok.com.lapakjahit.entity.ProductFavorite;
+import cilok.com.lapakjahit.entity.Product;
+import cilok.com.lapakjahit.entity.Transaction;
 import cilok.com.lapakjahit.extras.Constants;
 import cilok.com.lapakjahit.extras.Keys;
-import cilok.com.lapakjahit.extras.Util;
 import cilok.com.lapakjahit.log.L;
 
-import static cilok.com.lapakjahit.extras.Keys.EndpointGetFavorites.*;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetProduct.*;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_agent_commission_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_amount_detail;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_amount_detail_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_amount_detail_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer_email;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer_notes;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_buyer_username;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_coded_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_address;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_area;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_city;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_phone;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_post_code;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_consignee_province;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_courier;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_created_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_deliver_before;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_body;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_created_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_is_editable;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_positive;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_sender_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_sender_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_sender_type;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_transaction_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_transaction_no;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_updated_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_user_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_feedback_for_seller_user_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_has_deal_product;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_installment_term;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_insurance_cost;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_invoice;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_invoice_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_invoice_invoice_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_invoice_state;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_need_action;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_pay_before;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_payment_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_payment_method;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_payment_method_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_pickup_time;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_promo_payment_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_quantity;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_quick_trans;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_reject_reason;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_remit_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_return_info;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_seller;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_seller_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_seller_username;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_service_fee;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_code;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_fee;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_history;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_history_date;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_history_status;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_shipping_service;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_accepted_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_addressed_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_delivered_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_expired_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_paid_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_payment_chosen_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_received_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_state_changes_remitted_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_subtotal_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_total_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_total_weight;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_transaction_id;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_transactions;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_type;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_uniq_code;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_unread;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_updated_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_use_seller_voucher;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_use_voucher;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_virtual;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_voucher;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_voucher_amount;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_voucher_code;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_voucher_name;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_voucher_percentage_amount;
 import static cilok.com.lapakjahit.extras.Keys.EnpointInboxMessage.*;
 import static cilok.com.lapakjahit.extras.Keys.EnpointInboxMessage.KEY_ID;
 
@@ -94,8 +189,8 @@ public class Parser {
         return listInboxInboxMessage;
     }
 
-    public static ArrayList<ProductFavorite> parseProductFavorites(JSONObject response) {
-        ArrayList<ProductFavorite> listFavoriteProduct = new ArrayList<>();
+    public static ArrayList<Product> parseProductFavorites(JSONObject response) {
+        ArrayList<Product> listFavoriteProduct = new ArrayList<>();
         if (response != null && response.length() > 0) {
             try {
                 JSONArray arrayFavorites = response.getJSONArray(KEY_PRODUCT);
@@ -125,7 +220,7 @@ public class Parser {
                     String[] seller_voucher = {};
                     int waiting_payment;
                     int sold_count;
-                    ProductFavorite.SpecsBean specs = new ProductFavorite.SpecsBean();
+                    Product.SpecsBean specs = new Product.SpecsBean();
                     String[] specsUkuran = {};
                     String specsBrand = Constants.NA;
                     boolean force_insurance;
@@ -146,11 +241,12 @@ public class Parser {
                     boolean favorited = false;
                     String created_at = Constants.NA;
                     String updated_at = Constants.NA;
-                    ProductFavorite.RatingBean rating = new ProductFavorite.RatingBean(); //pasti ado
+                    Product.RatingBean rating = new Product.RatingBean(); //pasti ado
+                    Product.DealInfoBean dealInfo = new Product.DealInfoBean(); //biso ado biso idak
                     String average_rate = Constants.NA;
                     int user_count = -1;
-                    List<ProductFavorite.WholesaleBean> wholesale = new ArrayList<>(); //biso iyo bisa idak
-                    List<ProductFavorite.InstallmentBean> installment = new ArrayList<>(); //biso iyo bisa idak
+                    List<Product.WholesaleBean> wholesale = new ArrayList<>(); //biso iyo bisa idak
+                    List<Product.InstallmentBean> installment = new ArrayList<>(); //biso iyo bisa idak
                     String min_installment_price = Constants.NA; //biso iyo biso idak
                     int interest_count = -1;
                     String last_relist_at = Constants.NA;
@@ -212,7 +308,7 @@ public class Parser {
                         }
                     }
                     force_insurance = currentProduct.getBoolean(KEY_FORCE_INSURANCE);
-                    if (Utils.contains(currentProduct, Keys.EndpointGetFavorites.KEY_ID)) {
+                    if (Utils.contains(currentProduct, Keys.EndpointGetProduct.KEY_ID)) {
                         id = currentProduct.getString(KEY_ID);
                     }
                     url = currentProduct.getString(KEY_URL);
@@ -255,7 +351,7 @@ public class Parser {
                     }
                     if (Utils.contains(currentProduct, KEY_WHOSALE)) {
                         JSONArray arrayWhosale = currentProduct.getJSONArray(KEY_WHOSALE);
-                        ProductFavorite.WholesaleBean wholesaleBean = new ProductFavorite.WholesaleBean();
+                        Product.WholesaleBean wholesaleBean = new Product.WholesaleBean();
                         for (int j = 0; j < arrayWhosale.length(); j++) {
                             JSONObject currentWhosale = arrayWhosale.getJSONObject(j);
                             int lower_bound = currentWhosale.getInt("lower_bound");
@@ -265,9 +361,35 @@ public class Parser {
                             wholesale.add(wholesaleBean);
                         }
                     }
-                    if (Utils.contains(currentProduct,KEY_INSTALLMENT)){
+                    long original_price = -1;
+                    long discount_price = -1;
+                    int discount_percetage = -1;
+                    String discount_date = Constants.NA;
+                    String state = Constants.NA;
+                    if (Utils.contains(currentProduct, KEY_DEAL_INFO)) {
+                        JSONObject objDeal = currentProduct.getJSONObject(KEY_DEAL_INFO);
+                        original_price = (Utils.contains(objDeal, KEY_DEAL_INFO_ORIGINAL_PRICE) ?
+                                objDeal.getLong(KEY_DEAL_INFO_ORIGINAL_PRICE) : -1);
+                        discount_price = (Utils.contains(objDeal, KEY_DEAL_INFO_DISCOUNT_PRICE) ?
+                                objDeal.getLong(KEY_DEAL_INFO_DISCOUNT_PRICE) : -1);
+                        discount_percetage = (Utils.contains(objDeal, KEY_DEAL_INFO_DISCOUNT_PERCENTAGE) ?
+                                objDeal.getInt(KEY_DEAL_INFO_DISCOUNT_PERCENTAGE) : -1);
+                        discount_date = (Utils.contains(objDeal, KEY_DEAL_INFO_DISCOUNT_DATE) ?
+                                objDeal.getString(KEY_DEAL_INFO_DISCOUNT_DATE) : Constants.NA);
+                        state = (Utils.contains(objDeal, KEY_DEAL_INFO_STATE) ?
+                                objDeal.getString(KEY_DEAL_INFO_STATE) : Constants.NA);
+
+                    }
+                    dealInfo.setOriginal_price(original_price);
+                    dealInfo.setDiscount_price(discount_price);
+                    dealInfo.setDiscount_percentage(discount_percetage);
+                    dealInfo.setDiscount_date(discount_date);
+                    dealInfo.setState(state);
+                    L.m("Original: " + dealInfo.getOriginal_price());
+                    L.m("Diskon: " + dealInfo.getDiscount_percentage());
+                    if (Utils.contains(currentProduct, KEY_INSTALLMENT)) {
                         JSONArray arrayInstalment = currentProduct.getJSONArray(KEY_INSTALLMENT);
-                        ProductFavorite.InstallmentBean installmentBean = new ProductFavorite.InstallmentBean();
+                        Product.InstallmentBean installmentBean = new Product.InstallmentBean();
                         for (int j = 0; j < arrayInstalment.length(); j++) {
                             JSONObject currentInstallment = arrayInstalment.getJSONObject(j);
                             String bank_issuer = currentInstallment.getString(KEY_BANK_ISSUER);
@@ -288,7 +410,7 @@ public class Parser {
                             installment.add(installmentBean);
                         }
                     }
-                    if (Utils.contains(currentProduct,KEY_URL_MIN_INSTALMENT_PRICE)){
+                    if (Utils.contains(currentProduct, KEY_URL_MIN_INSTALMENT_PRICE)) {
                         min_installment_price = currentProduct.getString(KEY_URL_MIN_INSTALMENT_PRICE);
                     }
                     interest_count = currentProduct.getInt(KEY_INTEREST_COUNT);
@@ -296,67 +418,463 @@ public class Parser {
                     view_count = currentProduct.getInt(KEY_VIEW_COUNT);
 
 
-                    ProductFavorite productFavorite = new ProductFavorite();
-                    productFavorite.setDeal_request_state(deal_request_state);
-                    productFavorite.setPrice(price);
-                    productFavorite.setCategory_id(category_id);
-                    productFavorite.setCategory(category);
-                    productFavorite.setCategory_structure(category_structure);
-                    productFavorite.setCourier(courier);
-                    productFavorite.setSeller_username(seller_username);
-                    productFavorite.setSeller_name(seller_name);
-                    productFavorite.setSeller_id(seller_id);
-                    productFavorite.setSeller_avatar(seller_avatar);
-                    productFavorite.setSeller_level(seller_level);
-                    productFavorite.setSeller_level_badge_url(seller_level_badge_url);
-                    productFavorite.setSeller_delivery_time(seller_delivery_time);
-                    productFavorite.setSeller_positive_feedback(seller_positive_feedback);
-                    productFavorite.setSeller_negative_feedback(seller_negative_feedback);
-                    productFavorite.setSeller_term_condition(seller_term_condition);
-                    productFavorite.setSeller_alert(seller_alert);
-                    productFavorite.setFor_sale(for_sale);
-                    productFavorite.setState_description(state_description);
-                    productFavorite.setPremium_account(premium_account);
-                    productFavorite.setTop_merchant(top_merchant);
-                    productFavorite.setSeller_voucher(seller_voucher);
-                    productFavorite.setWaiting_payment(waiting_payment);
-                    productFavorite.setSold_count(sold_count);
+                    Product product = new Product();
+                    product.setDeal_request_state(deal_request_state);
+                    product.setPrice(price);
+                    product.setCategory_id(category_id);
+                    product.setCategory(category);
+                    product.setCategory_structure(category_structure);
+                    product.setCourier(courier);
+                    product.setSeller_username(seller_username);
+                    product.setSeller_name(seller_name);
+                    product.setSeller_id(seller_id);
+                    product.setSeller_avatar(seller_avatar);
+                    product.setSeller_level(seller_level);
+                    product.setSeller_level_badge_url(seller_level_badge_url);
+                    product.setSeller_delivery_time(seller_delivery_time);
+                    product.setSeller_positive_feedback(seller_positive_feedback);
+                    product.setSeller_negative_feedback(seller_negative_feedback);
+                    product.setSeller_term_condition(seller_term_condition);
+                    product.setSeller_alert(seller_alert);
+                    product.setFor_sale(for_sale);
+                    product.setState_description(state_description);
+                    product.setPremium_account(premium_account);
+                    product.setTop_merchant(top_merchant);
+                    product.setSeller_voucher(seller_voucher);
+                    product.setWaiting_payment(waiting_payment);
+                    product.setSold_count(sold_count);
                     specs.setBrand(specsBrand);
                     specs.setUkuran(specsUkuran);
-                    productFavorite.setSpecs(specs);
-                    productFavorite.setForce_insurance(force_insurance);
-                    productFavorite.setId(id);
-                    productFavorite.setUrl(url);
-                    productFavorite.setName(name);
-                    productFavorite.setActive(active);
-                    productFavorite.setCity(city);
-                    productFavorite.setProvince(province);
-                    productFavorite.setWeight(weight);
-                    productFavorite.setImage_ids(image_ids);
-                    productFavorite.setImages(images);
-                    productFavorite.setSmall_images(small_images);
-                    productFavorite.setDesc(desc);
-                    productFavorite.setCondition(condition);
-                    productFavorite.setStock(stock);
-                    productFavorite.setFavorited(favorited);
-                    productFavorite.setCreated_at(created_at);
-                    productFavorite.setUpdated_at(updated_at);
+                    product.setSpecs(specs);
+                    product.setForce_insurance(force_insurance);
+                    product.setId(id);
+                    product.setUrl(url);
+                    product.setName(name);
+                    product.setActive(active);
+                    product.setCity(city);
+                    product.setProvince(province);
+                    product.setWeight(weight);
+                    product.setImage_ids(image_ids);
+                    product.setImages(images);
+                    product.setSmall_images(small_images);
+                    product.setDesc(desc);
+                    product.setCondition(condition);
+                    product.setStock(stock);
+                    product.setFavorited(favorited);
+                    product.setCreated_at(created_at);
+                    product.setUpdated_at(updated_at);
                     rating.setAverage_rate(average_rate);
                     rating.setUser_count(user_count);
-                    productFavorite.setRating(rating);
-                    productFavorite.setWholesale(wholesale);
-                    productFavorite.setInstallment(installment);
-                    productFavorite.setMin_installment_price(min_installment_price);
-                    productFavorite.setInterest_count(interest_count);
-                    productFavorite.setLast_relist_at(last_relist_at);
-                    productFavorite.setView_count(view_count);
-
-                    listFavoriteProduct.add(productFavorite);
+                    product.setRating(rating);
+                    product.setWholesale(wholesale);
+                    product.setInstallment(installment);
+                    product.setMin_installment_price(min_installment_price);
+                    product.setInterest_count(interest_count);
+                    product.setLast_relist_at(last_relist_at);
+                    product.setView_count(view_count);
+                    product.setDealInfo(dealInfo);
+                    listFavoriteProduct.add(product);
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         return listFavoriteProduct;
+    }
+
+    public static ArrayList<Transaction> parseTransaction(JSONObject response, String typeTransaction, String userId) {
+        List<String> stateTagihan = Arrays.asList("pending", "addressed", "payment_chosen", "confirm_payment", "expired", "cancelled", "rejected");
+        List<String> statePembelian = Arrays.asList("paid", "delivered", "received", "remitted","refunded");
+        List<String> statePenjualan = Arrays.asList("deliver", "reject", "rejected", "actions", "refunded");
+        ArrayList<Transaction> listTransactions = new ArrayList<>();
+        try {
+            if (response != null && response.getString("status").equals("OK")) {
+                try {
+                    JSONArray arrayTransaction = response.getJSONArray(KEY_transactions);
+                    for (int i = 0; i < arrayTransaction.length(); i++) {
+                        long id = -1;
+                        String update_at = Constants.NA;
+                        boolean unread = false;
+                        boolean quick_trans;
+                        String transaction_id;
+                        long amount;
+                        int quantity;
+                        String courier;
+                        String buyer_notes;
+                        //        private Object dropshipper_name;
+                        //        private Object dropshipper_notes;
+                        long shipping_fee;
+                        long shipping_id;
+                        String shipping_code;
+                        List<Transaction.ShippingHistoryBean> shipping_history = new ArrayList<>();
+                        String shipping_service;
+                        long insurance_cost;
+                        long subtotal_amount;
+                        long total_amount;
+                        long coded_amount;
+                        int uniq_code = -1;
+                        boolean use_seller_voucher;
+                        boolean use_voucher;
+                        long voucher_amount;
+                        long promo_payment_amount;
+                        long agent_commission_amount;
+                        String payment_method;
+                        String payment_method_name;
+                        long payment_amount;
+                        long remit_amount;
+                        long service_fee;
+                        Transaction.Feedback feedback = new Transaction.Feedback();
+                        List<Product> listProduct = new ArrayList<>();
+                        String pickup_time = Constants.NA;
+                        List<Transaction.AmountDetail> amount_detail = new ArrayList<>();
+                        Transaction.Installment installment = new Transaction.Installment();
+                        Transaction.Consignee consignee = new Transaction.Consignee();
+                        Transaction.Buyer buyer = new Transaction.Buyer();
+                        long buyer_id = -1;
+                        String buyer_name = Constants.NA;
+                        String buyer_username = Constants.NA;
+                        String buyer_email = Constants.NA;
+                        Transaction.Seller seller = new Transaction.Seller();
+                        long seller_id = -1;
+                        String seller_name = Constants.NA;
+                        String seller_username = Constants.NA;
+                        Transaction.Invoice invoice = new Transaction.Invoice();
+                        long invoice_id = -1;
+                        String invoice_invoice_id = Constants.NA;
+                        String invoice_state = Constants.NA;
+                        Transaction.VoucherBean voucherBean = new Transaction.VoucherBean();
+                        String voucher_code = Constants.NA;
+                        String voucher_name = Constants.NA;
+                        long voucherB_amount = -1;
+                        long voucher_percentage_amount = -1;
+                        String created_at = Constants.NA;
+                        String deliver_before = Constants.NA;
+                        String pay_before = Constants.NA;
+                        String reject_reason = Constants.NA;
+                        Transaction.StateChanges state_changes = new Transaction.StateChanges();
+                        String state_changes_addressed_at = Constants.NA;
+                        String state_changes_payment_chosen_at = Constants.NA;
+                        String state_changes_paid_at = Constants.NA;
+                        String state_changes_accepted_at = Constants.NA;
+                        String state_changes_delivered_at = Constants.NA;
+                        String state_changes_received_at = Constants.NA;
+                        String state_changes_remitted_at = Constants.NA;
+                        String state_changes_expired_at = Constants.NA;
+                        boolean has_deal_product = false;
+                        String return_info = Constants.NA;
+                        long total_weight = -1;
+                        boolean need_action = false;
+                        boolean virtual = false;
+                        //    private Object phone_credit;
+                        //    private Object logistic_booking;
+                        String type = Constants.NA;
+                        //    private Object replacement;
+
+                        JSONObject currentTransaction = arrayTransaction.getJSONObject(i);
+                        id = currentTransaction.getLong(KEY_id);
+
+                        String state = currentTransaction.getString(KEY_state);
+
+                        L.m(typeTransaction + ": " + state);
+                        update_at = currentTransaction.getString(KEY_updated_at);
+                        unread = currentTransaction.getBoolean(KEY_unread);
+                        quick_trans = currentTransaction.getBoolean(KEY_quick_trans);
+                        transaction_id = currentTransaction.getString(KEY_transaction_id);
+                        amount = currentTransaction.getLong(KEY_amount);
+                        quantity = currentTransaction.getInt(KEY_quantity);
+                        courier = currentTransaction.getString(KEY_courier);
+                        buyer_notes = currentTransaction.getString(KEY_buyer_notes);
+                        shipping_fee = currentTransaction.getLong(KEY_shipping_fee);
+                        shipping_id = currentTransaction.getLong(KEY_shipping_id);
+                        shipping_code = currentTransaction.getString(KEY_shipping_code);
+                        if (Utils.contains(currentTransaction, KEY_shipping_history)) {
+                            Transaction.ShippingHistoryBean shippingHistoryBean = new Transaction.ShippingHistoryBean();
+                            JSONArray arrayShippingHistory = currentTransaction.getJSONArray(KEY_shipping_history);
+                            if (arrayShippingHistory.length() > 0) {
+                                for (int j = 0; j < arrayShippingHistory.length(); j++) {
+                                    String date = Constants.NA;
+                                    String status = Constants.NA;
+
+                                    JSONObject currentShippingHistory = arrayShippingHistory.getJSONObject(j);
+                                    date = currentShippingHistory.getString(KEY_shipping_history_date);
+                                    status = currentShippingHistory.getString(KEY_shipping_history_status);
+
+                                    shippingHistoryBean.setDate(date);
+                                    shippingHistoryBean.setStatus(status);
+                                    shipping_history.add(shippingHistoryBean);
+                                }
+                            }
+                        }
+                        shipping_service = currentTransaction.getString(KEY_shipping_service);
+                        insurance_cost = currentTransaction.getLong(KEY_insurance_cost);
+                        subtotal_amount = currentTransaction.getLong(KEY_subtotal_amount);
+                        total_amount = currentTransaction.getLong(KEY_total_amount);
+                        coded_amount = currentTransaction.getLong(KEY_coded_amount);
+                        if (Utils.contains(currentTransaction, KEY_uniq_code))
+                            uniq_code = currentTransaction.getInt(KEY_uniq_code);
+                        use_seller_voucher = currentTransaction.getBoolean(KEY_use_seller_voucher);
+                        use_voucher = currentTransaction.getBoolean(KEY_use_voucher);
+                        voucher_amount = currentTransaction.getLong(KEY_voucher_amount);
+                        promo_payment_amount = currentTransaction.getLong(KEY_promo_payment_amount);
+                        agent_commission_amount = currentTransaction.getLong(KEY_agent_commission_amount);
+                        payment_method = currentTransaction.getString(KEY_payment_method);
+                        payment_method_name = currentTransaction.getString(KEY_payment_method_name);
+                        payment_amount = currentTransaction.getLong(KEY_payment_amount);
+                        remit_amount = currentTransaction.getLong(KEY_remit_amount);
+                        service_fee = currentTransaction.getLong(KEY_service_fee);
+                        JSONObject objectFeedback = currentTransaction.getJSONObject(KEY_feedback);
+                        if (Utils.contains(objectFeedback, KEY_feedback_for_seller)) {
+                            JSONObject objectFor_Seller = objectFeedback.getJSONObject(KEY_feedback_for_seller);
+                            Transaction.ForSallerBean forSallerBean = new Transaction.ForSallerBean();
+                            if (Utils.contains(objectFor_Seller, KEY_feedback_for_seller)) {
+
+                                long _id = objectFor_Seller.getLong(KEY_feedback_for_seller_id);
+                                long _transaction_id = objectFor_Seller.getLong(KEY_feedback_for_seller_transaction_id);
+                                long transaction_no = objectFor_Seller.getLong(KEY_feedback_for_seller_transaction_no);
+                                long sender_id = objectFor_Seller.getLong(KEY_feedback_for_seller_sender_id);
+                                String sender_name = objectFor_Seller.getString(KEY_feedback_for_seller_sender_name);
+                                String sender_type = objectFor_Seller.getString(KEY_feedback_for_seller_sender_type);
+                                long user_id = objectFor_Seller.getLong(KEY_feedback_for_seller_user_id);
+                                String user_name = objectFor_Seller.getString(KEY_feedback_for_seller_user_name);
+                                String body = objectFor_Seller.getString(KEY_feedback_for_seller_body);
+                                boolean positive = objectFor_Seller.getBoolean(KEY_feedback_for_seller_positive);
+                                String _created_at = objectFor_Seller.getString(KEY_feedback_for_seller_created_at);
+                                String updated_at = objectFor_Seller.getString(KEY_feedback_for_seller_updated_at);
+                                boolean is_editable = objectFor_Seller.getBoolean(KEY_feedback_for_seller_is_editable);
+
+                                forSallerBean.setId(_id);
+                                forSallerBean.setTransaction_id(_transaction_id);
+                                forSallerBean.setTransaction_no(transaction_no);
+                                forSallerBean.setSender_id(sender_id);
+                                forSallerBean.setSender_name(sender_name);
+                                forSallerBean.setSender_type(sender_type);
+                                forSallerBean.setUser_id(user_id);
+                                forSallerBean.setUser_name(user_name);
+                                forSallerBean.setBody(body);
+                                forSallerBean.setPositive(positive);
+                                forSallerBean.setCreated_at(_created_at);
+                                forSallerBean.setUpdated_at(updated_at);
+                                forSallerBean.setIs_editable(is_editable);
+                            }
+                            feedback.setFor_seller(forSallerBean);
+                        }
+                        listProduct = parseProductFavorites(currentTransaction);
+                        if (Utils.contains(currentTransaction, KEY_pickup_time)) {
+                            pickup_time = currentTransaction.getString(KEY_pickup_time);
+                        }
+                        JSONArray arrayAmountDetail = currentTransaction.getJSONArray(KEY_amount_detail);
+                        for (int j = 0; j < arrayAmountDetail.length(); j++) {
+                            JSONObject objectAmountDetail = arrayAmountDetail.getJSONObject(j);
+                            Transaction.AmountDetail amountDetail = new Transaction.AmountDetail();
+                            String name = objectAmountDetail.getString(KEY_amount_detail_name);
+                            long _amount = (Utils.contains(objectAmountDetail,KEY_amount_detail_amount))?objectAmountDetail.getLong(KEY_amount_detail_amount):-1;
+                            amountDetail.setName(name);
+                            amountDetail.setAmount(_amount);
+                            amount_detail.add(amountDetail);
+                        }
+                        if (Utils.contains(currentTransaction, KEY_INSTALLMENT)) {
+                            JSONObject objInstalmment = currentTransaction.getJSONObject(KEY_INSTALLMENT);
+                            int term = -1;
+                            String banl_issuer = Constants.NA;
+                            if (Utils.contains(objInstalmment, KEY_installment_term)) {
+                                term = objInstalmment.getInt(KEY_installment_term);
+                            }
+                            if (Utils.contains(objInstalmment, KEY_BANK_ISSUER)) {
+                                banl_issuer = objInstalmment.getString(KEY_BANK_ISSUER);
+                            }
+                            installment.setTerm(term);
+                            installment.setBank_issuer(banl_issuer);
+                        }
+                        if (Utils.contains(currentTransaction, KEY_consignee)) {
+                            JSONObject objectConsignee = currentTransaction.getJSONObject(KEY_consignee);
+                            String name = Constants.NA;
+                            String phone = Constants.NA;
+                            String address = Constants.NA;
+                            String area = Constants.NA;
+                            String city = Constants.NA;
+                            String province = Constants.NA;
+                            String post_code = Constants.NA;
+
+                            if (Utils.contains(objectConsignee, KEY_consignee_name)) {
+                                name = objectConsignee.getString(KEY_consignee_name);
+                            }
+                            if (Utils.contains(objectConsignee, KEY_consignee_phone))
+                                phone = objectConsignee.getString(KEY_consignee_phone);
+                            if (Utils.contains(objectConsignee, KEY_consignee_address))
+                                address = objectConsignee.getString(KEY_consignee_address);
+                            if (Utils.contains(objectConsignee, KEY_consignee_area))
+                                area = objectConsignee.getString(KEY_consignee_area);
+                            if (Utils.contains(objectConsignee, KEY_consignee_city))
+                                city = objectConsignee.getString(KEY_consignee_city);
+                            if (Utils.contains(objectConsignee, KEY_consignee_province))
+                                province = objectConsignee.getString(KEY_consignee_province);
+                            if (Utils.contains(objectConsignee, KEY_consignee_post_code))
+                                post_code = objectConsignee.getString(KEY_consignee_post_code);
+
+                            consignee.setName(name);
+                            consignee.setPhone(phone);
+                            consignee.setAddress(address);
+                            consignee.setArea(area);
+                            consignee.setCity(city);
+                            consignee.setProvince(province);
+                            consignee.setPost_code(post_code);
+                        }
+                        JSONObject objectBuyer = currentTransaction.getJSONObject(KEY_buyer);
+                        buyer_id = objectBuyer.getLong(KEY_buyer_id);
+                        buyer_name = objectBuyer.getString(KEY_buyer_name);
+                        buyer_username = objectBuyer.getString(KEY_buyer_username);
+                        buyer_email = objectBuyer.getString(KEY_buyer_email);
+                        buyer.setId(buyer_id);
+                        buyer.setName(buyer_name);
+                        buyer.setUsername(buyer_username);
+                        buyer.setEmail(buyer_email);
+                        JSONObject objectSeller = currentTransaction.getJSONObject(KEY_seller);
+                        seller_id = objectSeller.getLong(KEY_buyer_id);
+                        seller_name = objectSeller.getString(KEY_seller_name);
+                        seller_username = objectSeller.getString(KEY_seller_username);
+                        seller.setId(seller_id);
+                        seller.setName(seller_name);
+                        seller.setUsername(seller_username);
+                        if (Utils.contains(currentTransaction,KEY_invoice)){
+                            JSONObject objectInvoice = currentTransaction.getJSONObject(KEY_invoice);
+                            invoice_id = objectInvoice.getLong(KEY_invoice_id);
+                            invoice_invoice_id = objectInvoice.getString(KEY_invoice_invoice_id);
+                            invoice_state = objectInvoice.getString(KEY_invoice_state);
+                            invoice.setId(invoice_id);
+                            invoice.setInvoice_id(invoice_invoice_id);
+                            invoice.setState(invoice_state);
+                        }
+                        if (Utils.contains(currentTransaction,KEY_voucher)){
+                            JSONObject objectVoucher = currentTransaction.getJSONObject(KEY_voucher);
+                            if (Utils.contains(objectVoucher, KEY_voucher_code))
+                                voucher_code = objectVoucher.getString(KEY_voucher_code);
+                            if (Utils.contains(objectVoucher, KEY_voucher_name))
+                                voucher_name = objectVoucher.getString(KEY_voucher_name);
+                            if (Utils.contains(objectVoucher, KEY_voucher_amount))
+                                voucherB_amount = objectVoucher.getLong(KEY_voucher_amount);
+                            if (Utils.contains(objectVoucher, KEY_voucher_percentage_amount))
+                                voucher_percentage_amount = objectVoucher.getLong(KEY_voucher_percentage_amount);
+                            voucherBean.setCode(voucher_code);
+                            voucherBean.setName(voucher_name);
+                            voucherBean.setAmount(voucherB_amount);
+                            voucherBean.setPercentage_amount(voucher_percentage_amount);
+                        }
+
+
+                        created_at = currentTransaction.getString(KEY_created_at);
+                        deliver_before = currentTransaction.getString(KEY_deliver_before);
+                        pay_before = currentTransaction.getString(KEY_pay_before);
+                        reject_reason = currentTransaction.getString(KEY_reject_reason);
+
+                        JSONObject objectStateChange = currentTransaction.getJSONObject(KEY_state_changes);
+                        state_changes_addressed_at = (Utils.contains(objectStateChange, KEY_state_changes_addressed_at)) ?
+                                objectStateChange.getString(KEY_state_changes_addressed_at) : Constants.NA;
+                        state_changes_payment_chosen_at = (Utils.contains(objectStateChange,KEY_state_changes_payment_chosen_at))?
+                                objectStateChange.getString(KEY_state_changes_payment_chosen_at):Constants.NA;
+                        state_changes_paid_at = (Utils.contains(objectStateChange,KEY_state_changes_paid_at))?
+                                objectStateChange.getString(KEY_state_changes_paid_at):Constants.NA;
+                        state_changes_accepted_at = (Utils.contains(objectStateChange,KEY_state_changes_accepted_at))?
+                                objectStateChange.getString(KEY_state_changes_accepted_at):Constants.NA;
+                        state_changes_delivered_at  =(Utils.contains(objectStateChange,KEY_state_changes_delivered_at))?
+                                objectStateChange.getString(KEY_state_changes_delivered_at):Constants.NA;
+                        state_changes_received_at = (Utils.contains(objectStateChange,KEY_state_changes_received_at))?
+                                objectStateChange.getString(KEY_state_changes_received_at):Constants.NA;
+                        state_changes_remitted_at = (Utils.contains(objectStateChange,KEY_state_changes_remitted_at))?
+                                objectStateChange.getString(KEY_state_changes_remitted_at):Constants.NA;
+                        state_changes_expired_at = (Utils.contains(objectStateChange,KEY_state_changes_expired_at))?
+                                objectStateChange.getString(KEY_state_changes_expired_at):Constants.NA;
+                        state_changes.setAddressed_at(state_changes_addressed_at);
+                        state_changes.setPayment_chosen_at(state_changes_payment_chosen_at);
+                        state_changes.setPaid_at(state_changes_paid_at);
+                        state_changes.setAccepted_at(state_changes_accepted_at);
+                        state_changes.setDelivered_at(state_changes_delivered_at);
+                        state_changes.setReceived_at(state_changes_received_at);
+                        state_changes.setRemitted_at(state_changes_remitted_at);
+                        state_changes.setExpired_at(state_changes_expired_at);
+
+                        has_deal_product = (Utils.contains(currentTransaction,KEY_has_deal_product))?
+                                currentTransaction.getBoolean(KEY_has_deal_product):false;
+                        return_info = (Utils.contains(currentTransaction,KEY_return_info))?
+                                currentTransaction.getString(KEY_return_info):Constants.NA;
+                        total_weight = currentTransaction.getLong(KEY_total_weight);
+                        need_action = (Utils.contains(currentTransaction,KEY_need_action))?
+                                currentTransaction.getBoolean(KEY_need_action):false;
+                        virtual = (Utils.contains(currentTransaction,KEY_virtual))?
+                                currentTransaction.getBoolean(KEY_virtual):false;
+                        type = currentTransaction.getString(KEY_type);
+
+
+
+                        Transaction transaction = new Transaction();
+                        transaction.setId(id);
+                        transaction.setState(invoice_state);
+                        transaction.setUpdated_at(update_at);
+                        transaction.setUnread(unread);
+                        transaction.setQuick_trans(quick_trans);
+                        transaction.setTransaction_id(transaction_id);
+                        transaction.setAmount(amount);
+                        transaction.setQuantity(quantity);
+                        transaction.setCourier(courier);
+                        transaction.setBuyer_notes(buyer_notes);
+                        transaction.setShipping_fee(shipping_fee);
+                        transaction.setShipping_id(shipping_id);
+                        transaction.setShipping_code(shipping_code);
+                        transaction.setShipping_history(shipping_history);
+                        transaction.setShipping_service(shipping_service);
+                        transaction.setInsurance_cost(insurance_cost);
+                        transaction.setSubtotal_amount(subtotal_amount);
+                        transaction.setTotal_amount(total_amount);
+                        transaction.setCoded_amount(coded_amount);
+                        transaction.setUniq_code(uniq_code);
+                        transaction.setUse_seller_voucher(use_seller_voucher);
+                        transaction.setUse_voucher(use_voucher);
+                        transaction.setVoucher_amount(voucher_amount);
+                        transaction.setPromo_payment_amount(promo_payment_amount);
+                        transaction.setAgent_commission_amount(agent_commission_amount);
+                        transaction.setPayment_method(payment_method);
+                        transaction.setPayment_method_name(payment_method_name);
+                        transaction.setPayment_amount(payment_amount);
+                        transaction.setRemit_amount(remit_amount);
+                        transaction.setService_fee(service_fee);
+                        transaction.setFeedback(feedback);
+                        transaction.setProducts(listProduct);
+                        transaction.setPickup_time(pickup_time);
+                        transaction.setInstallment(installment);
+                        transaction.setConsignee(consignee);
+                        transaction.setBuyer(buyer);
+                        transaction.setSeller(seller);
+                        transaction.setInvoice(invoice);
+                        transaction.setVoucher(voucherBean);
+                        transaction.setCreated_at(created_at);
+                        transaction.setDeliver_before(deliver_before);
+                        transaction.setPay_before(pay_before);
+                        transaction.setReject_reason(reject_reason);
+                        transaction.setState_changes(state_changes);
+                        transaction.setHas_deal_product(has_deal_product);
+                        transaction.setReturn_info(return_info);
+                        transaction.setTotal_weight(total_weight);
+                        transaction.setNeed_action(need_action);
+                        transaction.setVirtual(virtual);
+                        transaction.setType(type);
+
+
+                        if (typeTransaction.equals("tagihan") && stateTagihan.contains(state)) {
+                            listTransactions.add(transaction);
+                        } else if (typeTransaction.equals("pembelian") && statePembelian.contains(state)) {
+                            listTransactions.add(transaction);
+                        } else if (typeTransaction.equals("penjualan") && userId.equals(String.valueOf(seller_id))){
+                            listTransactions.add(transaction);
+                        }
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return listTransactions;
     }
 }

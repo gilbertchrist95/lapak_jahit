@@ -11,13 +11,13 @@
         <!--android:layout_height="match_parent"-->
         <!--android:text="@string/hello_blank_fragment" />-->
 
-    <cilok.com.lapakjahit.tabs.SlidingTabLayout
+    <cilok.com.lapakjahit.view.SlidingTabLayout
         android:id="@+id/tabs_transaksi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary">
 
-    </cilok.com.lapakjahit.tabs.SlidingTabLayout>
+    </cilok.com.lapakjahit.view.SlidingTabLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_transaksi"

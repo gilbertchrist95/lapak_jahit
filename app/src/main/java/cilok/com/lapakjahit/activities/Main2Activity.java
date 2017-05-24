@@ -4,8 +4,6 @@ package cilok.com.lapakjahit.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,13 +16,12 @@ import android.view.MenuItem;
 
 import cilok.com.lapakjahit.NavigationDrawerFragment;
 import cilok.com.lapakjahit.ShoppingCartActivity;
-import cilok.com.lapakjahit.activities.PreLoginSignUpActivity;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.fragments.FragmentFavorit;
 import cilok.com.lapakjahit.fragments.FragmentHome;
 import cilok.com.lapakjahit.fragments.FragmentProfile;
 import cilok.com.lapakjahit.fragments.FragmentTransaksi;
-import cilok.com.lapakjahit.tabs.BottomNavigationViewHelper;
+import cilok.com.lapakjahit.view.BottomNavigationViewHelper;
 
 
 public class Main2Activity extends AppCompatActivity {

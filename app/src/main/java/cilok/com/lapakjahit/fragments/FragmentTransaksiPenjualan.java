@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.log.L;
 
 
 /**
@@ -18,6 +19,7 @@ public class FragmentTransaksiPenjualan extends Fragment {
 
     public FragmentTransaksiPenjualan() {
         // Required empty public constructor
+
     }
 
 

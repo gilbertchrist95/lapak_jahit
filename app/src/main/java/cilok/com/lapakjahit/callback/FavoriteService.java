@@ -1,6 +1,6 @@
 package cilok.com.lapakjahit.callback;
 
-import cilok.com.lapakjahit.entity.ProductFavorite;
+import cilok.com.lapakjahit.entity.Product;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -11,8 +11,8 @@ import retrofit2.http.Query;
 
 public interface FavoriteService {
     @GET("favorites.json")
-    Call<ProductFavorite> getFavorites(@Query("page") int page);
+    Call<Product> getFavorites(@Query("page") int page);
 
     @GET("favorites.json")
-    Call<ProductFavorite> getFavorites();
+    Call<Product> getFavorites();
 }
