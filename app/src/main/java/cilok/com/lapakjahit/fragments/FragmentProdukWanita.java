@@ -36,7 +36,7 @@ public class FragmentProdukWanita extends Fragment implements SwipeRefreshLayout
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.activity_produk, container, false);
+        View layout = inflater.inflate(R.layout.activity_produk_fashion, container, false);
 
         mSwipeRefreshLayoutProdukWanita = (SwipeRefreshLayout)layout.findViewById(R.id.swipeProduk);
         mSwipeRefreshLayoutProdukWanita.setOnRefreshListener(this);

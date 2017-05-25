@@ -8,7 +8,7 @@
 
     <include
         android:id="@+id/app_bar_login_signup"
-        layout="@layout/app_bar_2" />
+        layout="@layout/app_bar2" />
 
     <ScrollView
         android:id="@+id/scroll_view_sign_up"

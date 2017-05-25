@@ -1,28 +1,50 @@
-package cilok.com.lapakjahit;
+package cilok.com.lapakjahit.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+
+import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.controller.UserController;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
+    private ImageView imageViewEmptyCart;
+    private UserController userController;
+    private SwipeRefreshLayout mSwipeRefreshCart;
+    private RecyclerView mListCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_cart);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.app_bar_cart);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Keranjang Belanja");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        imageViewEmptyCart = (ImageView)findViewById(R.id.imageViewEmptyCart);
+        mSwipeRefreshCart = (SwipeRefreshLayout)findViewById(R.id.swipeCart);
+        mListCart = (RecyclerView)findViewById(R.id.listCart);
+
+
+
+        userController = new UserController(this);
+
+        if (authenticate()==true){
+            imageViewEmptyCart.setVisibility(View.GONE);
+        }else{
+            mSwipeRefreshCart.setEnabled(false);
+        }
     }
 
     @Override
@@ -39,15 +61,17 @@ public class ShoppingCartActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
         if (id == android.R.id.home){
             NavUtils.navigateUpFromSameTask(this);
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    private boolean authenticate() {
+        return userController.getUserLoggedIn();
+    }
+
 
 }

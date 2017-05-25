@@ -15,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import cilok.com.lapakjahit.NavigationDrawerFragment;
-import cilok.com.lapakjahit.ShoppingCartActivity;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.fragments.FragmentFavorit;
 import cilok.com.lapakjahit.fragments.FragmentHome;

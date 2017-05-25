@@ -53,6 +53,12 @@ public class FashionPriaActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     class PriaPagerAdapter extends FragmentPagerAdapter{
 
         String[] tabs;

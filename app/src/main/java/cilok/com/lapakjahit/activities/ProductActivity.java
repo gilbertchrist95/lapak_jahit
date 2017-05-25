@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.ShoppingCartActivity;
 import cilok.com.lapakjahit.entity.Product;
 
 public class ProductActivity extends AppCompatActivity {

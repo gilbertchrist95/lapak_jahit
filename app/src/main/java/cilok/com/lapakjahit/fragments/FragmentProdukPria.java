@@ -36,7 +36,7 @@ public class FragmentProdukPria extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.activity_produk, container, false);
+        View layout = inflater.inflate(R.layout.activity_produk_fashion, container, false);
         mSwipeRefreshLayoutProdukPria = (SwipeRefreshLayout)layout.findViewById(R.id.swipeProduk);
         mSwipeRefreshLayoutProdukPria.setOnRefreshListener(this);
         mRecylerProductPria = (RecyclerView)layout.findViewById(R.id.listProduk);
@@ -64,9 +64,9 @@ public class FragmentProdukPria extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void onResume() {
         super.onResume();
-
-
     }
+
+
 
     @Override
     public void onRefresh() {

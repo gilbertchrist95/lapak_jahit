@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Alhaura on 19/05/2017.
  */
 
-public class Transaction {
+public class Transaction implements Parcelable {
 
     private long id;
     private String state;
@@ -74,6 +74,72 @@ public class Transaction {
 
     public Transaction() {
     }
+
+    protected Transaction(Parcel in) {
+        id = in.readLong();
+        state = in.readString();
+        updated_at = in.readString();
+        unread = in.readByte() != 0;
+        quick_trans = in.readByte() != 0;
+        transaction_id = in.readString();
+        amount = in.readLong();
+        quantity = in.readInt();
+        courier = in.readString();
+        buyer_notes = in.readString();
+        shipping_fee = in.readLong();
+        shipping_id = in.readLong();
+        shipping_code = in.readString();
+        shipping_history = in.createTypedArrayList(ShippingHistoryBean.CREATOR);
+        shipping_service = in.readString();
+        insurance_cost = in.readLong();
+        subtotal_amount = in.readLong();
+        total_amount = in.readLong();
+        coded_amount = in.readLong();
+        uniq_code = in.readInt();
+        use_seller_voucher = in.readByte() != 0;
+        use_voucher = in.readByte() != 0;
+        voucher_amount = in.readLong();
+        promo_payment_amount = in.readLong();
+        agent_commission_amount = in.readLong();
+        payment_method = in.readString();
+        payment_method_name = in.readString();
+        payment_amount = in.readLong();
+        remit_amount = in.readLong();
+        service_fee = in.readLong();
+        feedback = in.readParcelable(Feedback.class.getClassLoader());
+        products = in.createTypedArrayList(Product.CREATOR);
+        pickup_time = in.readString();
+        amount_detail = in.createTypedArrayList(AmountDetail.CREATOR);
+        installment = in.readParcelable(Installment.class.getClassLoader());
+        consignee = in.readParcelable(Consignee.class.getClassLoader());
+        buyer = in.readParcelable(Buyer.class.getClassLoader());
+        seller = in.readParcelable(Seller.class.getClassLoader());
+        invoice = in.readParcelable(Invoice.class.getClassLoader());
+        voucher = in.readParcelable(VoucherBean.class.getClassLoader());
+        created_at = in.readString();
+        deliver_before = in.readString();
+        pay_before = in.readString();
+        reject_reason = in.readString();
+        state_changes = in.readParcelable(StateChanges.class.getClassLoader());
+        has_deal_product = in.readByte() != 0;
+        return_info = in.readString();
+        total_weight = in.readLong();
+        need_action = in.readByte() != 0;
+        virtual = in.readByte() != 0;
+        type = in.readString();
+    }
+
+    public static final Creator<Transaction> CREATOR = new Creator<Transaction>() {
+        @Override
+        public Transaction createFromParcel(Parcel in) {
+            return new Transaction(in);
+        }
+
+        @Override
+        public Transaction[] newArray(int size) {
+            return new Transaction[size];
+        }
+    };
 
     public long getId() {
         return id;
@@ -218,6 +284,7 @@ public class Transaction {
     public void setShipping_history(List<ShippingHistoryBean> shipping_history) {
         this.shipping_history = shipping_history;
     }
+
 
     public static class ShippingHistoryBean implements Parcelable {
         String date;
@@ -791,7 +858,7 @@ public class Transaction {
         this.consignee = consignee;
     }
 
-    public static class Consignee implements Parcelable{
+    public static class Consignee implements Parcelable {
         public Consignee() {
         }
 
@@ -805,7 +872,6 @@ public class Transaction {
          * province : Sumatera Selatan
          * post_code : 30126
          */
-
 
 
         private String name;
@@ -919,7 +985,7 @@ public class Transaction {
         this.buyer = buyer;
     }
 
-    public static class Buyer implements Parcelable{
+    public static class Buyer implements Parcelable {
         public Buyer() {
         }
 
@@ -929,7 +995,6 @@ public class Transaction {
          * username : gilbertchrist95
          * email : gilbertchrist95@gmail.com
          */
-
 
 
         private long id;
@@ -1010,7 +1075,7 @@ public class Transaction {
         this.seller = seller;
     }
 
-    public static class Seller implements Parcelable{
+    public static class Seller implements Parcelable {
         public Seller() {
         }
 
@@ -1087,7 +1152,7 @@ public class Transaction {
         this.invoice = invoice;
     }
 
-    public static class Invoice implements Parcelable{
+    public static class Invoice implements Parcelable {
         /**
          * id : 116243576
          * invoice_id : BL171138H8Q2INV
@@ -1164,7 +1229,7 @@ public class Transaction {
         this.voucher = voucher;
     }
 
-    public static class VoucherBean implements Parcelable{
+    public static class VoucherBean implements Parcelable {
         String code;
         String name;
         long amount;
@@ -1278,7 +1343,7 @@ public class Transaction {
         this.state_changes = state_changes;
     }
 
-    public static class StateChanges implements Parcelable{
+    public static class StateChanges implements Parcelable {
 
         private String addressed_at;
         private String payment_chosen_at;
@@ -1479,7 +1544,6 @@ public class Transaction {
     }
 
 
-
 //    public List<?> getActions() {
 //        return actions;
 //    }
@@ -1497,18 +1561,65 @@ public class Transaction {
 //    }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeLong(id);
+        parcel.writeString(state);
+        parcel.writeString(updated_at);
+        parcel.writeByte((byte) (unread ? 1 : 0));
+        parcel.writeByte((byte) (quick_trans ? 1 : 0));
+        parcel.writeString(transaction_id);
+        parcel.writeLong(amount);
+        parcel.writeInt(quantity);
+        parcel.writeString(courier);
+        parcel.writeString(buyer_notes);
+        parcel.writeLong(shipping_fee);
+        parcel.writeLong(shipping_id);
+        parcel.writeString(shipping_code);
+        parcel.writeTypedList(shipping_history);
+        parcel.writeString(shipping_service);
+        parcel.writeLong(insurance_cost);
+        parcel.writeLong(subtotal_amount);
+        parcel.writeLong(total_amount);
+        parcel.writeLong(coded_amount);
+        parcel.writeInt(uniq_code);
+        parcel.writeByte((byte) (use_seller_voucher ? 1 : 0));
+        parcel.writeByte((byte) (use_voucher ? 1 : 0));
+        parcel.writeLong(voucher_amount);
+        parcel.writeLong(promo_payment_amount);
+        parcel.writeLong(agent_commission_amount);
+        parcel.writeString(payment_method);
+        parcel.writeString(payment_method_name);
+        parcel.writeLong(payment_amount);
+        parcel.writeLong(remit_amount);
+        parcel.writeLong(service_fee);
+        parcel.writeParcelable(feedback, i);
+        parcel.writeTypedList(products);
+        parcel.writeString(pickup_time);
+        parcel.writeTypedList(amount_detail);
+        parcel.writeParcelable(installment, i);
+        parcel.writeParcelable(consignee, i);
+        parcel.writeParcelable(buyer, i);
+        parcel.writeParcelable(seller, i);
+        parcel.writeParcelable(invoice, i);
+        parcel.writeParcelable(voucher, i);
+        parcel.writeString(created_at);
+        parcel.writeString(deliver_before);
+        parcel.writeString(pay_before);
+        parcel.writeString(reject_reason);
+        parcel.writeParcelable(state_changes, i);
+        parcel.writeByte((byte) (has_deal_product ? 1 : 0));
+        parcel.writeString(return_info);
+        parcel.writeLong(total_weight);
+        parcel.writeByte((byte) (need_action ? 1 : 0));
+        parcel.writeByte((byte) (virtual ? 1 : 0));
+        parcel.writeString(type);
+    }
 
 
 }

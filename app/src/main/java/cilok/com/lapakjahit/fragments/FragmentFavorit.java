@@ -89,11 +89,11 @@ public class FragmentFavorit extends Fragment implements SwipeRefreshLayout.OnRe
             mImageViewBelomLogin.setVisibility(View.GONE);
             mTextViewBelomLogin.setVisibility(View.GONE);
             mButtonLogin.setVisibility(View.GONE);
-            if (savedInstanceState != null) {
+//            if (savedInstanceState != null) {
 
-                mListFavorites = savedInstanceState.getParcelableArrayList(STATE_FAVORITE);
-                mAdapter.setListProduk(mListFavorites);
-            } else {
+//                mListFavorites = savedInstanceState.getParcelableArrayList(STATE_FAVORITE);
+//                mAdapter.setListProduk(mListFavorites);
+//            } else {
                 mSwipeRefreshLayoutFavorite.setRefreshing(true);
                 TaskFavorite taskFavorite;
                 taskFavorite = new TaskFavorite(getActivity());
@@ -104,9 +104,10 @@ public class FragmentFavorit extends Fragment implements SwipeRefreshLayout.OnRe
                         mSwipeRefreshLayoutFavorite.setRefreshing(false);
                     }
                 });
-            }
+//            }
 //        }
         } else {
+            mSwipeRefreshLayoutFavorite.setEnabled(false);
             L.m("Anda belom login");
         }
         return layout;
