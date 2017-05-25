@@ -44,6 +44,15 @@
     <string name="fw_celanadsr">Celana Dasar</string>
     <string name="fw_rok">Rok</string>
     <string name="fw_kaos">Kaos</string>
+    <string name="fp_baju_koko">Baju Koko</string>
+    <string name="fp_tuxedo">Tuxedo</string>
+    <string name="fp_kemeja">Kemeja</string>
+    <string name="fp_sweater">Sweater</string>
+    <string name="fp_jaket">Jaket</string>
+    <string name="fp_kaos">Kaos</string>
+    <string name="fp_jeans">Jeans</string>
+    <string name="fp_celana_dasar">Celana Dasar</string>
+    <string name="fp_topi">Topi</string>
     <string name="chat">Chat</string>
     <string name="title_activity_main2">Main2Activity</string>
     <string name="title_home">Home</string>
