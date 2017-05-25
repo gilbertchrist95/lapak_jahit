@@ -6,7 +6,6 @@ package cilok.com.lapakjahit.fragments;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.adapters.AdapterProduct;
-import cilok.com.lapakjahit.callback.GetProductCallback;
+import cilok.com.lapakjahit.callback.GetListProductCallback;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.tasks.TaskProduct;
 
@@ -48,12 +47,13 @@ public class FragmentProdukWanita extends Fragment implements SwipeRefreshLayout
         mRecylerProductWanita.setLayoutManager(mLayoutManager);
         mAdapter = new AdapterProduct(getActivity());
         mRecylerProductWanita.setAdapter(mAdapter);
-
+        mSwipeRefreshLayoutProdukWanita.setRefreshing(true);
         taskProduct = new TaskProduct(getActivity());
-        taskProduct.getProductInBackground(new GetProductCallback() {
+        taskProduct.getProductInBackground(new GetListProductCallback() {
             @Override
-            public void onGetProductLoadedListener(ArrayList<Product> listProduct) {
+            public void onGetListProductLoadedListener(ArrayList<Product> listProduct) {
                 mAdapter.setListProduk(listProduct);
+                mSwipeRefreshLayoutProdukWanita.setRefreshing(false);
             }
         },"fashion_wanita");
 
@@ -63,6 +63,13 @@ public class FragmentProdukWanita extends Fragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
-
+        taskProduct = new TaskProduct(getActivity());
+        taskProduct.getProductInBackground(new GetListProductCallback() {
+            @Override
+            public void onGetListProductLoadedListener(ArrayList<Product> listProduct) {
+                mAdapter.setListProduk(listProduct);
+                mSwipeRefreshLayoutProdukWanita.setRefreshing(false);
+            }
+        },"fashion_wanita");
     }
 }

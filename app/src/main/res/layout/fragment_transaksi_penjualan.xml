@@ -4,10 +4,54 @@
     android:layout_height="match_parent"
     tools:context="cilok.com.lapakjahit.fragments.FragmentTransaksiPenjualan">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/image_view_pic_belom_login"
+        android:src="@mipmap/ic_fw_gaun"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:id="@+id/text_view_belom_login"
+        android:layout_below="@+id/image_view_pic_belom_login"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:text="@string/noticelogin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <Button
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/text_view_belom_login"
+        android:id="@+id/button_login"
+        android:background="@color/colorDaftar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="@android:color/white"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeTransaksiPenjualan"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <!-- TODO: Update blank fragment layout -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/listPenjualan"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <TextView
+        android:id="@+id/textErrorTransaksi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/size_word"
+        android:textColor="#000"
+        android:visibility="gone" />
 
 </FrameLayout>

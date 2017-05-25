@@ -2,13 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="cilok.com.lapakjahit.activities.MainActivity">
+    tools:context="cilok.com.lapakjahit.activities.ProductActivity">
+
 
     <item
-        android:id="@+id/item_search"
+        android:id="@+id/item_favorite"
         android:title="@string/keranjangbelanja"
         android:orderInCategory="100"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_favorite_white"
         app:showAsAction="always"/>
 
     <item
@@ -17,6 +18,5 @@
         android:orderInCategory="200"
         android:title="@string/keranjangbelanja"
         app:showAsAction="always" />
-
 
 </menu>

@@ -1,6 +1,5 @@
 package cilok.com.lapakjahit.activities;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -144,7 +142,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     private void goToMainActivity() {
 //        progressDialog.dismiss();
-        startActivity(new Intent(this, Main2Activity.class));
+        startActivity(new Intent(this, MainActivity.class));
         SignUpActivity.this.finish();
     }
 

@@ -9,13 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.adapters.AdapterProduct;
-import cilok.com.lapakjahit.callback.GetProductCallback;
+import cilok.com.lapakjahit.callback.GetListProductCallback;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.tasks.TaskProduct;
 
@@ -47,13 +46,14 @@ public class FragmentProdukPria extends Fragment implements SwipeRefreshLayout.O
         mRecylerProductPria.setLayoutManager(mLayoutManager);
         mAdapter = new AdapterProduct(getActivity());
         mRecylerProductPria.setAdapter(mAdapter);
-
+        mSwipeRefreshLayoutProdukPria.setRefreshing(true);
         taskProduct = new TaskProduct(getActivity());
-        taskProduct.getProductInBackground(new GetProductCallback() {
+        taskProduct.getProductInBackground(new GetListProductCallback() {
             @Override
-            public void onGetProductLoadedListener(ArrayList<Product> listProduct) {
+            public void onGetListProductLoadedListener(ArrayList<Product> listProduct) {
 //                Toast.makeText(getActivity(), ""+listProduct.size(), Toast.LENGTH_SHORT).show();
                 mAdapter.setListProduk(listProduct);
+                mSwipeRefreshLayoutProdukPria.setRefreshing(false);
             }
         },"fashion_pria");
 
@@ -70,6 +70,14 @@ public class FragmentProdukPria extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
-
+        taskProduct = new TaskProduct(getActivity());
+        taskProduct.getProductInBackground(new GetListProductCallback() {
+            @Override
+            public void onGetListProductLoadedListener(ArrayList<Product> listProduct) {
+//                Toast.makeText(getActivity(), ""+listProduct.size(), Toast.LENGTH_SHORT).show();
+                mAdapter.setListProduk(listProduct);
+                mSwipeRefreshLayoutProdukPria.setRefreshing(false);
+            }
+        },"fashion_pria");
     }
 }

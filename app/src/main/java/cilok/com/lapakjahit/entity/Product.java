@@ -15,9 +15,9 @@ public class Product implements Parcelable{
     private DealInfoBean dealInfo;
     private String deal_request_state; //ok
     private long price; //ok
-    private int category_id; //ok
-    private String category; // ok
-    private String[] category_structure; //ok
+    private int category_id; //ok --
+    private String category; // ok --
+    private String[] category_structure; //ok --
     private String[] courier; //ok
     private String seller_username;
     private String seller_name;
@@ -63,12 +63,13 @@ public class Product implements Parcelable{
 //    private int current_product_sku_id;
 //  private List<String> product_sku;
 //private List<String> options;
-    private List<WholesaleBean> wholesale; //biso iyo bisa idak
-    private List<InstallmentBean> installment; //biso iyo bisa idak
-    private String min_installment_price; //biso iyo biso idak
+    private List<WholesaleBean> wholesale; //biso iyo bisa idak --
+    private List<InstallmentBean> installment; //biso iyo bisa idak --
+    private String min_installment_price; //biso iyo biso idak --
     private int interest_count;
     private String last_relist_at;
     private int view_count;
+    //nambah int orederQuality && long acceptedPrice
 //    private List<LabelsBean> labels;
 //    private List<TagPagesBean> tag_pages;
 

@@ -163,7 +163,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void goToMainActivity() {
-        startActivity(new Intent(this, Main2Activity.class));
+        startActivity(new Intent(this, MainActivity.class));
         LoginActivity.this.finish();
     }
 

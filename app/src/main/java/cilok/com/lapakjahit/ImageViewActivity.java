@@ -46,20 +46,20 @@ public class ImageViewActivity extends PagerAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(position == 0){
-                    Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
-                } else if(position == 1){
-                    Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+////                if(position == 0){
+////                    Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
+////                } else if(position == 1){
+////                    Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
+////                } else {
+////                    Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();
+////                }
+//
+//            }
+//        });
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);

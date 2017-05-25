@@ -24,7 +24,7 @@ import cilok.com.lapakjahit.fragments.FragmentTransaksi;
 import cilok.com.lapakjahit.view.BottomNavigationViewHelper;
 
 
-public class Main2Activity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private Fragment fragment;
@@ -70,7 +70,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(cilok.com.lapakjahit.R.layout.activity_main2);
+        setContentView(cilok.com.lapakjahit.R.layout.activity_main);
 
         toolbar = (Toolbar)findViewById(cilok.com.lapakjahit.R.id.app_bar); //set home button enabled
         setSupportActionBar(toolbar);

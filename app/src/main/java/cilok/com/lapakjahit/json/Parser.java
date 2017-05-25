@@ -158,7 +158,11 @@ public class Parser {
 //                    userId = currentInboxMessage.getLong(KEY_USER_ID);
                     userId = Long.parseLong(currentInboxMessage.getString(KEY_USER_ID));
                     userName = currentInboxMessage.getString(KEY_USER_NAME);
+
+
                     lastMessage = currentInboxMessage.getString(KEY_LAST_MESSAGE);
+
+
                     lastMessageRead = String.valueOf(currentInboxMessage.getBoolean(KEY_LAST_MESSAGE_READ));
                     lastMessageSent = String.valueOf(currentInboxMessage.getString(KEY_LAST_MESSAGE_SENT));
 
@@ -256,12 +260,14 @@ public class Parser {
                     JSONObject currentProduct = arrayFavorites.getJSONObject(i);
                     deal_request_state = currentProduct.getString(KEY_REQUEST_STATE);
                     price = currentProduct.getLong(KEY_PRICE);
-                    category_id = currentProduct.getInt(KEY_CATEGORY_ID);
-                    category = currentProduct.getString(KEY_CATEGORY);
-                    JSONArray arrCaterory_structure = currentProduct.getJSONArray(KEY_CATEGORY_STRUCTURE);
-                    category_structure = new String[arrCaterory_structure.length()];
-                    for (int j = 0; j < arrCaterory_structure.length(); j++) {
-                        category_structure[j] = arrCaterory_structure.getString(j);
+                    category_id = (Utils.contains(currentProduct,KEY_CATEGORY_ID))? currentProduct.getInt(KEY_CATEGORY_ID):-1;
+                    category = (Utils.contains(currentProduct,KEY_CATEGORY))?currentProduct.getString(KEY_CATEGORY):Constants.NA;
+                    if (Utils.contains(currentProduct,KEY_CATEGORY_STRUCTURE)){
+                        JSONArray arrCaterory_structure = currentProduct.getJSONArray(KEY_CATEGORY_STRUCTURE);
+                        category_structure = new String[arrCaterory_structure.length()];
+                        for (int j = 0; j < arrCaterory_structure.length(); j++) {
+                            category_structure[j] = arrCaterory_structure.getString(j);
+                        }
                     }
                     JSONArray arrCourier = currentProduct.getJSONArray(KEY_COURIER);
                     courier = new String[arrCourier.length()];
@@ -346,7 +352,8 @@ public class Parser {
                     updated_at = currentProduct.getString(KEY_UPDATE_AT);
                     if (Utils.contains(currentProduct, KEY_RATING)) {
                         JSONObject objRating = currentProduct.getJSONObject(KEY_RATING);
-                        average_rate = objRating.getString(KEY_RATING_AVERAGE_RATE);
+                        if (objRating.getInt(KEY_RATING_AVERAGE_RATE)!=0)
+                            average_rate = objRating.getString(KEY_RATING_AVERAGE_RATE);
                         user_count = objRating.getInt(KEY_USER_COUNT);
                     }
                     if (Utils.contains(currentProduct, KEY_WHOSALE)) {
@@ -385,8 +392,8 @@ public class Parser {
                     dealInfo.setDiscount_percentage(discount_percetage);
                     dealInfo.setDiscount_date(discount_date);
                     dealInfo.setState(state);
-                    L.m("Original: " + dealInfo.getOriginal_price());
-                    L.m("Diskon: " + dealInfo.getDiscount_percentage());
+//                    L.m("Original: " + dealInfo.getOriginal_price());
+//                    L.m("Diskon: " + dealInfo.getDiscount_percentage());
                     if (Utils.contains(currentProduct, KEY_INSTALLMENT)) {
                         JSONArray arrayInstalment = currentProduct.getJSONArray(KEY_INSTALLMENT);
                         Product.InstallmentBean installmentBean = new Product.InstallmentBean();

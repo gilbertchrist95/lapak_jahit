@@ -1,6 +1,5 @@
 package cilok.com.lapakjahit.tasks;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -8,8 +7,7 @@ import com.android.volley.RequestQueue;
 
 import java.util.ArrayList;
 
-import cilok.com.lapakjahit.callback.GetFavoritesCallback;
-import cilok.com.lapakjahit.callback.GetProductCallback;
+import cilok.com.lapakjahit.callback.GetListProductCallback;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.extras.ProductUtils;
 import cilok.com.lapakjahit.log.L;
@@ -27,7 +25,7 @@ public class TaskProduct {
 
     }
 
-    public void getProductInBackground(GetProductCallback callback, String genderProduc){
+    public void getProductInBackground(GetListProductCallback callback, String genderProduc){
         new TaskLoadProduct(callback, genderProduc).execute();
         L.m("listttt: "+list.size());
     }
@@ -35,11 +33,11 @@ public class TaskProduct {
 
 
     private class TaskLoadProduct  extends AsyncTask<Void, Void, ArrayList<Product>> {
-        GetProductCallback productCallback;
+        GetListProductCallback productCallback;
         private VolleySingleton volleySingleton;
         private RequestQueue requestQueue;
         private String genderProduk;
-        public TaskLoadProduct(GetProductCallback callback, String genderProduk) {
+        public TaskLoadProduct(GetListProductCallback callback, String genderProduk) {
             this.genderProduk = genderProduk;
             this.productCallback = callback;
             volleySingleton = VolleySingleton.getInstance();
@@ -56,7 +54,7 @@ public class TaskProduct {
         protected void onPostExecute(ArrayList<Product> products) {
 //            super.onPostExecute(products);
             if (productCallback!=null){
-                productCallback.onGetProductLoadedListener(products);
+                productCallback.onGetListProductLoadedListener(products);
             }
             test(products);
         }

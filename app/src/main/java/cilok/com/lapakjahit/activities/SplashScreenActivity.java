@@ -36,7 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                startActivity(new Intent(SplashScreenActivity.this, Main2Activity.class));
+                startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                 SplashScreenActivity.this.finish();
             }
         }, SPLASH_TIME_OUT);

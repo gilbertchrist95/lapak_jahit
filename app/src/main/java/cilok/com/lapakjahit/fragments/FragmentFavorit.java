@@ -131,7 +131,7 @@ public class FragmentFavorit extends Fragment implements SwipeRefreshLayout.OnRe
         taskFavorite.getFavoritesDataInBackground(new GetFavoritesCallback() {
             @Override
             public void onGetFavoritesLoadedListener(ArrayList<Product> listFavorites) {
-                mListFavorites = listFavorites;
+
                 if (mSwipeRefreshLayoutFavorite.isRefreshing()) {
                     mSwipeRefreshLayoutFavorite.setRefreshing(false);
                 }
