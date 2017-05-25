@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-
     tools:context="cilok.com.lapakjahit.activities.ProductActivity">
 
     <include
@@ -14,7 +13,8 @@
 
     <LinearLayout
         android:id="@+id/view"
-        android:layout_above="@id/detailTitle"
+        android:layout_below="@+id/app_bar_product"
+        android:layout_above="@+id/detailTitle"
         android:orientation="horizontal"
         android:gravity="center_vertical|center_horizontal"
         android:layout_width="match_parent"
@@ -29,6 +29,7 @@
 
     <LinearLayout
         android:id="@+id/SliderDots"
+        android:layout_above="@+id/detailTitle"
         android:orientation="horizontal"
         android:gravity="center_vertical|center_horizontal"
         android:layout_width="match_parent"
@@ -36,7 +37,7 @@
 
     <LinearLayout
         android:id="@+id/detailTitle"
-        android:layout_above="@id/tes"
+        android:layout_above="@+id/tes"
         android:orientation="horizontal"
         android:gravity="center_vertical|center_horizontal"
         android:layout_width="match_parent"
@@ -44,20 +45,19 @@
         android:background="@color/colorPrimary2">
 
         <include
-            android:id="@+id/app_bar_product"
+            android:id="@+id/titlearea"
             layout="@layout/app_bar3"  />
 
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/tes"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp"
-        android:id="@+id/tes">
-    </LinearLayout>
+        tools:layout_editor_absoluteX="8dp"/>
 
 </RelativeLayout>
