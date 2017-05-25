@@ -24,14 +24,9 @@ import cilok.com.lapakjahit.network.VolleySingleton;
  */
 
 public class TaskMessage {
-    private ProgressDialog progressDialog;
     String split[];
 
     public TaskMessage(Context context) {
-        progressDialog = new ProgressDialog(context);
-        progressDialog.setCancelable(false);
-        progressDialog.setTitle("Processing");
-        progressDialog.setMessage("Please Wait...");
 
         FileInputStream fileInputStream = null;
         try {
@@ -56,9 +51,7 @@ public class TaskMessage {
     }
 
     public void getInboxMessage(InboxMessageLoadedListener myComponent) {
-        progressDialog.show();
         new TaskGetnboxMessage(myComponent, split[0], split[1]).execute();
-        progressDialog.dismiss();
     }
 
 

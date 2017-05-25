@@ -13,6 +13,7 @@ import android.widget.ImageView;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.controller.UserController;
+import cilok.com.lapakjahit.tasks.TaskCart;
 
 public class ShoppingCartActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private UserController userController;
     private SwipeRefreshLayout mSwipeRefreshCart;
     private RecyclerView mListCart;
+    private TaskCart taskCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("Keranjang Belanja");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         imageViewEmptyCart = (ImageView)findViewById(R.id.imageViewEmptyCart);
         mSwipeRefreshCart = (SwipeRefreshLayout)findViewById(R.id.swipeCart);

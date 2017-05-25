@@ -3,6 +3,7 @@ package cilok.com.lapakjahit.json;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_BL;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_CHAR_EQUAL;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_CHAR_QUESTION;
+import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_PARAM_CARTS;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_PARAM_CATEGORY_ID;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_PARAM_CATEGORY_ID_FASHION_PRIA;
 import static cilok.com.lapakjahit.extras.UrlEndpoints.URL_PARAM_CATEGORY_ID_FASHION_WANITA;
@@ -28,7 +29,12 @@ public class Endpoints {
         return URL_BL+
                 URL_PARAM_FAVORITES+
                 URL_PARAM_JSON;
+    }
 
+    public static String getRequestUrlLoadCarts(){
+        return URL_BL+
+                URL_PARAM_CARTS+
+                URL_PARAM_JSON;
     }
 
     public static String getRequestUrlLoadTransactions(){

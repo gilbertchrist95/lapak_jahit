@@ -11,49 +11,44 @@ import java.util.List;
 
 public class Cart {
 
-    private int cart_id; //ok
-    private List<CartBean> cart;
-    private String message; //ok
+//    private int cart_id; //ok
+//    private List<CartBean> cart;
+//    private String message; //ok
 
 
 
 
-    public int getCart_id() {
-        return cart_id;
-    }
-
-    public void setCart_id(int cart_id) {
-        this.cart_id = cart_id;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-
-    public List<CartBean> getCart() {
-        return cart;
-    }
-
-    public void setCart(List<CartBean> cart) {
-        this.cart = cart;
-    }
+//    public int getCart_id() {
+//        return cart_id;
+//    }
+//
+//    public void setCart_id(int cart_id) {
+//        this.cart_id = cart_id;
+//    }
+//
+//    public String getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(String message) {
+//        this.message = message;
+//    }
 
 
-    public static class CartBean {
-        /**
-         * seller : {"id":1251687,"username":"sfswendy","name":"Ninik Wijaya","gender":"Laki-laki","avatar":"https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg","level":"Good Seller","level_badge_url":"https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png","lapak_name":"Jaket Adidas windbreaker dan waterproof grade original","lapak_desc":"SUPPLIER Jaket Adidas dan Nike WATERPROOF |\r\nSUPPLIER Jam Tangan CASIO G SHOCK &amp; -SEVENFRIDAY","lapak_header":"https://s2.bukalapak.com/hdr/7329721/normal/IMG_4533.JPG","last_login":"2017-05-25T07:10:00.000+07:00","joined_at":"2014-09-08T14:51:45.000+07:00","verified_user":false,"official":false,"store_closed":false,"schedule_close_store":false,"close_date":"2016-12-11T17:23:23.000+07:00","reopen_date":null,"close_reason":"Toko kami tutup sementara \r\ndan akan kembali buka pada tanggal \r\n14/11/16 (Hari Rabu) \r\n Thx \r\n-SFS-","delivery_time":"17 jam","rejection":{"rejected":0,"recent_trans":100},"address":{"province":"DKI Jakarta","city":"Jakarta Utara"},"subscriber_amount":1756,"last_order_schedule":{},"premium_user":true,"top_merchant":true,"seller_voucher":{},"is_seller":true,"feedbacks":{"positive":9533,"negative":0}}
-         * items : [{"id":697916656,"name":"MODEL PALING LAKU ... G Shock Casio GA400 Gmix Full Red Merah dual time Jam Tangan Pria Termurah","quantity":1,"price":120000,"stock":92,"message":null,"product":{"deal_info":{},"deal_request_state":"can request","price":120000,"category_id":171,"category":"Jam Tangan","category_structure":["Fashion Pria","Jam Tangan"],"courier":["GO-JEK GO-SEND","JNE REG","JNE YES"],"seller_username":"sfswendy","seller_name":"Ninik Wijaya","seller_id":1251687,"seller_avatar":"https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg","seller_level":"Good Seller","seller_level_badge_url":"https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png","seller_delivery_time":"17 jam","seller_positive_feedback":9533,"seller_negative_feedback":0,"seller_term_condition":"<p>Barang yg kami jual di jamin PREMIUM QUALITY!!!<\/p>\n\n<p>apapun penyebut an nya ; Grade ORIGINAL , KW Super , Clone , Mirror 1:1 (DIJAMIN BUKAN ABAL2!!!)<\/p>\n\n<p>BONUS (KHUSUS PEMBELIAN JAM TANGAN)<\/p>\n\n<p>-Harga yg tertera sudah termasuk :<\/p>\n\n<p>*Jam<\/p>\n\n<p>*Box<\/p>\n\n<p>*Batre tambahan<\/p>\n\n<p>SETIAP PACKINGAN ANDA AKAN DI BUNGKUS RAPIH DENGAN BUBLE WRAP &amp; 2 Kali PROSES CEK (Sehingga sangat minim barang cacat / rusak :D )<\/p>\n\n<p>jadwal pengriman :<\/p>\n\n<p>-gojek akan di pick up jam 10.00 pagi - 5.00 sore<\/p>\n\n<p>-Jne di kirim jam 8 malem ke jne<\/p>\n\n<p>-jika anda mw ikut pengiriman hari yg sama (maximal transaksi jam 5 sore)<\/p>\n\n<p>-resi di input jam 12 malem ke atas<\/p>\n\n<p>(tidak perlu tanyakan mana resi , Karena klo sudah ada pasti segera kami input :D )<\/p>\n\n<p>*SANGAT TIDAK DI SARANKAN DI BAWA KE AIR<\/p>\n\n<p>-Nama nya KW sebagus apapun TETAP KW<\/p>\n\n<p>(TIDAK ADA RETUR DENGAN ALESAN MATI KARENA KENA AIR)<\/p>\n\n<p>MEMBELI=SETUJU<\/p>\n\n<p>Untuk dropship jangan lupa cantum kan nama dan no hp pengirim yah :)<\/p>\n\n<p>ada yg lbih murah?BANYAK!!<\/p>\n\n<p>TAPI KAMI BERANI DI ADU KUALITAS NYA :D<\/p>\n\n<p>RAGU???<\/p>\n\n<p>Baca Feedback kami dengan 100% Feedback Lebih dari 8500++ Transaksi<\/p>\n\n<p>(dan akan terus bertambah)<\/p>\n\n<p>Sehingga bisa menjaga EMBLEM LAPAK TERBAIK dan Gelar GOOD SELLER :D<\/p>\n\n<p>happy shooping gan :D<\/p>\n","seller_alert":null,"for_sale":true,"state_description":[],"premium_account":true,"top_merchant":true,"last_order_schedule":{},"seller_voucher":{},"waiting_payment":-10,"sold_count":6,"specs":{"Brand":"Casio"},"force_insurance":false,"free_shipping_coverage":[],"labels":[{"id":1592835,"name":"G-Shock Casio","slug":"g-shock-casio","description":null}],"tag_pages":[{"id":5678,"name":"Jam Tangan Casio Pria","has_landing_page":true},{"id":5618,"name":"Jam Tangan G Shock Pria","has_landing_page":true},{"id":9398,"name":"Jam Tangan Sevenfriday","has_landing_page":true}],"id":"8734s1","url":"https://www.bukalapak.com/p/fashion-pria/jam-tangan-171/8734s1-jual-model-paling-laku-g-shock-casio-ga400-gmix-full-red-merah-dual-time-jam-tangan-pria-termurah","name":"MODEL PALING LAKU ... G Shock Casio GA400 Gmix Full Red Merah dual time Jam Tangan Pria Termurah","active":true,"city":"Jakarta Utara","province":"DKI Jakarta","weight":300,"image_ids":[1204806601,1204806571,1204806606,1204806611],"images":["https://s1.bukalapak.com/img/1066084021/large/GA400_2___Copy.JPG","https://s1.bukalapak.com/img/1756084021/large/GA400_2.JPG","https://s1.bukalapak.com/img/6066084021/large/GA400_2_HAND___Copy.JPG","https://s1.bukalapak.com/img/1166084021/large/IMG_9123.JPG"],"small_images":["https://s1.bukalapak.com/img/1066084021/small/GA400_2___Copy.JPG","https://s1.bukalapak.com/img/1756084021/small/GA400_2.JPG","https://s1.bukalapak.com/img/6066084021/small/GA400_2_HAND___Copy.JPG","https://s1.bukalapak.com/img/1166084021/small/IMG_9123.JPG"],"desc":"TOLONG Membaca deskripsi ini sampai habis yah gan ??<br/>Di karenakan ada BONUS yg kami bagikan ??<br/><br/>Kualitas : Grade Original /Kw Super /Grade A++ / Mirror 1:1 ( Kami MENJAMIN BUKAN ABAL-ABAL)<br/><br/><br/>Semua fitur BERFUNGSI : <br/>-Tanggal <br/>-Jam<br/>-Hari <br/>-Detik<br/>-Stopwatch<br/>-Alarm <br/>-Lampu <br/>-Digital <br/>-Analog<br/><br/><br/>- Untuk Foto barang 100000% RealPic / Foto asli (GAK NYOMOT GAMBAR ORG/GOOGLE!!)<br/>- Foto Jam di pake di tangan?liat foto berikut nya yah ?? <br/>- Setiap packing an akan di bungkus dengan buble wrap , sehingga aman sampai tujuan ??<br/><br/><br/>**************** BONUS********************<br/>SETIAP pembelian sudah TERMASUK :<br/>- Box Gshock sesuai foto <br/>- BONUS BATRE SONY ORIGINAL <br/><br/><br/>Masih Ragu?tekan tombol Feedback kami <br/>untuk saat ini kami masih bisa menjaga konsistensi toko kami dengan 100% feedback dari 10.000++ transaksi lebih ??<br/><br/>Happy Shooping - SFSstore ??","condition":"new","stock":92,"favorited":false,"created_at":"2017-05-03T22:49:39.000+07:00","updated_at":"2017-05-25T05:46:54.000+07:00","product_sin":[],"rating":{"average_rate":"3.7","user_count":3},"current_variant_name":"","current_product_sku_id":487803031,"product_sku":[],"options":[],"interest_count":32,"last_relist_at":"2017-05-23T10:34:32.000+07:00","view_count":1085},"original_price":120000,"discount_price":120000},{"id":697916956,"name":"MODEL TERBARU... Jam Tangan G Shock Casio GA110 Full red merah dual time digital analog pria . SKMEI","quantity":1,"price":120000,"stock":94,"message":null,"product":{"deal_info":{},"deal_request_state":"can request","price":120000,"category_id":171,"category":"Jam Tangan","category_structure":["Fashion Pria","Jam Tangan"],"courier":["GO-JEK GO-SEND","JNE REG","JNE YES"],"seller_username":"sfswendy","seller_name":"Ninik Wijaya","seller_id":1251687,"seller_avatar":"https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg","seller_level":"Good Seller","seller_level_badge_url":"https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png","seller_delivery_time":"17 jam","seller_positive_feedback":9533,"seller_negative_feedback":0,"seller_term_condition":"<p>Barang yg kami jual di jamin PREMIUM QUALITY!!!<\/p>\n\n<p>apapun penyebut an nya ; Grade ORIGINAL , KW Super , Clone , Mirror 1:1 (DIJAMIN BUKAN ABAL2!!!)<\/p>\n\n<p>BONUS (KHUSUS PEMBELIAN JAM TANGAN)<\/p>\n\n<p>-Harga yg tertera sudah termasuk :<\/p>\n\n<p>*Jam<\/p>\n\n<p>*Box<\/p>\n\n<p>*Batre tambahan<\/p>\n\n<p>SETIAP PACKINGAN ANDA AKAN DI BUNGKUS RAPIH DENGAN BUBLE WRAP &amp; 2 Kali PROSES CEK (Sehingga sangat minim barang cacat / rusak :D )<\/p>\n\n<p>jadwal pengriman :<\/p>\n\n<p>-gojek akan di pick up jam 10.00 pagi - 5.00 sore<\/p>\n\n<p>-Jne di kirim jam 8 malem ke jne<\/p>\n\n<p>-jika anda mw ikut pengiriman hari yg sama (maximal transaksi jam 5 sore)<\/p>\n\n<p>-resi di input jam 12 malem ke atas<\/p>\n\n<p>(tidak perlu tanyakan mana resi , Karena klo sudah ada pasti segera kami input :D )<\/p>\n\n<p>*SANGAT TIDAK DI SARANKAN DI BAWA KE AIR<\/p>\n\n<p>-Nama nya KW sebagus apapun TETAP KW<\/p>\n\n<p>(TIDAK ADA RETUR DENGAN ALESAN MATI KARENA KENA AIR)<\/p>\n\n<p>MEMBELI=SETUJU<\/p>\n\n<p>Untuk dropship jangan lupa cantum kan nama dan no hp pengirim yah :)<\/p>\n\n<p>ada yg lbih murah?BANYAK!!<\/p>\n\n<p>TAPI KAMI BERANI DI ADU KUALITAS NYA :D<\/p>\n\n<p>RAGU???<\/p>\n\n<p>Baca Feedback kami dengan 100% Feedback Lebih dari 8500++ Transaksi<\/p>\n\n<p>(dan akan terus bertambah)<\/p>\n\n<p>Sehingga bisa menjaga EMBLEM LAPAK TERBAIK dan Gelar GOOD SELLER :D<\/p>\n\n<p>happy shooping gan :D<\/p>\n","seller_alert":null,"for_sale":true,"state_description":[],"premium_account":true,"top_merchant":true,"last_order_schedule":{},"seller_voucher":{},"waiting_payment":-7,"sold_count":3,"specs":{"Brand":"Casio"},"force_insurance":false,"free_shipping_coverage":[],"labels":[{"id":1592835,"name":"G-Shock Casio","slug":"g-shock-casio","description":null}],"tag_pages":[{"id":5678,"name":"Jam Tangan Casio Pria","has_landing_page":true},{"id":5618,"name":"Jam Tangan G Shock Pria","has_landing_page":true},{"id":9398,"name":"Jam Tangan Sevenfriday","has_landing_page":true}],"id":"895gcq","url":"https://www.bukalapak.com/p/fashion-pria/jam-tangan-171/895gcq-jual-model-terbaru-jam-tangan-g-shock-casio-ga110-full-red-merah-dual-time-digital-analog-pria-skmei","name":"MODEL TERBARU... Jam Tangan G Shock Casio GA110 Full red merah dual time digital analog pria . SKMEI ","active":true,"city":"Jakarta Utara","province":"DKI Jakarta","weight":300,"image_ids":[1214456796,1214456856,1214456876,1214456906,1214456931],"images":["https://s1.bukalapak.com/img/6976544121/large/GA110_P.JPG","https://s1.bukalapak.com/img/6586544121/large/GA110_P_HAND.JPG","https://s1.bukalapak.com/img/6786544121/large/GA110_P_DET.JPG","https://s1.bukalapak.com/img/6096544121/large/GA110_P_SIDE.JPG","https://s1.bukalapak.com/img/1396544121/large/B.JPG"],"small_images":["https://s1.bukalapak.com/img/6976544121/small/GA110_P.JPG","https://s1.bukalapak.com/img/6586544121/small/GA110_P_HAND.JPG","https://s1.bukalapak.com/img/6786544121/small/GA110_P_DET.JPG","https://s1.bukalapak.com/img/6096544121/small/GA110_P_SIDE.JPG","https://s1.bukalapak.com/img/1396544121/small/B.JPG"],"desc":"TOLONG Membaca deskripsi ini sampai habis yah gan ??<br/>Di karenakan ada BONUS yg kami bagikan ??<br/><br/>Kualitas : Grade Original /Kw Super /Grade A++ / Mirror 1:1 ( Kami MENJAMIN BUKAN ABAL-ABAL)<br/><br/><br/>Semua fitur BERFUNGSI : <br/>-Tanggal <br/>-Jam<br/>-Hari <br/>-Detik<br/>-Stopwatch<br/>-Alarm <br/>-Lampu <br/>-Digital <br/>-Analog<br/><br/><br/>- Untuk Foto barang 100000% RealPic / Foto asli (GAK NYOMOT GAMBAR ORG/GOOGLE!!)<br/>- Foto Jam di pake di tangan?liat foto berikut nya yah ?? <br/>- Setiap packing an akan di bungkus dengan buble wrap , sehingga aman sampai tujuan ??<br/><br/><br/>**************** BONUS********************<br/>SETIAP pembelian sudah TERMASUK :<br/>- Box Gshock sesuai foto <br/>- BONUS BATRE SONY ORIGINAL <br/><br/><br/>Masih Ragu?tekan tombol Feedback kami <br/>untuk saat ini kami masih bisa menjaga konsistensi toko kami dengan 100% feedback dari 10.000++ transaksi lebih ??<br/><br/>Happy Shooping - SFSstore","condition":"new","stock":94,"favorited":false,"created_at":"2017-05-08T13:00:18.000+07:00","updated_at":"2017-05-24T12:20:43.000+07:00","product_sin":[],"rating":{"average_rate":0,"user_count":0},"current_variant_name":"","current_product_sku_id":491279366,"product_sku":[],"options":[],"interest_count":16,"last_relist_at":"2017-05-21T00:51:12.000+07:00","view_count":479},"original_price":120000,"discount_price":120000},{"id":697917366,"name":"Jam Tangan G Shock Casio GA1000 Edisi PILOT NAVY SEAL . digital pria & anak anak fashion murah","quantity":1,"price":120000,"stock":99,"message":null,"product":{"deal_info":{},"deal_request_state":"can request","price":120000,"category_id":171,"category":"Jam Tangan","category_structure":["Fashion Pria","Jam Tangan"],"courier":["GO-JEK GO-SEND","JNE REG","JNE YES"],"seller_username":"sfswendy","seller_name":"Ninik Wijaya","seller_id":1251687,"seller_avatar":"https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg","seller_level":"Good Seller","seller_level_badge_url":"https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png","seller_delivery_time":"17 jam","seller_positive_feedback":9533,"seller_negative_feedback":0,"seller_term_condition":"<p>Barang yg kami jual di jamin PREMIUM QUALITY!!!<\/p>\n\n<p>apapun penyebut an nya ; Grade ORIGINAL , KW Super , Clone , Mirror 1:1 (DIJAMIN BUKAN ABAL2!!!)<\/p>\n\n<p>BONUS (KHUSUS PEMBELIAN JAM TANGAN)<\/p>\n\n<p>-Harga yg tertera sudah termasuk :<\/p>\n\n<p>*Jam<\/p>\n\n<p>*Box<\/p>\n\n<p>*Batre tambahan<\/p>\n\n<p>SETIAP PACKINGAN ANDA AKAN DI BUNGKUS RAPIH DENGAN BUBLE WRAP &amp; 2 Kali PROSES CEK (Sehingga sangat minim barang cacat / rusak :D )<\/p>\n\n<p>jadwal pengriman :<\/p>\n\n<p>-gojek akan di pick up jam 10.00 pagi - 5.00 sore<\/p>\n\n<p>-Jne di kirim jam 8 malem ke jne<\/p>\n\n<p>-jika anda mw ikut pengiriman hari yg sama (maximal transaksi jam 5 sore)<\/p>\n\n<p>-resi di input jam 12 malem ke atas<\/p>\n\n<p>(tidak perlu tanyakan mana resi , Karena klo sudah ada pasti segera kami input :D )<\/p>\n\n<p>*SANGAT TIDAK DI SARANKAN DI BAWA KE AIR<\/p>\n\n<p>-Nama nya KW sebagus apapun TETAP KW<\/p>\n\n<p>(TIDAK ADA RETUR DENGAN ALESAN MATI KARENA KENA AIR)<\/p>\n\n<p>MEMBELI=SETUJU<\/p>\n\n<p>Untuk dropship jangan lupa cantum kan nama dan no hp pengirim yah :)<\/p>\n\n<p>ada yg lbih murah?BANYAK!!<\/p>\n\n<p>TAPI KAMI BERANI DI ADU KUALITAS NYA :D<\/p>\n\n<p>RAGU???<\/p>\n\n<p>Baca Feedback kami dengan 100% Feedback Lebih dari 8500++ Transaksi<\/p>\n\n<p>(dan akan terus bertambah)<\/p>\n\n<p>Sehingga bisa menjaga EMBLEM LAPAK TERBAIK dan Gelar GOOD SELLER :D<\/p>\n\n<p>happy shooping gan :D<\/p>\n","seller_alert":null,"for_sale":true,"state_description":[],"premium_account":true,"top_merchant":true,"last_order_schedule":{},"seller_voucher":{},"waiting_payment":-1,"sold_count":0,"specs":{"Brand":"Casio"},"force_insurance":false,"free_shipping_coverage":[],"labels":[{"id":1592835,"name":"G-Shock Casio","slug":"g-shock-casio","description":null}],"tag_pages":[{"id":5678,"name":"Jam Tangan Casio Pria","has_landing_page":true},{"id":5618,"name":"Jam Tangan G Shock Pria","has_landing_page":true},{"id":9398,"name":"Jam Tangan Sevenfriday","has_landing_page":true}],"id":"88gdxx","url":"https://www.bukalapak.com/p/fashion-pria/jam-tangan-171/88gdxx-jual-jam-tangan-g-shock-casio-ga1000-edisi-pilot-navy-seal-digital-pria-anak-anak-fashion-murah","name":"Jam Tangan G Shock Casio GA1000 Edisi PILOT NAVY SEAL . digital pria & anak anak fashion murah ","active":true,"city":"Jakarta Utara","province":"DKI Jakarta","weight":300,"image_ids":[1211213711,1211213761,1211213801,1211213821],"images":["https://s1.bukalapak.com/img/1173121121/large/GA1000_30.JPG","https://s1.bukalapak.com/img/1673121121/large/GA1000_30_SIDE.JPG","https://s1.bukalapak.com/img/1083121121/large/GA1000_30_HAND.JPG","https://s1.bukalapak.com/img/1283121121/large/IMG_9123.JPG"],"small_images":["https://s1.bukalapak.com/img/1173121121/small/GA1000_30.JPG","https://s1.bukalapak.com/img/1673121121/small/GA1000_30_SIDE.JPG","https://s1.bukalapak.com/img/1083121121/small/GA1000_30_HAND.JPG","https://s1.bukalapak.com/img/1283121121/small/IMG_9123.JPG"],"desc":"TOLONG Membaca deskripsi ini sampai habis yah gan ??<br/>Di karenakan ada BONUS yg kami bagikan ??<br/><br/>Kualitas : Grade Original /Kw Super /Grade A++ / Mirror 1:1 ( Kami MENJAMIN BUKAN ABAL-ABAL)<br/><br/><br/>Semua fitur BERFUNGSI : <br/>-Tanggal <br/>-Jam<br/>-Hari <br/>-Detik<br/>-Stopwatch<br/>-Alarm <br/>-Lampu <br/>-Digital <br/>-Analog<br/><br/><br/>- Untuk Foto barang 100000% RealPic / Foto asli (GAK NYOMOT GAMBAR ORG/GOOGLE!!)<br/>- Foto Jam di pake di tangan?liat foto berikut nya yah ?? <br/>- Setiap packing an akan di bungkus dengan buble wrap , sehingga aman sampai tujuan ??<br/><br/><br/>**************** BONUS********************<br/>SETIAP pembelian sudah TERMASUK :<br/>- Box Gshock sesuai foto <br/>- BONUS BATRE SONY ORIGINAL <br/><br/><br/>Masih Ragu?tekan tombol Feedback kami <br/>untuk saat ini kami masih bisa menjaga konsistensi toko kami dengan 100% feedback dari 10.000++ transaksi lebih ??<br/><br/>Happy Shooping - SFSstore","condition":"new","stock":99,"favorited":false,"created_at":"2017-05-06T21:13:48.000+07:00","updated_at":"2017-05-23T19:44:33.000+07:00","product_sin":[],"rating":{"average_rate":0,"user_count":0},"current_variant_name":"","current_product_sku_id":490107186,"product_sku":[],"options":[],"interest_count":5,"last_relist_at":"2017-05-19T13:51:38.000+07:00","view_count":178},"original_price":120000,"discount_price":120000}]
-         * installment : []
-         * agent_commission : 0
-         */
+//    public List<CartBean> getCart() {
+//        return cart;
+//    }
+//
+//    public void setCart(List<CartBean> cart) {
+//        this.cart = cart;
+//    }
+
+
+//    public static class CartBean {
+
 
         private SellerBean seller;
-        private int agent_commission;
+        private long agent_commission;
         private List<ItemsBean> items;
         private List<InstallmentBeann> installment;
 
@@ -66,44 +61,8 @@ public class Cart {
         }
 
         public static class SellerBean implements Parcelable{
-            /**
-             * id : 1251687
-             * username : sfswendy
-             * name : Ninik Wijaya
-             * gender : Laki-laki
-             * avatar : https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg
-             * level : Good Seller
-             * level_badge_url : https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png
-             * lapak_name : Jaket Adidas windbreaker dan waterproof grade original
-             * lapak_desc : SUPPLIER Jaket Adidas dan Nike WATERPROOF |
-             SUPPLIER Jam Tangan CASIO G SHOCK &amp; -SEVENFRIDAY
-             * lapak_header : https://s2.bukalapak.com/hdr/7329721/normal/IMG_4533.JPG
-             * last_login : 2017-05-25T07:10:00.000+07:00
-             * joined_at : 2014-09-08T14:51:45.000+07:00
-             * verified_user : false
-             * official : false
-             * store_closed : false
-             * schedule_close_store : false
-             * close_date : 2016-12-11T17:23:23.000+07:00
-             * reopen_date : null
-             * close_reason : Toko kami tutup sementara
-             dan akan kembali buka pada tanggal
-             14/11/16 (Hari Rabu)
-             Thx
-             -SFS-
-             * delivery_time : 17 jam
-             * rejection : {"rejected":0,"recent_trans":100}
-             * address : {"province":"DKI Jakarta","city":"Jakarta Utara"}
-             * subscriber_amount : 1756
-             * last_order_schedule : {}
-             * premium_user : true
-             * top_merchant : true
-             * seller_voucher : {}
-             * is_seller : true
-             * feedbacks : {"positive":9533,"negative":0}
-             */
 
-            private int id;
+            private long id;
             private String username;
             private String name;
             private String gender;
@@ -118,7 +77,7 @@ public class Cart {
             private boolean verified_user;
             private boolean official;
             private boolean store_closed;
-            private boolean schedule_close_store;
+//            private boolean schedule_close_store;
             private String close_date;
             private String reopen_date;
             private String close_reason;
@@ -133,7 +92,9 @@ public class Cart {
             private boolean is_seller;
             private FeedbacksBean feedbacks; //ok
 
-            protected SellerBean(Parcel in) {
+            public SellerBean(){}
+
+            public SellerBean(Parcel in) {
                 id = in.readInt();
                 username = in.readString();
                 name = in.readString();
@@ -149,7 +110,7 @@ public class Cart {
                 verified_user = in.readByte() != 0;
                 official = in.readByte() != 0;
                 store_closed = in.readByte() != 0;
-                schedule_close_store = in.readByte() != 0;
+//                schedule_close_store = in.readByte() != 0;
                 close_date = in.readString();
                 reopen_date = in.readString();
                 close_reason = in.readString();
@@ -175,11 +136,11 @@ public class Cart {
                 }
             };
 
-            public int getId() {
+            public long getId() {
                 return id;
             }
 
-            public void setId(int id) {
+            public void setId(long id) {
                 this.id = id;
             }
 
@@ -295,13 +256,13 @@ public class Cart {
                 this.store_closed = store_closed;
             }
 
-            public boolean isSchedule_close_store() {
-                return schedule_close_store;
-            }
-
-            public void setSchedule_close_store(boolean schedule_close_store) {
-                this.schedule_close_store = schedule_close_store;
-            }
+//            public boolean isSchedule_close_store() {
+//                return schedule_close_store;
+//            }
+//
+//            public void setSchedule_close_store(boolean schedule_close_store) {
+//                this.schedule_close_store = schedule_close_store;
+//            }
 
             public String getClose_date() {
                 return close_date;
@@ -350,7 +311,7 @@ public class Cart {
 
             @Override
             public void writeToParcel(Parcel parcel, int i) {
-                parcel.writeInt(id);
+                parcel.writeLong(id);
                 parcel.writeString(username);
                 parcel.writeString(name);
                 parcel.writeString(gender);
@@ -365,7 +326,7 @@ public class Cart {
                 parcel.writeByte((byte) (verified_user ? 1 : 0));
                 parcel.writeByte((byte) (official ? 1 : 0));
                 parcel.writeByte((byte) (store_closed ? 1 : 0));
-                parcel.writeByte((byte) (schedule_close_store ? 1 : 0));
+//                parcel.writeByte((byte) (schedule_close_store ? 1 : 0));
                 parcel.writeString(close_date);
                 parcel.writeString(reopen_date);
                 parcel.writeString(close_reason);
@@ -387,6 +348,9 @@ public class Cart {
 
                 private int rejected;
                 private int recent_trans;
+
+                public RejectionBean() {
+                }
 
                 protected RejectionBean(Parcel in) {
                     rejected = in.readInt();
@@ -616,11 +580,11 @@ public class Cart {
 
         }
 
-        public int getAgent_commission() {
+        public long getAgent_commission() {
             return agent_commission;
         }
 
-        public void setAgent_commission(int agent_commission) {
+        public void setAgent_commission(long agent_commission) {
             this.agent_commission = agent_commission;
         }
 
@@ -695,33 +659,24 @@ public class Cart {
 
 
         public static class ItemsBean {
-            /**
-             * id : 697916656
-             * name : MODEL PALING LAKU ... G Shock Casio GA400 Gmix Full Red Merah dual time Jam Tangan Pria Termurah
-             * quantity : 1
-             * price : 120000
-             * stock : 92
-             * message : null
-             * product : {"deal_info":{},"deal_request_state":"can request","price":120000,"category_id":171,"category":"Jam Tangan","category_structure":["Fashion Pria","Jam Tangan"],"courier":["GO-JEK GO-SEND","JNE REG","JNE YES"],"seller_username":"sfswendy","seller_name":"Ninik Wijaya","seller_id":1251687,"seller_avatar":"https://s0.bukalapak.com/avt/5867761/medium/SFSSTORE.jpg","seller_level":"Good Seller","seller_level_badge_url":"https://www.bukalapak.com/images/badge/seller/xhdpi/level-6.png","seller_delivery_time":"17 jam","seller_positive_feedback":9533,"seller_negative_feedback":0,"seller_term_condition":"<p>Barang yg kami jual di jamin PREMIUM QUALITY!!!<\/p>\n\n<p>apapun penyebut an nya ; Grade ORIGINAL , KW Super , Clone , Mirror 1:1 (DIJAMIN BUKAN ABAL2!!!)<\/p>\n\n<p>BONUS (KHUSUS PEMBELIAN JAM TANGAN)<\/p>\n\n<p>-Harga yg tertera sudah termasuk :<\/p>\n\n<p>*Jam<\/p>\n\n<p>*Box<\/p>\n\n<p>*Batre tambahan<\/p>\n\n<p>SETIAP PACKINGAN ANDA AKAN DI BUNGKUS RAPIH DENGAN BUBLE WRAP &amp; 2 Kali PROSES CEK (Sehingga sangat minim barang cacat / rusak :D )<\/p>\n\n<p>jadwal pengriman :<\/p>\n\n<p>-gojek akan di pick up jam 10.00 pagi - 5.00 sore<\/p>\n\n<p>-Jne di kirim jam 8 malem ke jne<\/p>\n\n<p>-jika anda mw ikut pengiriman hari yg sama (maximal transaksi jam 5 sore)<\/p>\n\n<p>-resi di input jam 12 malem ke atas<\/p>\n\n<p>(tidak perlu tanyakan mana resi , Karena klo sudah ada pasti segera kami input :D )<\/p>\n\n<p>*SANGAT TIDAK DI SARANKAN DI BAWA KE AIR<\/p>\n\n<p>-Nama nya KW sebagus apapun TETAP KW<\/p>\n\n<p>(TIDAK ADA RETUR DENGAN ALESAN MATI KARENA KENA AIR)<\/p>\n\n<p>MEMBELI=SETUJU<\/p>\n\n<p>Untuk dropship jangan lupa cantum kan nama dan no hp pengirim yah :)<\/p>\n\n<p>ada yg lbih murah?BANYAK!!<\/p>\n\n<p>TAPI KAMI BERANI DI ADU KUALITAS NYA :D<\/p>\n\n<p>RAGU???<\/p>\n\n<p>Baca Feedback kami dengan 100% Feedback Lebih dari 8500++ Transaksi<\/p>\n\n<p>(dan akan terus bertambah)<\/p>\n\n<p>Sehingga bisa menjaga EMBLEM LAPAK TERBAIK dan Gelar GOOD SELLER :D<\/p>\n\n<p>happy shooping gan :D<\/p>\n","seller_alert":null,"for_sale":true,"state_description":[],"premium_account":true,"top_merchant":true,"last_order_schedule":{},"seller_voucher":{},"waiting_payment":-10,"sold_count":6,"specs":{"Brand":"Casio"},"force_insurance":false,"free_shipping_coverage":[],"labels":[{"id":1592835,"name":"G-Shock Casio","slug":"g-shock-casio","description":null}],"tag_pages":[{"id":5678,"name":"Jam Tangan Casio Pria","has_landing_page":true},{"id":5618,"name":"Jam Tangan G Shock Pria","has_landing_page":true},{"id":9398,"name":"Jam Tangan Sevenfriday","has_landing_page":true}],"id":"8734s1","url":"https://www.bukalapak.com/p/fashion-pria/jam-tangan-171/8734s1-jual-model-paling-laku-g-shock-casio-ga400-gmix-full-red-merah-dual-time-jam-tangan-pria-termurah","name":"MODEL PALING LAKU ... G Shock Casio GA400 Gmix Full Red Merah dual time Jam Tangan Pria Termurah","active":true,"city":"Jakarta Utara","province":"DKI Jakarta","weight":300,"image_ids":[1204806601,1204806571,1204806606,1204806611],"images":["https://s1.bukalapak.com/img/1066084021/large/GA400_2___Copy.JPG","https://s1.bukalapak.com/img/1756084021/large/GA400_2.JPG","https://s1.bukalapak.com/img/6066084021/large/GA400_2_HAND___Copy.JPG","https://s1.bukalapak.com/img/1166084021/large/IMG_9123.JPG"],"small_images":["https://s1.bukalapak.com/img/1066084021/small/GA400_2___Copy.JPG","https://s1.bukalapak.com/img/1756084021/small/GA400_2.JPG","https://s1.bukalapak.com/img/6066084021/small/GA400_2_HAND___Copy.JPG","https://s1.bukalapak.com/img/1166084021/small/IMG_9123.JPG"],"desc":"TOLONG Membaca deskripsi ini sampai habis yah gan ??<br/>Di karenakan ada BONUS yg kami bagikan ??<br/><br/>Kualitas : Grade Original /Kw Super /Grade A++ / Mirror 1:1 ( Kami MENJAMIN BUKAN ABAL-ABAL)<br/><br/><br/>Semua fitur BERFUNGSI : <br/>-Tanggal <br/>-Jam<br/>-Hari <br/>-Detik<br/>-Stopwatch<br/>-Alarm <br/>-Lampu <br/>-Digital <br/>-Analog<br/><br/><br/>- Untuk Foto barang 100000% RealPic / Foto asli (GAK NYOMOT GAMBAR ORG/GOOGLE!!)<br/>- Foto Jam di pake di tangan?liat foto berikut nya yah ?? <br/>- Setiap packing an akan di bungkus dengan buble wrap , sehingga aman sampai tujuan ??<br/><br/><br/>**************** BONUS********************<br/>SETIAP pembelian sudah TERMASUK :<br/>- Box Gshock sesuai foto <br/>- BONUS BATRE SONY ORIGINAL <br/><br/><br/>Masih Ragu?tekan tombol Feedback kami <br/>untuk saat ini kami masih bisa menjaga konsistensi toko kami dengan 100% feedback dari 10.000++ transaksi lebih ??<br/><br/>Happy Shooping - SFSstore ??","condition":"new","stock":92,"favorited":false,"created_at":"2017-05-03T22:49:39.000+07:00","updated_at":"2017-05-25T05:46:54.000+07:00","product_sin":[],"rating":{"average_rate":"3.7","user_count":3},"current_variant_name":"","current_product_sku_id":487803031,"product_sku":[],"options":[],"interest_count":32,"last_relist_at":"2017-05-23T10:34:32.000+07:00","view_count":1085}
-             * original_price : 120000
-             * discount_price : 120000
-             */
+          
 
-            private int id;
+            private long id;
             private String name;
             private int quantity;
-            private int price;
+            private long price;
             private int stock;
             private String message;
-            private ProductBean product;
-            private int original_price;
-            private int discount_price;
+//            private ProductBean product;
+            private Product product;
+            private long original_price;
+            private long discount_price;
 
-            public int getId() {
+            public long getId() {
                 return id;
             }
 
-            public void setId(int id) {
+            public void setId(long id) {
                 this.id = id;
             }
 
@@ -741,11 +696,11 @@ public class Cart {
                 this.quantity = quantity;
             }
 
-            public int getPrice() {
+            public long getPrice() {
                 return price;
             }
 
-            public void setPrice(int price) {
+            public void setPrice(long price) {
                 this.price = price;
             }
 
@@ -765,27 +720,27 @@ public class Cart {
                 this.message = message;
             }
 
-            public ProductBean getProduct() {
+            public Product getProduct() {
                 return product;
             }
 
-            public void setProduct(ProductBean product) {
+            public void setProduct(Product product) {
                 this.product = product;
             }
 
-            public int getOriginal_price() {
+            public long getOriginal_price() {
                 return original_price;
             }
 
-            public void setOriginal_price(int original_price) {
+            public void setOriginal_price(long original_price) {
                 this.original_price = original_price;
             }
 
-            public int getDiscount_price() {
+            public long getDiscount_price() {
                 return discount_price;
             }
 
-            public void setDiscount_price(int discount_price) {
+            public void setDiscount_price(long discount_price) {
                 this.discount_price = discount_price;
             }
 
@@ -1655,7 +1610,7 @@ public class Cart {
 
             }
         }
-    }
+//    }
 
 
 }

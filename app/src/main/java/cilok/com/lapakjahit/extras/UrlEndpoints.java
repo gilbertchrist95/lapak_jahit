@@ -10,6 +10,7 @@ public class UrlEndpoints {
     public static final String URL_PARAM_FAVORITES = "favorites";
     public static final String URL_PARAM_MESSAGE = "messages";
     public static final String URL_PARAM_PRODUCTS = "products";
+    public static final String URL_PARAM_CARTS = "carts";
     public static final String URL_PARAM_TRANSACTIONS = "transactions";
     public static final String URL_PARAM_CATEGORY_ID = "category_id";
     public static final String URL_PARAM_CATEGORY_ID_FASHION_PRIA = "164";

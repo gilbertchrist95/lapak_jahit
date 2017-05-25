@@ -28,7 +28,7 @@ public class ProductUtils {
             response = Requestor.requestJSON(requestQueue, Endpoints.getRequestProductFashionWanita(), userId,token);
         }
 //        JSONObject response = response = Requestor.requestJSON(requestQueue, Endpoints.getRequestUrlLoadFavorites(), userId,token);
-        ArrayList<Product> products = Parser.parseProductFavorites(response);
+        ArrayList<Product> products = Parser.parseListProducts(response);
         try {
             L.m("Status: "+ response.getString(KEY_STATUS));
         } catch (JSONException e) {
