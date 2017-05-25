@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#ca0151</color>
+    <color name="colorPrimary2">#d71149</color>
     <color name="colorLogin">#fafafa</color>
     <color name="colorDaftar">#d71149</color>
     <color name="colorPrimaryDark">#b60150</color>
@@ -8,4 +9,5 @@
     <color name="colorAccent2">#b9084c</color>
     <color name="logoBL">#ce0f45</color>
     <color name="colorHighlight">#b9084c</color>
+    <color name="bgslider">#f3f3f3</color>
 </resources>
