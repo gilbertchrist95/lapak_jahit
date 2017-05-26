@@ -73,6 +73,7 @@ public class InboxMessageActivity extends AppCompatActivity implements SwipeRefr
         mAdapter = new AdapterInboxMessages(getApplicationContext());
         mRecylerinboxMessage.setAdapter(mAdapter);
 
+
         if (savedInstanceState != null){
             //if this activity starts after a rotation or configuration change, load the existing inbox from a parcelable
             mListInbox = savedInstanceState.getParcelableArrayList(STATE_INBOX);

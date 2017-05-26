@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="8dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageview_product_tagihan"
+            android:layout_width="60dp"
+            android:layout_height="59dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_person_identity"
+
+            />
+
+        <TextView
+
+            android:id="@+id/textview_tagihan_name"
+            android:layout_width="179dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/imageview_product_tagihan"
+            android:maxLines="2"
+            android:padding="3dp"
+
+            android:text="Xiaomi Redmi Note 3 NeoXiaomi Redmi Note 3 Neo"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_text_secondary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_harga_transaksi_tagihan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textview_tagihan_name"
+                android:layout_alignBottom="@+id/textview_tagihan_name"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:maxLines="1"
+                android:text="Rp19.999.999"
+                android:textSize="@dimen/size_text_thridary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textview_status_transaksi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_weight="2"
+                android:maxLines="2"
+                android:paddingTop="5dp"
+                android:text="Menunggu Pembayaran"
+                android:textSize="@dimen/size_text_thridary"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

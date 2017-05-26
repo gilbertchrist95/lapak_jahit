@@ -10,9 +10,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.callback.GetCartCallback;
 import cilok.com.lapakjahit.controller.UserController;
+import cilok.com.lapakjahit.entity.Cart;
 import cilok.com.lapakjahit.tasks.TaskCart;
 
 public class ShoppingCartActivity extends AppCompatActivity {
@@ -45,6 +50,13 @@ public class ShoppingCartActivity extends AppCompatActivity {
 
         if (authenticate()==true){
             imageViewEmptyCart.setVisibility(View.GONE);
+            taskCart = new TaskCart(this);
+            taskCart.getCartDataInBackground(new GetCartCallback() {
+                @Override
+                public void onGetCartsLoadedListener(ArrayList<Cart> listCarts) {
+                   
+                }
+            });
         }else{
             mSwipeRefreshCart.setEnabled(false);
         }

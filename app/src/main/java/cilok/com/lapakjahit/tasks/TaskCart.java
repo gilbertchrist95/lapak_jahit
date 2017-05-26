@@ -43,7 +43,7 @@ public class TaskCart {
         }
     }
 
-    public void getFavoritesDataInBackground(GetCartCallback callback) {
+    public void getCartDataInBackground(GetCartCallback callback) {
         new TaskLoadCarts(callback, split[0], split[1]).execute();
     }
 

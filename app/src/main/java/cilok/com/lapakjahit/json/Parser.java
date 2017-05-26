@@ -32,6 +32,7 @@ import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_gender;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_is_seller;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_items;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_joined_at;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_lapak_desc;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_lapak_header;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_lapak_name;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_last_login;
@@ -931,6 +932,7 @@ public class Parser {
         try {
             if (response != null && response.getString(KEY_cart_status).equals("OK")) {
                 JSONArray arrayCart = response.getJSONArray(KEY_cart);
+                L.m(arrayCart.length()+"");
                 for (int i = 0; i < arrayCart.length(); i++) {
                     Cart.SellerBean sellerBean = new Cart.SellerBean();
                     long sellerId = -1;
@@ -978,10 +980,10 @@ public class Parser {
                     sellername = objectSeller.getString(KEY_name);
                     sellergender = objectSeller.getString(KEY_gender);
                     selleravatar = objectSeller.getString(KEY_avatar);
-                    sellerlevel = objectSeller.getString(KEY_seller_level);
+                    sellerlevel = (Utils.contains(objectSeller,KEY_seller_level))?objectSeller.getString(KEY_seller_level):Constants.NA;
                     sellerlevel_badge_url = objectSeller.getString(KEY_level_badge_url);
                     sellerlapak_name = objectSeller.getString(KEY_lapak_name);
-                    sellerlapak_desc = objectSeller.getString(KEY_desc);
+                    sellerlapak_desc = (Utils.contains(objectSeller,KEY_lapak_desc))?objectSeller.getString(KEY_lapak_desc):Constants.NA;
                     sellerlapak_header = objectSeller.getString(KEY_lapak_header);
                     sellerlast_login = objectSeller.getString(KEY_last_login);
                     sellerjoined_at = objectSeller.getString(KEY_joined_at);
@@ -1005,7 +1007,7 @@ public class Parser {
                     address.setProvince(addressProvince);
                     address.setCity(addressCity);
 
-                    subscriber_amount = objectAdress.getInt(KEY_subscriber_amount);
+                    subscriber_amount = objectSeller.getInt(KEY_subscriber_amount);
                     premium_user = objectSeller.getBoolean(KEY_premium_user);
                     top_merchant = objectSeller.getBoolean(KEY_top_merchant);
                     is_seller = objectSeller.getBoolean(KEY_is_seller);
@@ -1016,7 +1018,7 @@ public class Parser {
                     feedbacks.setPositive(feedbackspositive);
                     feedbacks.setNegative(feedbacksnegative);
 
-                    JSONArray arrayItems = objectSeller.getJSONArray(KEY_items);
+                    JSONArray arrayItems = currentCart.getJSONArray(KEY_items);
                     for (int j = 0; j < arrayItems.length(); j++) {
                         JSONObject currentItems = arrayItems.getJSONObject(j);
                         Cart.ItemsBean itemsBean = new Cart.ItemsBean();
@@ -1118,7 +1120,6 @@ public class Parser {
 
                 }
             }
-            return listCarts;
         } catch (JSONException e) {
             e.printStackTrace();
         }

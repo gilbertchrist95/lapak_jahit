@@ -1,9 +1,7 @@
 package cilok.com.lapakjahit.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +12,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 
 import java.text.DateFormat;
-import java.text.FieldPosition;
-import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.TimeZone;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.entity.InboxMessage;
@@ -123,9 +116,9 @@ public class AdapterInboxMessages extends RecyclerView.Adapter<AdapterInboxMessa
 
         public ViewHolderMessage(View itemView) {
             super(itemView);
-            messagePartnerAvatar = (ImageView)itemView.findViewById(R.id.imageview_avatar_partner);
+            messagePartnerAvatar = (ImageView)itemView.findViewById(R.id.imageview_product_tagihan);
             messagePartnerName = (TextView)itemView.findViewById(R.id.textview_partner_name);
-            messageUpdateAt = (TextView)itemView.findViewById(R.id.textview_update_time_message);
+            messageUpdateAt = (TextView)itemView.findViewById(R.id.textview_harga_transaksi);
             messageLastMessage =(TextView)itemView.findViewById(R.id.textview_last_message);
 
             itemView.setOnClickListener(this);

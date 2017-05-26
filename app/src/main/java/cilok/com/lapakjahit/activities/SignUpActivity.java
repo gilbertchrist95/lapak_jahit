@@ -20,9 +20,9 @@ import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.UserInfo;
 import cilok.com.lapakjahit.extras.UserUtils;
 import cilok.com.lapakjahit.log.L;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+//import retrofit2.Call;
+//import retrofit2.Callback;
+//import retrofit2.Response;
 
 /**
  * Created by User on 12/05/2017.
@@ -75,60 +75,60 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 String passwordConfirmation = password;
                 int policy = 1;
 
-                sendregisterNewUser(email,userName, nama,gender,password,passwordConfirmation,policy);
+//                sendregisterNewUser(email,userName, nama,gender,password,passwordConfirmation,policy);
 
                 break;
         }
     }
 
-    private void sendregisterNewUser(String email, String userName, String nama, String gender, String password, String passwordConfirmation, int policy) {
-//        progressDialog = new ProgressDialog(getApplicationContext());
-//        progressDialog.setCancelable(false);
-//        progressDialog.setTitle("Processing");
-//        progressDialog.setMessage("Please Wait...");
-//        progressDialog.show();
-        mUserService.registerNewUser(email,userName,nama,gender,password,passwordConfirmation,policy).enqueue(new Callback<UserInfo>() {
-            @Override
-            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-//                L.m(response.body().getMessage());
-//                L.m(response.body().getStatus());
-//                L.m(response.body().getToken());
-//                L.m(response.body().getUser_id());
-                if(response.isSuccessful()){
-                    String status = response.body().getStatus();
-                    if (status.equals("OK")){
-                        FileOutputStream fileOutputStream=null;
-                        try {
-                            fileOutputStream = openFileOutput("User.txt",MODE_PRIVATE);
-                            fileOutputStream.write((response.body().getUser_id()+" ").getBytes());
-                            fileOutputStream.write(response.body().getToken().getBytes());
-                        } catch (FileNotFoundException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }finally{
-                            try {
-                                fileOutputStream.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        userController.setUserLoggedIn(true);
-                        goToMainActivity();
-                    }else{
-                        showMessageError(response.body().getMessage());
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserInfo> call, Throwable t) {
-                L.m("Unable to submit post to BL API");
-                showMessageError("Unable to submit post to BL API");
-            }
-        });
-
-    }
+//    private void sendregisterNewUser(String email, String userName, String nama, String gender, String password, String passwordConfirmation, int policy) {
+////        progressDialog = new ProgressDialog(getApplicationContext());
+////        progressDialog.setCancelable(false);
+////        progressDialog.setTitle("Processing");
+////        progressDialog.setMessage("Please Wait...");
+////        progressDialog.show();
+//        mUserService.registerNewUser(email,userName,nama,gender,password,passwordConfirmation,policy).enqueue(new Callback<UserInfo>() {
+//            @Override
+//            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
+////                L.m(response.body().getMessage());
+////                L.m(response.body().getStatus());
+////                L.m(response.body().getToken());
+////                L.m(response.body().getUser_id());
+//                if(response.isSuccessful()){
+//                    String status = response.body().getStatus();
+//                    if (status.equals("OK")){
+//                        FileOutputStream fileOutputStream=null;
+//                        try {
+//                            fileOutputStream = openFileOutput("User.txt",MODE_PRIVATE);
+//                            fileOutputStream.write((response.body().getUser_id()+" ").getBytes());
+//                            fileOutputStream.write(response.body().getToken().getBytes());
+//                        } catch (FileNotFoundException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }finally{
+//                            try {
+//                                fileOutputStream.close();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            }
+//                        }
+//                        userController.setUserLoggedIn(true);
+//                        goToMainActivity();
+//                    }else{
+//                        showMessageError(response.body().getMessage());
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserInfo> call, Throwable t) {
+//                L.m("Unable to submit post to BL API");
+//                showMessageError("Unable to submit post to BL API");
+//            }
+//        });
+//
+//    }
 
     private void showMessageError(String message) {
 //        progressDialog.dismiss();

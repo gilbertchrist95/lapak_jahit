@@ -8,11 +8,11 @@
     android:paddingBottom="8dp">
 
 
-        <!--android:background="@color/bb_darkBackgroundColor"-->
+    <!--android:background="@color/bb_darkBackgroundColor"-->
     <!--android:src="@drawable/ic_person_identity"-->
     <ImageView
         android:src="@drawable/ic_person_identity"
-        android:id="@+id/imageview_product_tagihan"
+        android:id="@+id/imageview_product_pembelian"
         android:layout_width="59dp"
         android:layout_height="59dp"
         android:layout_centerVertical="true"/>
@@ -20,7 +20,7 @@
     <!--android:text="test"-->
     <TextView
         android:text="test"
-        android:id="@+id/textview_partner_name"
+        android:id="@+id/textview__name_produk_pembelian"
         android:padding="3dp"
         android:alpha="0.87"
         android:textSize="@dimen/size_text_primary"
@@ -29,45 +29,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageview_product_tagihan"
+        android:layout_alignTop="@+id/imageview_product_pembelian"
         android:maxLines="1"
         />
 
 
-    <TextView
-        android:text="23:55"
-        android:id="@+id/textview_harga_transaksi"
-        android:textSize="@dimen/size_text_secondary"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textview_partner_name"
-        android:layout_alignBottom="@+id/textview_partner_name"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:maxLines="1"/>
-
-    <!--android:text="test 123"-->
     <TextView
         android:text="test 123"
-        android:id="@+id/textview_last_message"
+        android:id="@+id/textview_harga_produk_pembelian_"
         android:textSize="@dimen/size_text_secondary"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="62dp"
-        android:padding="3dp"
         android:maxLines="1"
-        android:layout_below="@+id/textview_partner_name"/>
+        android:layout_below="@+id/textview__name_produk_pembelian"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
+    <TextView
+        android:text="test 123"
+        android:id="@+id/textview__state_produk_pembelian"
+        android:textSize="@dimen/size_text_thridary"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="62dp"
-        android:background="@android:color/darker_gray"
-        android:layout_alignBottom="@+id/imageview_product_tagihan"
 
-        android:layout_below="@+id/textview_last_message"/>
+        android:maxLines="1"
+        android:layout_below="@+id/textview_harga_produk_pembelian_"/>
+
 
 </RelativeLayout>

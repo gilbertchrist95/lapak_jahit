@@ -36,7 +36,8 @@ public class UserUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return RetrofitClient.getClient(userId,token).create(UserService.class);
+//        return RetrofitClient.getClient().create(UserService.class);
+        return null;
     }
 
 

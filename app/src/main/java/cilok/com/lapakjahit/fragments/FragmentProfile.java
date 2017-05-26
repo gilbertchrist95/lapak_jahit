@@ -14,6 +14,7 @@ import java.io.FileInputStream;
 
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.activities.InboxMessageActivity;
+import cilok.com.lapakjahit.activities.ProfileActivity;
 
 
 /**
@@ -43,7 +44,8 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_message:
-                startActivity(new Intent(getActivity(), InboxMessageActivity.class));
+//                startActivity(new Intent(getActivity(), InboxMessageActivity.class));
+                startActivity(new Intent(getActivity(), ProfileActivity.class));
                 break;
         }
     }
