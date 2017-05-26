@@ -12,7 +12,7 @@
     <include
         android:id="@+id/app_bar_login_signup"
         layout="@layout/app_bar2"  />
--->
+    -->
     <LinearLayout
         android:id="@+id/view"
         android:layout_above="@+id/SliderDots"

@@ -44,6 +44,7 @@
     <string name="fw_celanadsr">Celana Dasar</string>
     <string name="fw_rok">Rok</string>
     <string name="fw_kaos">Kaos</string>
+
     <string name="fp_baju_koko">Baju Koko</string>
     <string name="fp_tuxedo">Tuxedo</string>
     <string name="fp_kemeja">Kemeja</string>
@@ -60,4 +61,19 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="noticelogin">Segera login di LapakJahit agar kamu bisa \n menandai berbagai macam barang \n favoritmu</string>
+
+    <string name="detail_tagihan">Detail Tagihan</string>
+    <string name="no_tagihan">Nomor Tagihan</string>
+    <string name="status">Status</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="alamat">Alamat</string>
+    <string name="daftar_barang">Daftar Barang</string>
+    <string name="salin">SALIN</string>
+    <string name="detail">Detail</string>
+    <string-array name="list_detail">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
 </resources>
