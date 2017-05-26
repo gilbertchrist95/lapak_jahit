@@ -42,8 +42,11 @@ public class DetailProductActivity extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.activity_image_view, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
 
-        //Product productID = get
+        //Product product = new Product();
+        //images = (Integer) product.getImages();
+
         imageView.setImageResource(images[position]);
+
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
