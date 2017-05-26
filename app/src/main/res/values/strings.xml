@@ -76,6 +76,14 @@
         <item>2</item>
         <item>3</item>
     </string-array>
+    
+    <string name="nama_barang">Nama Barang</string>
+    <string name="katogeri_barang">Kategori Barang</string>
+    <string name="deskripsi_barang">Deskripsi Barang</string>
+    <string name="detail_barang">Detail Barang</string>
+    <string name="pengiriman">Pengiriman (Opsional)</string>
+    <string name="simpan_draf">Simpan Draf</string>
+    <string name="jual">Jual</string>
 
     <string name="upload_gambar">Upload Gambar</string>
     <string name="ukuran_gambar">Ukuran foto minimal 300x300px, dengan format JPG, JPEG, PNG</string>
@@ -83,4 +91,6 @@
     <string name="kamera">Ambil dari Kamera</string>
     <string name="gambar_utama">GAMBAR UTAMA</string>
     <string name="gambar_lainnya">GAMBAR LAINNYA</string>
+
+    <string name="tambah_gambar">Tambah Gambar</string>
 </resources>
