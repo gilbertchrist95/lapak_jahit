@@ -77,7 +77,7 @@
         <item>2</item>
         <item>3</item>
     </string-array>
-    
+
     <string name="nama_barang">Nama Barang</string>
     <string name="katogeri_barang">Kategori Barang</string>
     <string name="deskripsi_barang">Deskripsi Barang</string>

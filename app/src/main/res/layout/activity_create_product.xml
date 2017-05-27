@@ -1,9 +1,224 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cilok.com.lapakjahit.CreateProductActivity">
+    android:background="@android:color/white">
 
-</android.support.constraint.ConstraintLayout>
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar2"/>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_below="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_abu">
+
+                <cilok.com.lapakjahit.view.SquareImageView
+                    android:id="@+id/gambar_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginLeft="@dimen/fab_margin"
+                    android:background="@drawable/image_border"/>
+
+                <cilok.com.lapakjahit.view.SquareImageView
+                    android:id="@+id/gambar_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.05"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:background="@drawable/image_border"/>
+
+                <cilok.com.lapakjahit.view.SquareImageView
+                    android:id="@+id/gambar_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.03"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:background="@drawable/image_border"/>
+
+                <cilok.com.lapakjahit.view.SquareImageView
+                    android:id="@+id/gambar_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.05"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:background="@drawable/image_border"/>
+
+                <cilok.com.lapakjahit.view.SquareImageView
+                    android:id="@+id/gambar_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginRight="@dimen/fab_margin"
+                    android:background="@drawable/image_border"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_abu">
+
+                <Button
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:layout_marginLeft="120dp"
+                    android:layout_marginRight="120dp"
+                    android:layout_marginBottom="@dimen/fab_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="@string/tambah_gambar"
+                    android:textSize="@dimen/size_text_thridary"
+                    android:background="@drawable/bg_white_fixed"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linear3"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+
+                <TextView
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:text="@string/nama_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/namabarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType=""
+                        android:maxLines="1"
+                        android:textColor="@android:color/black"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:text="@string/katogeri_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/kategoribarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType=""
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:text="@string/deskripsi_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/desbarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType=""
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_marginTop="@dimen/fab_margin"
+                    android:text="@string/detail_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/detailbarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType=""
+                        android:maxLines="1"
+                        android:singleLine="true" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layoutButton"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp">
+
+        <Button
+            android:id="@+id/button_simpan"
+            android:background="@color/colorAbu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/simpan_draf"
+            android:textColor="@android:color/black"/>
+
+        <Button
+            android:id="@+id/button_jual"
+            android:background="@color/colorDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="@string/jual"
+            android:textColor="@android:color/white"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>
