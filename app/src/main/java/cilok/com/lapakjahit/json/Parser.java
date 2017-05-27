@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import cilok.com.lapakjahit.entity.Cart;
+import cilok.com.lapakjahit.entity.Custom;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.entity.Transaction;
@@ -1418,4 +1419,10 @@ public class Parser {
         return product;
     }
 
+    public static Custom parseCustomList(JSONObject responseProductBL, JSONObject responseProductCustom) {
+        Custom custom = new Custom();
+        Product product = parseProduct(responseProductBL);
+        custom.setProduct(product);
+        return custom;
+    }
 }

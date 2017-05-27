@@ -84,6 +84,7 @@ public class InboxMessageActivity extends AppCompatActivity implements SwipeRefr
             //if the database is empty, trigger an AsycnTask to download inbox list from the web
             if (mListInbox.isEmpty()){
                 L.m("InboxMessageActivity: executing task from activity");
+                mSwipeRefreshLayout.setRefreshing(true);
                 TaskMessage taskMessage = new TaskMessage(this);
                 taskMessage.getInboxMessage(new InboxMessageLoadedListener() {
                     @Override

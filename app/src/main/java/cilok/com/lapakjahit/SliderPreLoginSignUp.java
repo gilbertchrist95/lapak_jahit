@@ -43,7 +43,6 @@ public class SliderPreLoginSignUp extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.activity_image_view, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
         imageView.setImageResource(images[position]);
-//        imageView.setIma
 
 //        view.setOnClickListener(new View.OnClickListener() {
 //            @Override

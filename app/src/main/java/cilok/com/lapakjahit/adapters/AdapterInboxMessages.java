@@ -2,6 +2,7 @@ package cilok.com.lapakjahit.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +60,8 @@ public class AdapterInboxMessages extends RecyclerView.Adapter<AdapterInboxMessa
     @Override
     public void onBindViewHolder(AdapterInboxMessages.ViewHolderMessage holder, int position) {
         InboxMessage currentInboxMessage = mListInboxMessage.get(position);
-        holder.messagePartnerName.setText(currentInboxMessage.getPartnerName());
+
+        holder.messagePartnerName.setText((currentInboxMessage.getPartnerName()));
 
         String urlThumbnailAvatarPartner = currentInboxMessage.getUrlPartnerAvatar();
         loadImages(urlThumbnailAvatarPartner, holder);
@@ -83,7 +85,7 @@ public class AdapterInboxMessages extends RecyclerView.Adapter<AdapterInboxMessa
 
         holder.messageUpdateAt.setText(currentInboxMessage.getUpdatedAt().substring(0,10));
 //
-        holder.messageLastMessage.setText(currentInboxMessage.getLastMessage());
+        holder.messageLastMessage.setText(Html.fromHtml(currentInboxMessage.getLastMessage()));
 
     }
 

@@ -71,4 +71,12 @@ public class Endpoints {
                 URL_PARAM_MESSAGE+
                 URL_PARAM_JSON;
     }
+
+    public static String getReqestProduct(String URL_ID) {
+        return URL_BL+
+                URL_PARAM_PRODUCTS+"/"+
+                URL_ID+
+                URL_PARAM_JSON;
+
+    }
 }

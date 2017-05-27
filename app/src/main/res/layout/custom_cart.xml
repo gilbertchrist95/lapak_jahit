@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/check_box_cart_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+
+            android:id="@+id/nama_pelapak_cart_produk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/nama_barang"
+            android:textSize="@dimen/size_text_primary" />
+    </LinearLayout>
+
+    <View
+        android:background="@color/black_alpha_40"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></View>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_view_cart_produk"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:paddingBottom="4dp"/>
+
+            <TextView
+                android:textSize="@dimen/size_text_primary"
+                android:id="@+id/text_view_nama_produck_cart"
+                android:layout_marginLeft="63dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:maxLines="2"/>
+
+            <TextView
+                android:id="@+id/text_view_cicilan_cart"
+                android:textColor="@color/colorAccent"
+                android:textSize="@dimen/size_text_thridary"
+                android:layout_below="@+id/text_view_nama_produck_cart"
+                android:layout_marginLeft="63dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Spinner
+                android:layout_below="@+id/image_view_cart_produk"
+                android:id="@+id/spinner_jumlah_stock_cart"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"></Spinner>
+
+            <TextView
+                android:paddingRight="4dp"
+                android:layout_below="@+id/image_view_cart_produk"
+                android:layout_toRightOf="@id/spinner_jumlah_stock_cart"
+                android:textColor="@android:color/black"
+                android:id="@+id/text_view_harga_barang"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+        <View
+            android:background="@color/black_alpha_40"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"></View>
+
+    </LinearLayout>
+    <TextView
+        android:textSize="@dimen/size_text_secondary"
+        android:text="SUBTOTAL"
+        android:paddingBottom="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/text_view_total_harga"
+        android:text="Rp24.500.000"
+        android:paddingBottom="2dp"
+        android:textStyle="bold"
+        android:textSize="@dimen/size_text_primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:textSize="@dimen/size_text_thridary"
+        android:text="Belum termasuk biaya kirim dan asuransi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"/>
+
+    <Button
+        android:text="@string/bayar"
+        android:textColor="@android:color/white"
+        android:background="@color/colorDaftar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="4dp"/>
+
+
+
+</LinearLayout>

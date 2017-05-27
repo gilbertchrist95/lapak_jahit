@@ -20,10 +20,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import cilok.com.lapakjahit.CustomSampleActivity;
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.callback.ImageService;
 import cilok.com.lapakjahit.callback.ServiceGenerator;
-import cilok.com.lapakjahit.entity.ResponseBodytest;
+import cilok.com.lapakjahit.entity.UploadImage;
 import cilok.com.lapakjahit.log.L;
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -56,6 +57,12 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         buttonChat = (Button) findViewById(R.id.button_message);
+        buttonChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                testss();
+            }
+        });
 
 //        Retrofit retrofit = new Retrofit.Builder()
 //                .baseUrl("https://api.bukalapak.com/v2/")
@@ -103,6 +110,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
+    private void testss() {
+        startActivity(new Intent(this, CustomSampleActivity.class));
+    }
 
 
     private void uploadImage() {
@@ -121,11 +131,11 @@ public class ProfileActivity extends AppCompatActivity {
 //                .setClient(new OkClient(client))
 //                .build();
 //        ImageService service = restAdapter.create(ImageService.class);
-        service.UploadFile(typedFile, new Callback<ResponseBodytest>() {
+        service.UploadFile(typedFile, new Callback<UploadImage>() {
             @Override
-            public void success(ResponseBodytest responseBodytest, retrofit.client.Response response) {
-//                if (responseBodytest.getStatus()!=null){
-                L.m("respons:" + responseBodytest.getStatus());
+            public void success(UploadImage uploadImage, retrofit.client.Response response) {
+//                if (uploadImage.getStatus()!=null){
+                L.m("respons:" + uploadImage.getStatus());
 //                }
             }
 
@@ -157,6 +167,7 @@ public class ProfileActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
     }
 
@@ -197,15 +208,15 @@ public class ProfileActivity extends AppCompatActivity {
 //        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), reqFile);
 //        MultipartBody.Part body2 = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
 //        RequestBody name = RequestBody.create(MediaType.parse("image/*"), file);
-//        imageService.upload(body2).enqueue(new Callback<ResponseBodytest>() {
+//        imageService.upload(body2).enqueue(new Callback<UploadImage>() {
 //            @Override
-//            public void onResponse(Call<ResponseBodytest> call, retrofit2.Response<ResponseBodytest> response) {
+//            public void onResponse(Call<UploadImage> call, retrofit2.Response<UploadImage> response) {
 //                    L.m("IIIIIIIIIIIIIIIII: "+response.body()+"");
 ////                Toast.makeText(ProfileActivity.this, "this"+response.body().getStatus(), Toast.LENGTH_SHORT).show();
 //            }
 //
 //            @Override
-//            public void onFailure(Call<ResponseBodytest> call, Throwable t) {
+//            public void onFailure(Call<UploadImage> call, Throwable t) {
 //
 //            }
 //        });

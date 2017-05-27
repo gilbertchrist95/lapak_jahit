@@ -7,10 +7,10 @@ import retrofit.http.POST;
 import retrofit.mime.TypedInput;
 
 /**
- * Created by Gilbert on 5/26/2017.
+ * Created by Gilbert on 5/27/2017.
  */
 
-public interface CreateProductService {
+public interface InvoicesService {
     @POST("/products.json")
-    void createProduct(@Body TypedInput body,  Callback<Response> callback);
+    void createInvoice(@Body TypedInput body, Callback<Response> callback);
 }

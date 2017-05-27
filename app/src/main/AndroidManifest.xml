@@ -62,8 +62,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cilok.com.lapakjahit.activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.ProductActivity"></activity>
-        <activity android:name=".CreateProductActivity"></activity>
+        <activity android:name=".activities.ProductActivity" />
+        <activity android:name=".CreateProductActivity" />
+        <activity android:name=".CustomSampleActivity"></activity>
     </application>
 
 </manifest>

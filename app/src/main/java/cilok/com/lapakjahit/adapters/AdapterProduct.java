@@ -19,10 +19,16 @@ import java.util.ArrayList;
 
 import cilok.com.lapakjahit.activities.ProductActivity;
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.callback.CartService;
+import cilok.com.lapakjahit.callback.ServiceGenerator;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.extras.Constants;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
+import retrofit.mime.TypedByteArray;
 
 /**
  * Created by Gilbert on 5/19/2017.
@@ -66,7 +72,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     public void onBindViewHolder(ViewHolderProduct holder, int position) {
 
 //        L.m(position + "");
-        Product currentProduct = mListFavorite.get(position);
+        final Product currentProduct = mListFavorite.get(position);
         String[] smallImage = currentProduct.getImages();
 //        L.m("SMmaal Image: " + smallImage[0]);
         loadImages(smallImage[0], holder);
@@ -75,6 +81,20 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
             @Override
             public void onClick(View view) {
                 L.m("button buy clicked");
+                String id_produk = currentProduct.getId();
+                CartService cartService = ServiceGenerator.createService(CartService.class,"3051175","qYFEGyXVlo8uveKXurvJ");
+                cartService.addProductToCart(id_produk, 2, new Callback<Response>() {
+                    @Override
+                    public void success(Response response, Response response2) {
+                        String json =new String (((TypedByteArray)response.getBody()).getBytes());
+                        L.m(json);
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+
+                    }
+                });
             }
         });
         Product.DealInfoBean dealInfo = currentProduct.getDealInfo();

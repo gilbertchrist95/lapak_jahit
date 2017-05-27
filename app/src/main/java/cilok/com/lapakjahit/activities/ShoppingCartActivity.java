@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -15,12 +16,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.adapters.AdapterShoppingCart;
 import cilok.com.lapakjahit.callback.GetCartCallback;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.Cart;
 import cilok.com.lapakjahit.tasks.TaskCart;
 
-public class ShoppingCartActivity extends AppCompatActivity {
+public class ShoppingCartActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     private Toolbar toolbar;
     private ImageView imageViewEmptyCart;
@@ -28,6 +30,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private SwipeRefreshLayout mSwipeRefreshCart;
     private RecyclerView mListCart;
     private TaskCart taskCart;
+    private AdapterShoppingCart mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,24 +43,31 @@ public class ShoppingCartActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        imageViewEmptyCart = (ImageView)findViewById(R.id.imageViewEmptyCart);
-        mSwipeRefreshCart = (SwipeRefreshLayout)findViewById(R.id.swipeCart);
-        mListCart = (RecyclerView)findViewById(R.id.listCart);
-
+        imageViewEmptyCart = (ImageView) findViewById(R.id.imageViewEmptyCart);
+        mSwipeRefreshCart = (SwipeRefreshLayout) findViewById(R.id.swipeCart);
+        mSwipeRefreshCart.setOnRefreshListener(this);
+        mListCart = (RecyclerView) findViewById(R.id.listCart);
+        mListCart = (RecyclerView) findViewById(R.id.listMessageInbox);
+        //set the layout manager before trying to display data
+        mListCart.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        mAdapter = new AdapterShoppingCart(getApplicationContext());
+        mListCart.setAdapter(mAdapter);
 
 
         userController = new UserController(this);
 
-        if (authenticate()==true){
+        if (authenticate() == true) {
+            mSwipeRefreshCart.setRefreshing(true);
             imageViewEmptyCart.setVisibility(View.GONE);
             taskCart = new TaskCart(this);
             taskCart.getCartDataInBackground(new GetCartCallback() {
                 @Override
                 public void onGetCartsLoadedListener(ArrayList<Cart> listCarts) {
-                   
+                    mAdapter.setListCart(listCarts);
+                    mSwipeRefreshCart.setRefreshing(false);
                 }
             });
-        }else{
+        } else {
             mSwipeRefreshCart.setEnabled(false);
         }
     }
@@ -76,7 +86,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if (id == android.R.id.home){
+        if (id == android.R.id.home) {
             NavUtils.navigateUpFromSameTask(this);
             finish();
         }
@@ -89,4 +99,8 @@ public class ShoppingCartActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onRefresh() {
+
+    }
 }
