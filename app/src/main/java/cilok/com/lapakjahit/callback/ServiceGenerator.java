@@ -33,13 +33,13 @@ public class ServiceGenerator {
 
     public static <S> S createService(Class<S> serviceClass, String username, String password) {
         OkHttpClient client = new OkHttpClient();
-        client.setConnectTimeout(10000, TimeUnit.SECONDS);
-        client.setReadTimeout(10000, TimeUnit.SECONDS);
+        client.setConnectTimeout(100000, TimeUnit.SECONDS);
+        client.setReadTimeout(100000, TimeUnit.SECONDS);
 
         RestAdapter.Builder restAdapter= new RestAdapter.Builder()
                 .setEndpoint("https://api.bukalapak.com/v2")
                 .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setClient(new OkClient(client));;
+                .setClient(new OkClient(client));
 //        L.m(username+":"+password);
         if (username != null && password != null) {
             // concatenate username and password with colon for authentication
@@ -53,6 +53,35 @@ public class ServiceGenerator {
                 public void intercept(RequestFacade request) {
                     request.addHeader("Authorization", basic);
 //                    request.addHeader("Content-Type", "application/json");
+                }
+            });
+        }
+        RestAdapter adapter = restAdapter.build();
+        return adapter.create(serviceClass);
+    }
+
+    public static <S> S createServiceUploadProduct(Class<S> serviceClass, String username, String password) {
+        OkHttpClient client = new OkHttpClient();
+        client.setConnectTimeout(100000, TimeUnit.SECONDS);
+        client.setReadTimeout(100000, TimeUnit.SECONDS);
+
+        RestAdapter.Builder restAdapter= new RestAdapter.Builder()
+                .setEndpoint("https://api.bukalapak.com/v2")
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setClient(new OkClient(client));
+//        L.m(username+":"+password);
+        if (username != null && password != null) {
+            // concatenate username and password with colon for authentication
+            String credentials = username + ":" + password;
+            // create Base64 encodet string
+            final String basic =
+                    "Basic " + Base64.encodeToString(credentials.getBytes(), Base64.NO_WRAP);
+
+            restAdapter.setRequestInterceptor(new RequestInterceptor() {
+                @Override
+                public void intercept(RequestFacade request) {
+                    request.addHeader("Authorization", basic);
+                    request.addHeader("Content-Type", "application/json");
                 }
             });
         }

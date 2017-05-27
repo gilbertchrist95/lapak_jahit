@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/custom_imageview_height"
                 android:layout_weight="0.33"
-                android:src="@mipmap/ic_fp_jeans" />
+                android:src="@drawable/ic_fp_baju_koko" />
             />
             <TextView
                 android:id="@+id/text_fp_baju_koko"

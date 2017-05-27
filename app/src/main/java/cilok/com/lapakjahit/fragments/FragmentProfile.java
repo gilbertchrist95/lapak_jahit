@@ -12,6 +12,7 @@ import android.widget.Button;
 import java.io.File;
 import java.io.FileInputStream;
 
+import cilok.com.lapakjahit.CreateProductActivity;
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.activities.InboxMessageActivity;
 import cilok.com.lapakjahit.activities.ProfileActivity;
@@ -35,7 +36,8 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
         View layout = inflater.inflate(R.layout.fragment_profile, container, false);
         buttonChat = (Button)layout.findViewById(R.id.button_message);
         buttonChat.setOnClickListener(this);
-
+        Button buttonCP = (Button)layout.findViewById(R.id.button_create_p);
+        buttonCP.setOnClickListener(this);
 
         return  layout;
     }
@@ -46,6 +48,9 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
             case R.id.button_message:
 //                startActivity(new Intent(getActivity(), InboxMessageActivity.class));
                 startActivity(new Intent(getActivity(), ProfileActivity.class));
+                break;
+            case R.id.button_create_p:
+                startActivity(new Intent(getActivity(), CreateProductActivity.class));
                 break;
         }
     }

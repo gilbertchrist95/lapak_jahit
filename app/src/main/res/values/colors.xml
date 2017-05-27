@@ -10,4 +10,5 @@
     <color name="logoBL">#ce0f45</color>
     <color name="colorHighlight">#b9084c</color>
     <color name="bgslider">#f3f3f3</color>
+    <color name="black_alpha_40">#66000000</color>
 </resources>

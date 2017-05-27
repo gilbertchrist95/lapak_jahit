@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import cilok.com.lapakjahit.ImageViewActivity;
+import cilok.com.lapakjahit.SliderPreLoginSignUp;
 import cilok.com.lapakjahit.R;
 
 import java.util.Timer;
@@ -45,7 +45,7 @@ public class PreLoginSignUpActivity extends AppCompatActivity implements View.On
 
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
 
-        ImageViewActivity viewPagerAdapter = new ImageViewActivity(this);
+        SliderPreLoginSignUp viewPagerAdapter = new SliderPreLoginSignUp(this);
 
         viewPager.setAdapter(viewPagerAdapter);
 

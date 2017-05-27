@@ -21,14 +21,12 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import cilok.com.lapakjahit.R;
-import cilok.com.lapakjahit.callback.ImageServicce;
+import cilok.com.lapakjahit.callback.ImageService;
 import cilok.com.lapakjahit.callback.ServiceGenerator;
 import cilok.com.lapakjahit.entity.ResponseBodytest;
 import cilok.com.lapakjahit.log.L;
 import retrofit.Callback;
-import retrofit.RestAdapter;
 import retrofit.RetrofitError;
-import retrofit.client.OkClient;
 import retrofit.mime.TypedFile;
 //import okhttp3.logging.HttpLoggingInterceptor;
 //import retrofit2.Call;
@@ -109,20 +107,20 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void uploadImage() {
         L.m("Upload image di jalankan");
-        ImageServicce service = ServiceGenerator.createService(ImageServicce.class,"3051175","qYFEGyXVlo8uveKXurvJ");
-        TypedFile typedFile = new TypedFile("multipart/form-data", new File("/storage/emulated/0/DCIM/Camera/20170502_091416_1.jpg"));
+        ImageService service = ServiceGenerator.createService(ImageService.class,"3051175","qYFEGyXVlo8uveKXurvJ");
+        TypedFile typedFile = new TypedFile("multipart/form-data", new File(getRealPathFromURI(filePath)));
         OkHttpClient client = new OkHttpClient();
 
         client.setConnectTimeout(10000, TimeUnit.SECONDS);
         client.setReadTimeout(10000, TimeUnit.SECONDS);
 
 
-        RestAdapter restAdapter = new RestAdapter.Builder()
-                .setEndpoint("https://api.bukalapak.com/v2")
-                .setLogLevel(RestAdapter.LogLevel.FULL)
-                .setClient(new OkClient(client))
-                .build();
-//        ImageServicce service = restAdapter.create(ImageServicce.class);
+//        RestAdapter restAdapter = new RestAdapter.Builder()
+//                .setEndpoint("https://api.bukalapak.com/v2")
+//                .setLogLevel(RestAdapter.LogLevel.FULL)
+//                .setClient(new OkClient(client))
+//                .build();
+//        ImageService service = restAdapter.create(ImageService.class);
         service.UploadFile(typedFile, new Callback<ResponseBodytest>() {
             @Override
             public void success(ResponseBodytest responseBodytest, retrofit.client.Response response) {
@@ -184,12 +182,12 @@ public class ProfileActivity extends AppCompatActivity {
         return encodedImage;
     }
 
-    private ImageServicce imageServicce;
+    private ImageService imageService;
 
 
 //    private void uploadImage() {
 //
-//        imageServicce = ImageUtils.getUserService();
+//        imageService = ImageUtils.getUserService();
 //        String encodedString = Base64.encodeToString(String.format("%s:%s", "3051175", "qYFEGyXVlo8uveKXurvJ").getBytes(), Base64.NO_WRAP);
 //
 //        String value = String.format("Basic %s", encodedString);
@@ -199,7 +197,7 @@ public class ProfileActivity extends AppCompatActivity {
 //        MultipartBody.Part body = MultipartBody.Part.createFormData("file", file.getName(), reqFile);
 //        MultipartBody.Part body2 = MultipartBody.Part.createFormData("file", file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
 //        RequestBody name = RequestBody.create(MediaType.parse("image/*"), file);
-//        imageServicce.upload(body2).enqueue(new Callback<ResponseBodytest>() {
+//        imageService.upload(body2).enqueue(new Callback<ResponseBodytest>() {
 //            @Override
 //            public void onResponse(Call<ResponseBodytest> call, retrofit2.Response<ResponseBodytest> response) {
 //                    L.m("IIIIIIIIIIIIIIIII: "+response.body()+"");

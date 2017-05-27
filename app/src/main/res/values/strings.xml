@@ -71,6 +71,7 @@
     <string name="daftar_barang">Daftar Barang</string>
     <string name="salin">SALIN</string>
     <string name="detail">Detail</string>
+    <string name="longtext">Vimium-FF is a new Firefox WebExtension that is marked as experimental right now that brings Vim-like controls to the Firefox web browser. What this means? Basically, that you get a lot of keyboard shortcuts that you can use for navigation, and other browser features. Several add-ons are already available that add the functionality to the</string>
     <string-array name="list_detail">
         <item>1</item>
         <item>2</item>

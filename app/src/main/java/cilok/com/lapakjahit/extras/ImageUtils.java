@@ -1,14 +1,6 @@
 package cilok.com.lapakjahit.extras;
 
-import android.content.Context;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
-import cilok.com.lapakjahit.callback.ImageServicce;
-import cilok.com.lapakjahit.callback.UserService;
-import cilok.com.lapakjahit.json.RetrofitClient;
+import cilok.com.lapakjahit.callback.ImageService;
 
 /**
  * Created by Gilbert on 5/25/2017.
@@ -20,7 +12,7 @@ public class ImageUtils {
 
     }
 
-    public static ImageServicce getUserService(){
+    public static ImageService getUserService(){
 //        FileInputStream fileInputStream=null;
 //        try {
 //            fileInputStream = context.openFileInput("User.txt");
@@ -36,7 +28,7 @@ public class ImageUtils {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-//        return RetrofitClient.getClient().create(ImageServicce.class);
+//        return RetrofitClient.getClient().create(ImageService.class);
         return null;
     }
 

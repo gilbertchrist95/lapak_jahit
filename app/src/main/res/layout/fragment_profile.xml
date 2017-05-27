@@ -1,14 +1,10 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="cilok.com.lapakjahit.fragments.FragmentProfile">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/title_notifications" />
+
 
     <Button
         android:text="@string/chat"
@@ -16,4 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-</FrameLayout>
+
+    <Button
+        android:layout_below="@+id/button_message"
+        android:text="Create Product"
+        android:id="@+id/button_create_p"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>

@@ -16,7 +16,7 @@ import retrofit.mime.TypedFile;
  * Created by Gilbert on 5/25/2017.
  */
 ///storage/emulated/0/Pictures/1494739816839.jpg
-public interface ImageServicce {
+public interface ImageService {
 
     @Multipart
     @POST("/images.json")

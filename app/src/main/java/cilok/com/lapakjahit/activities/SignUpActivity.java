@@ -1,5 +1,6 @@
 package cilok.com.lapakjahit.activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +16,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.callback.ServiceGenerator;
 import cilok.com.lapakjahit.callback.UserService;
 import cilok.com.lapakjahit.controller.UserController;
 import cilok.com.lapakjahit.entity.UserInfo;
 import cilok.com.lapakjahit.extras.UserUtils;
 import cilok.com.lapakjahit.log.L;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 //import retrofit2.Call;
 //import retrofit2.Callback;
 //import retrofit2.Response;
@@ -75,10 +80,55 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 String passwordConfirmation = password;
                 int policy = 1;
 
-//                sendregisterNewUser(email,userName, nama,gender,password,passwordConfirmation,policy);
+                sendregisterNewUser(email,userName, nama,gender,password,passwordConfirmation,policy);
 
                 break;
         }
+    }
+
+    private void sendregisterNewUser(String email, String userName, String nama, String gender, String password, String passwordConfirmation, int policy) {
+//        progressDialog = new ProgressDialog(getApplicationContext());
+//        progressDialog.setCancelable(false);
+//        progressDialog.setTitle("Processing");
+//        progressDialog.setMessage("Please Wait...");
+//        progressDialog.show();
+        UserService userService = ServiceGenerator.createService(UserService.class);
+        userService.registerNewUser(email, userName, nama, gender, password, passwordConfirmation, policy, new Callback<UserInfo>() {
+            @Override
+            public void success(UserInfo userInfo, Response response) {
+                L.m(userInfo.getMessage());
+                L.m(userInfo.getStatus());
+                L.m(userInfo.getToken());
+                L.m(userInfo.getUser_id());
+                if (userInfo.getStatus().equals("OK")){
+                    FileOutputStream fileOutputStream=null;
+                        try {
+                            fileOutputStream = openFileOutput("User.txt",MODE_PRIVATE);
+                            fileOutputStream.write((userInfo.getUser_id()+" ").getBytes());
+                            fileOutputStream.write(userInfo.getToken().getBytes());
+                        } catch (FileNotFoundException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }finally{
+                            try {
+                                fileOutputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        userController.setUserLoggedIn(true);
+                        goToMainActivity();
+                }else{
+                    showMessageError(userInfo.getMessage());
+                }
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
     }
 
 //    private void sendregisterNewUser(String email, String userName, String nama, String gender, String password, String passwordConfirmation, int policy) {

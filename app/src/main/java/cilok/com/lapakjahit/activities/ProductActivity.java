@@ -43,14 +43,15 @@ public class ProductActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        Product productID = getIntent().getExtras().getParcelable("PRODUCT");
-        Toast.makeText(this, "" + productID.getId(), Toast.LENGTH_SHORT).show();
+        Product product = getIntent().getExtras().getParcelable("PRODUCT");
+
+        String[] imagesUrl = product.getImages();
 
         viewPager = (ViewPager) findViewById(R.id.pager);
 
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
 
-        DetailProductActivity detailProductActivity = new DetailProductActivity(this);
+        DetailProductActivity detailProductActivity = new DetailProductActivity(getApplication(),imagesUrl);
 
         viewPager.setAdapter(detailProductActivity);
 

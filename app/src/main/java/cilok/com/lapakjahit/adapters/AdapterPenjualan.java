@@ -20,20 +20,18 @@ import cilok.com.lapakjahit.entity.Transaction;
 import cilok.com.lapakjahit.extras.Constants;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
-
 /**
- * Created by Gilbert on 5/26/2017.
+ * Created by Gilbert on 5/27/2017.
  */
 
-public class AdapterPP extends RecyclerView.Adapter<AdapterPP.ViewHolderTransaksiPembelian> {
+public class AdapterPenjualan extends RecyclerView.Adapter<AdapterPenjualan.ViewHolderTransaksiPenjualan>{
     static ArrayList<Transaction> mListTransaction = new ArrayList<>();
     private LayoutInflater mInflater;
     private VolleySingleton mVolleySingleton;
     private ImageLoader mImageLoader;
     private Context mContext;
 
-
-    public AdapterPP(Context mContext) {
+    public AdapterPenjualan(Context mContext) {
         this.mContext = mContext;
         mInflater = LayoutInflater.from(mContext);
         mVolleySingleton = VolleySingleton.getInstance();
@@ -46,14 +44,15 @@ public class AdapterPP extends RecyclerView.Adapter<AdapterPP.ViewHolderTransaks
     }
 
     @Override
-    public ViewHolderTransaksiPembelian onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolderTransaksiPenjualan onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_pp, parent, false);
-        ViewHolderTransaksiPembelian viewHolderTagihan = new ViewHolderTransaksiPembelian(view, mContext);
-        return viewHolderTagihan;
+        ViewHolderTransaksiPenjualan viewHolderTransaksiPenjualan = new ViewHolderTransaksiPenjualan(view,mContext);
+        return viewHolderTransaksiPenjualan;
+
     }
 
     @Override
-    public void onBindViewHolder(ViewHolderTransaksiPembelian holder, int position) {
+    public void onBindViewHolder(ViewHolderTransaksiPenjualan holder, int position) {
         Transaction currentTransaction = mListTransaction.get(position);
         holder.textViewState.setText(currentTransaction.getState());
         holder.textViewHarga.setText("Rp " + currentTransaction.getAmount());
@@ -62,16 +61,14 @@ public class AdapterPP extends RecyclerView.Adapter<AdapterPP.ViewHolderTransaks
         String[] images = product.get(0).getSmall_images();
         loadImages(images[0],holder);
         holder.textViewNama.setText(product.get(0).getName());
-
     }
-
 
     @Override
     public int getItemCount() {
         return mListTransaction.size();
     }
 
-    private void loadImages(String urlThumbnail, final AdapterPP.ViewHolderTransaksiPembelian holder) {
+    private void loadImages(String urlThumbnail, final AdapterPenjualan.ViewHolderTransaksiPenjualan holder) {
         if (!urlThumbnail.equals(Constants.NA)) {
             mImageLoader.get(urlThumbnail, new ImageLoader.ImageListener() {
                 @Override
@@ -88,27 +85,24 @@ public class AdapterPP extends RecyclerView.Adapter<AdapterPP.ViewHolderTransaks
         }
     }
 
-    static class ViewHolderTransaksiPembelian extends RecyclerView.ViewHolder implements View.OnClickListener {
+    static class ViewHolderTransaksiPenjualan extends RecyclerView.ViewHolder implements View.OnClickListener{
         private Context context;
         private ImageView imageViewProduk;
         private TextView textViewNama, textViewState, textViewHarga;
 
-        public ViewHolderTransaksiPembelian(View itemView, final Context context) {
+        public ViewHolderTransaksiPenjualan(View itemView, final Context context) {
             super(itemView);
             this.context = context;
             imageViewProduk = (ImageView) itemView.findViewById(R.id.imageview_product_pembelian);
             textViewHarga = (TextView) itemView.findViewById(R.id.textview_harga_produk_pembelian_);
             textViewNama = (TextView) itemView.findViewById(R.id.textview__name_produk_pembelian);
             textViewState = (TextView) itemView.findViewById(R.id.textview__state_produk_pembelian);
-
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view) {
-            int index = getAdapterPosition();
-            Transaction transaction = mListTransaction.get(index);
-
+            Transaction transaction= mListTransaction.get(getAdapterPosition());
         }
     }
 }
