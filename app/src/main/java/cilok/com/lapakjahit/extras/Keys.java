@@ -354,6 +354,12 @@ public interface Keys {
         public static final String KEY_id_fungsi_bahan = "id_fungsi_bahan";
 //        public static final String KEY_keterangan_bahan = "keterangan_bahan";
         public static final String KEY_bahan_dalam = "bahan_dalam";
+        public static final String KEY_teks = "teks";
+        public static final String KEY_id_teks = "id_teks";
+        public static final String KEY_custom_teks = "custom";
+        public static final String KEY_tipe = "tipe";
+        public static final String KEY_id_tipe = "id_tipe";
+        public static final String KEY_tipe_jeans = "tipe_jeans";
 //        public static final String KEY_ = "kategori";
 //        public static final String KEY_ = "kategori";
 //        public static final String KEY_ = "kategori";
