@@ -1524,7 +1524,11 @@ public class Parser {
 
     public static Custom3 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
 
+<<<<<<< HEAD
         Custom3 custom3 = new Custom3();
+=======
+        Custom3 custom2 = new Custom3();
+>>>>>>> a22c500ea410fe53a75b9e69b269bfe9ac2e0e26
         Product product = new Product();
         List<Custom3.KategoriBean> kategori = new ArrayList<>();
         Custom3.KategoriBean kategoriBean = new Custom3.KategoriBean();
