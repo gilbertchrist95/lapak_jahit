@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Gilbert on 5/28/2017.
  */
 
-public class Custom2 {
+public class Custom3 {
 
     /**
      * id_produk : 4o1k3z

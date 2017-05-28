@@ -18,6 +18,8 @@ import cilok.com.lapakjahit.adapters.AdapterHome;
 import cilok.com.lapakjahit.controller.CategoryData;
 import cilok.com.lapakjahit.view.SliderIklanHome;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class FragmentHome extends Fragment {
 
     ViewPager viewPagerIklan;
@@ -32,18 +34,27 @@ public class FragmentHome extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View layout = inflater.inflate(R.layout.fragment_main, container, false);
+
         viewPagerIklan = (ViewPager) layout.findViewById(R.id.pager_iklan);
+
         sliderDotspanel = (LinearLayout) layout.findViewById(R.id.SliderDots);
+
         SliderIklanHome sliderIklanHome = new SliderIklanHome(getActivity());
+
         viewPagerIklan.setAdapter(sliderIklanHome);
+
         AdapterHome adapterHome = new AdapterHome(CategoryData.getData(),getActivity());
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), OrientationHelper.HORIZONTAL,false);
+
         RecyclerView mRecyclerView = (RecyclerView)layout.findViewById(R.id.listkategorypria);
+
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
         mRecyclerView.setAdapter(adapterHome);
 
         dotscount = sliderIklanHome.getCount();
@@ -51,7 +62,7 @@ public class FragmentHome extends Fragment {
 
         for (int i = 0; i < dotscount; i++) {
             dots[i] = new ImageView(getActivity());
-            dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.nonactive_dot));
+            dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             params.setMargins(8, 0, 8, 0);
             sliderDotspanel.addView(dots[i], params);

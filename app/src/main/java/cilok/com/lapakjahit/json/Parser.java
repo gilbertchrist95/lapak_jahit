@@ -10,7 +10,7 @@ import java.util.List;
 
 import cilok.com.lapakjahit.entity.Cart;
 import cilok.com.lapakjahit.entity.Custom1;
-import cilok.com.lapakjahit.entity.Custom2;
+import cilok.com.lapakjahit.entity.Custom3;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.entity.Transaction;
@@ -1522,16 +1522,16 @@ public class Parser {
         return custom1;
     }
 
-    public static Custom2 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
+    public static Custom3 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
 
-        Custom2 custom2 = new Custom2();
+        Custom3 custom2 = new Custom3();
         Product product = new Product();
-        List<Custom2.KategoriBean> kategori = new ArrayList<>();
-        Custom2.KategoriBean kategoriBean = new Custom2.KategoriBean();
-        Custom2.BahanBean bahan = new Custom2.BahanBean();
-        List<Custom2.UkuranBean> ukuran = new ArrayList<>();
-        List<Custom2.WarnaBean> warna = new ArrayList<>();
-        List<Custom2.MotifBean> motif = new ArrayList<>();
+        List<Custom3.KategoriBean> kategori = new ArrayList<>();
+        Custom3.KategoriBean kategoriBean = new Custom3.KategoriBean();
+        Custom3.BahanBean bahan = new Custom3.BahanBean();
+        List<Custom3.UkuranBean> ukuran = new ArrayList<>();
+        List<Custom3.WarnaBean> warna = new ArrayList<>();
+        List<Custom3.MotifBean> motif = new ArrayList<>();
 
         try {
             product = parseProduct(responseProductBL);
@@ -1547,12 +1547,12 @@ public class Parser {
             kategori.add(kategoriBean);
 
             JSONObject objectBahan = responseProducrCustom2.getJSONObject(KEY_bahan);
-            Custom2.BahanBean bahanBean2 = new Custom2.BahanBean();
+            Custom3.BahanBean bahanBean2 = new Custom3.BahanBean();
             JSONArray arrayBahanluar = objectBahan.getJSONArray(KEY_bahan_luar);
 
-            List<Custom2.BahanBean.BahanLuarBean> bahanLuar = new ArrayList<>();
+            List<Custom3.BahanBean.BahanLuarBean> bahanLuar = new ArrayList<>();
             for (int j = 0; j < arrayBahanluar.length(); j++) {
-                Custom2.BahanBean.BahanLuarBean bahanLuarBean = new Custom2.BahanBean.BahanLuarBean();
+                Custom3.BahanBean.BahanLuarBean bahanLuarBean = new Custom3.BahanBean.BahanLuarBean();
                 JSONObject objectBahanLuar = arrayBahanluar.getJSONObject(j);
                 String id_bahan = objectBahanLuar.getString(KEY_id_bahan);
                 String id_fungsi_bahan = objectBahanLuar.getString(KEY_id_fungsi_bahan);
@@ -1567,9 +1567,9 @@ public class Parser {
             }
 
             JSONArray arrayBahanDalam = objectBahan.getJSONArray(KEY_bahan_dalam);
-            List<Custom2.BahanBean.BahanDalamBean> bahanDalam = new ArrayList<>();
+            List<Custom3.BahanBean.BahanDalamBean> bahanDalam = new ArrayList<>();
             for (int j = 0; j < arrayBahanDalam.length(); j++) {
-                Custom2.BahanBean.BahanDalamBean bahanDalamBean = new Custom2.BahanBean.BahanDalamBean();
+                Custom3.BahanBean.BahanDalamBean bahanDalamBean = new Custom3.BahanBean.BahanDalamBean();
                 JSONObject objectBahanDalam = arrayBahanDalam.getJSONObject(j);
                 String id_bahan = objectBahanDalam.getString(KEY_id_bahan);
                 String id_fungsi_bahan = objectBahanDalam.getString(KEY_id_fungsi_bahan);
@@ -1590,7 +1590,7 @@ public class Parser {
             JSONArray arrayUkuran = responseProducrCustom2.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
             for (int i = 0; i < arrayUkuran.length(); i++) {
                 JSONObject currentUkuran = arrayUkuran.getJSONObject(i);
-                Custom2.UkuranBean ukuranBean = new Custom2.UkuranBean();
+                Custom3.UkuranBean ukuranBean = new Custom3.UkuranBean();
                 String ukuranCustom = currentUkuran.getString(KEY_ukuran);
                 String keteranganProduk = currentUkuran.getString(KEY_keterangan_ukuran);
                 ukuranBean.setUkuran(ukuranCustom);
@@ -1601,7 +1601,7 @@ public class Parser {
             JSONArray arrayWarna = responseProducrCustom2.getJSONArray(KEY_warna);
             for (int i = 0; i < arrayWarna.length(); i++) {
                 JSONObject currentWarna = arrayWarna.getJSONObject(i);
-                Custom2.WarnaBean warnaBean = new Custom2.WarnaBean();
+                Custom3.WarnaBean warnaBean = new Custom3.WarnaBean();
                 String kode_hexa = currentWarna.getString(KEY_kode_hexa);
                 String keterangan_warna = currentWarna.getString(KEY_keterangan_warna);
                 warnaBean.setKode_hexa(kode_hexa);
@@ -1612,7 +1612,7 @@ public class Parser {
             JSONArray arrayMotif = responseProductBL.getJSONArray(KEY_motif);
             for (int i = 0; i < arrayMotif.length(); i++) {
                 JSONObject currentMotif = arrayMotif.getJSONObject(i);
-                Custom2.MotifBean motifBean = new Custom2.MotifBean();
+                Custom3.MotifBean motifBean = new Custom3.MotifBean();
                 String nama_motif = currentMotif.getString(KEY_nama_motif);
                 String path_gambar_motif = currentMotif.getString(KEY_path_gambar_motif);
                 String url_gambar = currentMotif.getString(KEY_url_gambar);
