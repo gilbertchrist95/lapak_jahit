@@ -20,19 +20,19 @@ import cilok.com.lapakjahit.callback.GetCustomProductCallback;
 import cilok.com.lapakjahit.entity.Custom1;
 import cilok.com.lapakjahit.log.L;
 import cilok.com.lapakjahit.network.VolleySingleton;
-import cilok.com.lapakjahit.tasks.TaskCustomProduct1;
+import cilok.com.lapakjahit.tasks.TaskCustomProduct;
 
 public class ActivityListCustomProduk1 extends AppCompatActivity {
-    String url = "http://bda55784.ngrok.io/lapakjahit/api/produk_kustom/product?id_kategori=";
+    TaskCustomProduct taskCustomProduct = new TaskCustomProduct();
+    String url = "http://bda55784.ngrok.io/lapakjahit/api/produk_kustom/product?id_kategori=1&detail=0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_custom_produk1);
-        final int id_category = getIntent().getExtras().getInt("ID_CATEGORY");
-        final int tipe_produk = getTipeProduk(id_category);
-        L.m("id kategori: "+id_category);
-        L.m("tipe_produk: "+tipe_produk);
+        int id_category = getIntent().getExtras().getInt("ID_CATEGORY");
+        int tipe_produk = getTipeProduk(id_category);
+        Toast.makeText(this, "cat: " + tipe_produk, Toast.LENGTH_SHORT).show();
 
         VolleySingleton volleySingleton = new VolleySingleton();
         RequestQueue requestQueue = volleySingleton.getRequestQueue();
@@ -46,9 +46,7 @@ public class ActivityListCustomProduk1 extends AppCompatActivity {
                         id_produk[i] = arrayProduk.getJSONObject(i).getString("id_produk");
                         L.m("Id produk: " + id_produk[i]);
                     }
-                    requestProduct(tipe_produk, id_produk);
-
-
+                    requestProduct(id_produk);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -62,18 +60,9 @@ public class ActivityListCustomProduk1 extends AppCompatActivity {
 
     }
 
-    private void requestProduct(int tipe_produk , String[] id_produk) {
-        switch (tipe_produk){
-            case 1:
-                requestProductCategory1(id_produk);
-                break;
-
-        }
-    }
-
-    private void requestProductCategory1(String[] id_produk) {
-        TaskCustomProduct1 taskCustomProduct1 = new TaskCustomProduct1();
-        taskCustomProduct1.getCustomProductDataInBackground(new GetCustomProductCallback() {
+    private void requestProduct(String[] id_produk) {
+        TaskCustomProduct taskCustomProduct = new TaskCustomProduct();
+        taskCustomProduct.getCustomProductDataInBackground(new GetCustomProductCallback() {
             @Override
             public void onGetCustomProductLoadedListener(ArrayList<Custom1> listCarts) {
 //                Toast.makeText(ActivityListCustokmProduk1.this, "custom1: "+listCarts.size(), Toast.LENGTH_SHORT).show();

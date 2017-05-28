@@ -13,6 +13,7 @@ import cilok.com.lapakjahit.entity.Custom1;
 import cilok.com.lapakjahit.entity.Custom2;
 import cilok.com.lapakjahit.entity.Custom3;
 import cilok.com.lapakjahit.entity.Custom4;
+import cilok.com.lapakjahit.entity.Custom5;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.entity.Transaction;
@@ -69,8 +70,11 @@ import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_custo
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_bahan;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_fungsi_bahan;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_jenis;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_keterangan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_panjang;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_teks;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_tipe;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_ukuran_panjang;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_bahan;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_ukuran;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_warna;
@@ -82,6 +86,7 @@ import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_motif;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_path_gambar_motif;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_teks;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_tipe;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_tipe_jeans;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_ukuran;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_url_gambar;
@@ -1603,9 +1608,7 @@ public class Parser {
             for (int i = 0; i < arrayTeks.length(); i++) {
                 JSONObject currentTeks = arrayTeks.getJSONObject(i);
                 Custom2.Teks teks = new Custom2.Teks();
-                String id_teks = currentTeks.getString(KEY_id_teks);
                 String custom = currentTeks.getString(KEY_custom_teks);
-                teks.setId_teks(id_teks);
                 teks.setCustom(custom);
                 teksList.add(teks);
             }
@@ -1797,13 +1800,11 @@ public class Parser {
                 warnaList.add(warna);
             }
 
-            JSONArray arrayTipe = responseProductCustom4.getJSONArray(KEY_teks);
+            JSONArray arrayTipe = responseProductCustom4.getJSONArray(KEY_tipe);
             for (int i = 0; i < arrayTipe.length(); i++) {
                 JSONObject currentTipe = arrayTipe.getJSONObject(i);
                 Custom4.Tipe tipe = new Custom4.Tipe();
-                String id_tipe = currentTipe.getString(KEY_id_tipe);
                 String tipe_jeans = currentTipe.getString(KEY_tipe_jeans);
-                tipe.setId_tipe(id_tipe);
                 tipe.setTipe_jeans(tipe_jeans);
                 tipeList.add(tipe);
             }
@@ -1820,6 +1821,91 @@ public class Parser {
             e.printStackTrace();
         }
         return custom4;
+
+    }
+
+    public static Custom5 parseCustomList5(JSONObject responseProductBL, JSONObject responseProductCustom5) {
+        Custom5 custom5 = new Custom5();
+        Product product = new Product();
+
+        List<Custom5.Kategori> kategoriList = new ArrayList<>();
+        Custom5.Kategori kategori = new Custom5.Kategori();
+        List<Custom5.Bahan> bahanList = new ArrayList<>();
+        List<Custom5.Ukuran> ukuranList = new ArrayList<>();
+        List<Custom5.Warna> warnaList = new ArrayList<>();
+        List<Custom5.Tipe> tipeList = new ArrayList<>();
+
+        try {
+            product = parseProduct(responseProductBL.getJSONObject(KEY_PRODUCT));
+
+            JSONArray arrayKategori = responseProductCustom5.getJSONArray(Keys.EndpointGetCustomProduk.KEY_kategori);
+            JSONObject objectKategori = arrayKategori.getJSONObject(0);
+            String nama_fashion = objectKategori.getString(KEY_nama_fashion);
+            String nama_kategori = objectKategori.getString(KEY_nama_kategori);
+            String id_jenis = objectKategori.getString(KEY_id_jenis);
+            kategori.setId_jenis(id_jenis);
+            kategori.setNama_fashion(nama_fashion);
+            kategori.setNama_kategori(nama_kategori);
+            kategoriList.add(kategori);
+
+            JSONArray arrayBahan = responseProductCustom5.getJSONArray(Keys.EndpointGetCustomProduk.KEY_bahan);
+            for (int i = 0; i < arrayBahan.length(); i++) {
+                JSONObject currentBahan = arrayBahan.getJSONObject(i);
+                Custom5.Bahan bahan = new Custom5.Bahan();
+                String namaBahan = currentBahan.getString(KEY_nama_bahan);
+                String keterangan_bahan = currentBahan.getString(KEY_keterangan_bahan);
+                bahan.setNama_bahan(namaBahan);
+                bahan.setKeterangan_bahan(keterangan_bahan);
+                bahanList.add(bahan);
+            }
+
+            JSONArray arrayUkuran = responseProductCustom5.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
+            for (int i = 0; i < arrayUkuran.length(); i++) {
+                JSONObject currentUkuran = arrayUkuran.getJSONObject(i);
+                Custom5.Ukuran ukuran = new Custom5.Ukuran();
+                String ukuranCustom = currentUkuran.getString(KEY_ukuran);
+                String keteranganProduk = currentUkuran.getString(KEY_keterangan_ukuran);
+                ukuran.setUkuran(ukuranCustom);
+                ukuran.setKeterangan_ukuran(keteranganProduk);
+                ukuranList.add(ukuran);
+            }
+
+            JSONArray arrayWarna = responseProductCustom5.getJSONArray(KEY_warna);
+            for (int i = 0; i < arrayWarna.length(); i++) {
+                JSONObject currentWarna = arrayWarna.getJSONObject(i);
+                Custom5.Warna warna = new Custom5.Warna();
+                String kode_hexa = currentWarna.getString(KEY_kode_hexa);
+                String keterangan_warna = currentWarna.getString(KEY_keterangan_warna);
+                warna.setKode_hexa(kode_hexa);
+                warna.setKeterangan_warna(keterangan_warna);
+                warnaList.add(warna);
+            }
+
+            JSONArray arrayTipe = responseProductCustom5.getJSONArray(KEY_tipe);
+            for (int i = 0; i < arrayTipe.length(); i++) {
+                JSONObject currentTipe = arrayTipe.getJSONObject(i);
+                Custom5.Tipe tipe = new Custom5.Tipe();
+                String id_panjang = currentTipe.getString(KEY_id_panjang);
+                String id_ukuran_panjang = currentTipe.getString(KEY_id_ukuran_panjang);
+                String id_keterangan = currentTipe.getString(KEY_id_keterangan);
+                tipe.setId_panjang(id_panjang);
+                tipe.setId_ukuran_panjang(id_ukuran_panjang);
+                tipe.setKeterangan(id_keterangan);
+                tipeList.add(tipe);
+            }
+
+
+            custom5.setProduct(product);
+            custom5.setKategori(kategoriList);
+            custom5.setUkuran(ukuranList);
+            custom5.setBahan(bahanList);
+            custom5.setWarna(warnaList);
+            custom5.setTipe(tipeList);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return custom5;
 
     }
 

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import cilok.com.lapakjahit.callback.GetCustomProductCallback;
 import cilok.com.lapakjahit.entity.Custom1;
 import cilok.com.lapakjahit.network.VolleySingleton;
-import cilok.com.lapakjahit.tasks.TaskCustomProduct1;
+import cilok.com.lapakjahit.tasks.TaskCustomProduct;
 
 public class CustomSampleActivity extends AppCompatActivity {
 
@@ -69,8 +69,8 @@ public class CustomSampleActivity extends AppCompatActivity {
     }
 
     private void requestProduct(String[] id_produk) {
-        TaskCustomProduct1 taskCustomProduct1 = new TaskCustomProduct1();
-        taskCustomProduct1.getCustomProductDataInBackground(new GetCustomProductCallback() {
+        TaskCustomProduct taskCustomProduct = new TaskCustomProduct();
+        taskCustomProduct.getCustomProductDataInBackground(new GetCustomProductCallback() {
             @Override
             public void onGetCustomProductLoadedListener(ArrayList<Custom1> listCarts) {
 

@@ -24,6 +24,7 @@ public class Custom5 {
     private List<Ukuran> ukuran;
     private List<Warna> warna;
     private List<Tipe> tipe;
+    private Product product;
 
     public Product getProduct() {
         return product;
@@ -32,8 +33,6 @@ public class Custom5 {
     public void setProduct(Product product) {
         this.product = product;
     }
-
-    private Product product;
 
     public String getId_produk() {
         return id_produk;
