@@ -47,7 +47,7 @@
                 android:id="@+id/tambah"
                 android:text="Tambah"
                 android:textAllCaps="false"
-                android:layout_toLeftOf="@id/detail"
+                android:layout_toLeftOf="@+id/detail"
                 android:background="#ce0f45"
                 android:textColor="#FFFFFF"
                 android:layout_width="wrap_content"
