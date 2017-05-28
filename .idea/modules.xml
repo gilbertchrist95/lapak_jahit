@@ -4,6 +4,12 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LapakJahit.iml" filepath="$PROJECT_DIR$/LapakJahit.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+<<<<<<< HEAD
+=======
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lapakjahit.iml" filepath="$PROJECT_DIR$/lapakjahit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lapakjahit.iml" filepath="$PROJECT_DIR$/lapakjahit.iml" />
+>>>>>>> 9c54fc5f7162790e799f845d0600eafdb17be4cb
     </modules>
   </component>
 </project>

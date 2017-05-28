@@ -5,19 +5,180 @@
     tools:context="cilok.com.lapakjahit.fragments.FragmentProfile">
 
 
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/notification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_notifications" />
+
+    <TextView
+        android:text="BukaDompet"
+        android:id="@+id/buka_dompet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/notification"
+        android:textAllCaps="true"/>
+
+    <RelativeLayout
+        android:id="@+id/layout_linear"
+        android:layout_below="@+id/buka_dompet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Rp0"
+            android:id="@+id/rupiah"
+            android:textStyle="bold"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"/>
+
+        <RelativeLayout
+            android:id="@+id/layout_linear2"
+            android:layout_toRightOf="@+id/rupiah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/tambah"
+                android:text="Tambah"
+                android:textAllCaps="false"
+                android:layout_toLeftOf="@id/detail"
+                android:background="#ce0f45"
+                android:textColor="#FFFFFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/detail"
+                android:text="Detail"
+                android:textAllCaps="false"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button_jual"
+        android:text="Jual Barang"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_linear"
+        android:background="@drawable/button_border"
+        android:textColor="#da1b21"
+        android:textAllCaps="false"/>
 
     <Button
         android:text="@string/chat"
+        android:gravity="left|center_vertical"
         android:id="@+id/button_message"
+        android:drawableLeft="@drawable/chat"
+        android:drawablePadding="25dip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_jual"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:text="Notifikasi"
+        android:gravity="left|center_vertical"
+        android:id="@+id/button_notif"
+        android:drawableLeft="@drawable/notif"
+        android:drawablePadding="25dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_message"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+    <View
+        android:id="@+id/separator1"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="75dip"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_below="@+id/button_notif"
+        android:background="@android:color/darker_gray"/>
+
+    <Button
+        android:text="Ringkasan Akun"
+        android:gravity="left|center_vertical"
+        android:id="@+id/ringkasan_akun"
+        android:drawableLeft="@drawable/akunringkas"
+        android:drawablePadding="25dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/separator1"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:text="Feedback"
+        android:gravity="left|center_vertical"
+        android:id="@+id/button_feedback"
+        android:drawableLeft="@drawable/feedback"
+        android:drawablePadding="25dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ringkasan_akun"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+    <Button
+        android:text="Daftar Pelanggan"
+        android:gravity="left|center_vertical"
+        android:id="@+id/button_daftar_pelanggan"
+        android:drawableLeft="@drawable/daftarakun"
+        android:drawablePadding="25dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_feedback"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_marginLeft="75dip"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="3dp"
+        android:layout_below="@+id/button_daftar_pelanggan"
+        android:background="@android:color/darker_gray"/>
+
+    <Button
+        android:text="Menu Lain"
+        android:gravity="left|center_vertical"
+        android:id="@+id/menu_lain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/separator2"
+        style="?android:attr/borderlessButtonStyle"
+        android:textAllCaps="false"/>
+
+
+
 
 
     <Button
-        android:layout_below="@+id/button_message"
+        android:layout_below="@+id/menu_lain"
         android:text="Create Product"
         android:id="@+id/button_create_p"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
 </RelativeLayout>
