@@ -1209,7 +1209,7 @@ public class Parser {
         JSONObject currentProduct = null;
         try {
             currentProduct = response;
-            deal_request_state = (Utils.contains(currentProduct,KEY_deal_request_state))?currentProduct.getString(KEY_deal_request_state):Constants.NA;
+            deal_request_state = (Utils.contains(currentProduct, KEY_deal_request_state)) ? currentProduct.getString(KEY_deal_request_state) : Constants.NA;
             price = currentProduct.getLong(KEY_PRICE);
             category_id = (Utils.contains(currentProduct, KEY_CATEGORY_ID)) ? currentProduct.getInt(KEY_CATEGORY_ID) : -1;
             category = (Utils.contains(currentProduct, KEY_CATEGORY)) ? currentProduct.getString(KEY_CATEGORY) : Constants.NA;
@@ -1522,13 +1522,8 @@ public class Parser {
         return custom1;
     }
 
-    public static Custom3 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
-
-<<<<<<< HEAD
+    public static Custom3 parseCustomList3(JSONObject responseProductBL, JSONObject responseProductCustom3) {
         Custom3 custom3 = new Custom3();
-=======
-        Custom3 custom2 = new Custom3();
->>>>>>> a22c500ea410fe53a75b9e69b269bfe9ac2e0e26
         Product product = new Product();
         List<Custom3.KategoriBean> kategori = new ArrayList<>();
         Custom3.KategoriBean kategoriBean = new Custom3.KategoriBean();
@@ -1540,7 +1535,7 @@ public class Parser {
         try {
             product = parseProduct(responseProductBL);
 
-            JSONArray arrayKategori = responseProducrCustom2.getJSONArray(Keys.EndpointGetCustomProduk.KEY_kategori);
+            JSONArray arrayKategori = responseProductCustom3.getJSONArray(Keys.EndpointGetCustomProduk.KEY_kategori);
             JSONObject objectKategori = arrayKategori.getJSONObject(0);
             String nama_fashion = objectKategori.getString(KEY_nama_fashion);
             String nama_kategori = objectKategori.getString(KEY_nama_kategori);
@@ -1550,7 +1545,7 @@ public class Parser {
             kategoriBean.setNama_kategori(nama_kategori);
             kategori.add(kategoriBean);
 
-            JSONObject objectBahan = responseProducrCustom2.getJSONObject(KEY_bahan);
+            JSONObject objectBahan = responseProductCustom3.getJSONObject(KEY_bahan);
             Custom3.BahanBean bahanBean2 = new Custom3.BahanBean();
             JSONArray arrayBahanluar = objectBahan.getJSONArray(KEY_bahan_luar);
 
@@ -1591,7 +1586,7 @@ public class Parser {
             bahanBean2.setBahan_dalam(bahanDalam);
 
 
-            JSONArray arrayUkuran = responseProducrCustom2.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
+            JSONArray arrayUkuran = responseProductCustom3.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
             for (int i = 0; i < arrayUkuran.length(); i++) {
                 JSONObject currentUkuran = arrayUkuran.getJSONObject(i);
                 Custom3.UkuranBean ukuranBean = new Custom3.UkuranBean();
@@ -1602,7 +1597,7 @@ public class Parser {
                 ukuran.add(ukuranBean);
             }
 
-            JSONArray arrayWarna = responseProducrCustom2.getJSONArray(KEY_warna);
+            JSONArray arrayWarna = responseProductCustom3.getJSONArray(KEY_warna);
             for (int i = 0; i < arrayWarna.length(); i++) {
                 JSONObject currentWarna = arrayWarna.getJSONObject(i);
                 Custom3.WarnaBean warnaBean = new Custom3.WarnaBean();
@@ -1640,6 +1635,8 @@ public class Parser {
 
         return custom3;
     }
+
+
 
 
 }
