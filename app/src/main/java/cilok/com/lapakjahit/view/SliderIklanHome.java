@@ -17,7 +17,7 @@ import cilok.com.lapakjahit.R;
 public class SliderIklanHome extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer [] images = {R.drawable.slide1, R.drawable.slide2, R.drawable.slide3};
+    private Integer [] images = {R.drawable.slide11, R.drawable.slide22, R.drawable.slide33};
 
     public SliderIklanHome(Context context) {
         this.context = context;
@@ -30,12 +30,11 @@ public class SliderIklanHome extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == object;
+        return view ==object;
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, final int position) {
-
+    public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.activity_image_view, null);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
@@ -44,7 +43,6 @@ public class SliderIklanHome extends PagerAdapter {
         ViewPager vp = (ViewPager) container;
         vp.addView(view, 0);
         return view;
-
     }
 
     @Override
