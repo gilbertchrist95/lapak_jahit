@@ -34,29 +34,29 @@ public class ActivityListCustomProduk1 extends AppCompatActivity {
         int tipe_produk = getTipeProduk(id_category);
         Toast.makeText(this, "cat: " + tipe_produk, Toast.LENGTH_SHORT).show();
 
-//        VolleySingleton volleySingleton = new VolleySingleton();
-//        RequestQueue requestQueue = volleySingleton.getRequestQueue();
-//        requestQueue.add(new JsonObjectRequest(Request.Method.POST, url, new Response.Listener<JSONObject>() {
-//            @Override
-//            public void onResponse(JSONObject response) {
-//                try {
-//                    JSONArray arrayProduk = response.getJSONArray("produk");
-//                    String[] id_produk = new String[arrayProduk.length()];
-//                    for (int i = 0; i < arrayProduk.length(); i++) {
-//                        id_produk[i] = arrayProduk.getJSONObject(i).getString("id_produk");
-//                        L.m("Id produk: " + id_produk[i]);
-//                    }
-//                    requestProduct(id_produk);
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//
-//            }
-//        }));
+        VolleySingleton volleySingleton = new VolleySingleton();
+        RequestQueue requestQueue = volleySingleton.getRequestQueue();
+        requestQueue.add(new JsonObjectRequest(Request.Method.POST, url, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    JSONArray arrayProduk = response.getJSONArray("produk");
+                    String[] id_produk = new String[arrayProduk.length()];
+                    for (int i = 0; i < arrayProduk.length(); i++) {
+                        id_produk[i] = arrayProduk.getJSONObject(i).getString("id_produk");
+                        L.m("Id produk: " + id_produk[i]);
+                    }
+                    requestProduct(id_produk);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }));
 
     }
 
@@ -65,8 +65,7 @@ public class ActivityListCustomProduk1 extends AppCompatActivity {
         taskCustomProduct.getCustomProductDataInBackground(new GetCustomProductCallback() {
             @Override
             public void onGetCustomProductLoadedListener(ArrayList<Custom1> listCarts) {
-
-//                Toast.makeText(ActivityListCustomProduk1.this, "custom1: "+listCarts.size(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(ActivityListCustokmProduk1.this, "custom1: "+listCarts.size(), Toast.LENGTH_SHORT).show();
             }
         }, id_produk);
     }

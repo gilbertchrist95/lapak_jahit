@@ -1524,7 +1524,11 @@ public class Parser {
 
     public static Custom3 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
 
+<<<<<<< HEAD
+        Custom3 custom3 = new Custom3();
+=======
         Custom3 custom2 = new Custom3();
+>>>>>>> a22c500ea410fe53a75b9e69b269bfe9ac2e0e26
         Product product = new Product();
         List<Custom3.KategoriBean> kategori = new ArrayList<>();
         Custom3.KategoriBean kategoriBean = new Custom3.KategoriBean();
@@ -1623,18 +1627,18 @@ public class Parser {
             }
 
 
-            custom2.setProduct(product);
-            custom2.setKategori(kategori);
-            custom2.setUkuran(ukuran);
-            custom2.setBahan(bahan);
-            custom2.setWarna(warna);
-            custom2.setMotif(motif);
+            custom3.setProduct(product);
+            custom3.setKategori(kategori);
+            custom3.setUkuran(ukuran);
+            custom3.setBahan(bahan);
+            custom3.setWarna(warna);
+            custom3.setMotif(motif);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        return custom2;
+        return custom3;
     }
 
 
