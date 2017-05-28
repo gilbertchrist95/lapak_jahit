@@ -1,12 +1,15 @@
 package cilok.com.lapakjahit.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by Alhaura on 28/05/2017.
  */
 
-public class Custom4 {
+public class Custom4 implements Parcelable{
 
 
     /**
@@ -25,6 +28,31 @@ public class Custom4 {
     private List<Warna> warna;
     private List<Tipe> tipe;
     private Product product;
+
+    protected Custom4(Parcel in) {
+        id_produk = in.readString();
+        kategori = in.createTypedArrayList(Kategori.CREATOR);
+        bahan = in.createTypedArrayList(Bahan.CREATOR);
+        ukuran = in.createTypedArrayList(Ukuran.CREATOR);
+        warna = in.createTypedArrayList(Warna.CREATOR);
+        tipe = in.createTypedArrayList(Tipe.CREATOR);
+        product = in.readParcelable(Product.class.getClassLoader());
+    }
+
+    public static final Creator<Custom4> CREATOR = new Creator<Custom4>() {
+        @Override
+        public Custom4 createFromParcel(Parcel in) {
+            return new Custom4(in);
+        }
+
+        @Override
+        public Custom4[] newArray(int size) {
+            return new Custom4[size];
+        }
+    };
+
+    public Custom4() {
+    }
 
     public Product getProduct() {
         return product;
@@ -82,7 +110,23 @@ public class Custom4 {
         this.tipe = tipe;
     }
 
-    public static class Kategori {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id_produk);
+        parcel.writeTypedList(kategori);
+        parcel.writeTypedList(bahan);
+        parcel.writeTypedList(ukuran);
+        parcel.writeTypedList(warna);
+        parcel.writeTypedList(tipe);
+        parcel.writeParcelable(product, i);
+    }
+
+    public static class Kategori implements Parcelable{
         /**
          * id_jenis : 164
          * nama_fashion : Fashion Pria
@@ -94,6 +138,28 @@ public class Custom4 {
         private String nama_fashion;
         private String id_kategori;
         private String nama_kategori;
+
+        protected Kategori(Parcel in) {
+            id_jenis = in.readString();
+            nama_fashion = in.readString();
+            id_kategori = in.readString();
+            nama_kategori = in.readString();
+        }
+
+        public static final Creator<Kategori> CREATOR = new Creator<Kategori>() {
+            @Override
+            public Kategori createFromParcel(Parcel in) {
+                return new Kategori(in);
+            }
+
+            @Override
+            public Kategori[] newArray(int size) {
+                return new Kategori[size];
+            }
+        };
+
+        public Kategori() {
+        }
 
         public String getId_jenis() {
             return id_jenis;
@@ -126,9 +192,22 @@ public class Custom4 {
         public void setNama_kategori(String nama_kategori) {
             this.nama_kategori = nama_kategori;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_jenis);
+            parcel.writeString(nama_fashion);
+            parcel.writeString(id_kategori);
+            parcel.writeString(nama_kategori);
+        }
     }
 
-    public static class Bahan {
+    public static class Bahan implements Parcelable{
         /**
          * id_bahan : 8
          * nama_bahan : Denim Cotton
@@ -140,6 +219,27 @@ public class Custom4 {
         private String nama_bahan;
         private Object keterangan_bahan;
         private String id_produk;
+
+        protected Bahan(Parcel in) {
+            id_bahan = in.readString();
+            nama_bahan = in.readString();
+            id_produk = in.readString();
+        }
+
+        public static final Creator<Bahan> CREATOR = new Creator<Bahan>() {
+            @Override
+            public Bahan createFromParcel(Parcel in) {
+                return new Bahan(in);
+            }
+
+            @Override
+            public Bahan[] newArray(int size) {
+                return new Bahan[size];
+            }
+        };
+
+        public Bahan() {
+        }
 
         public String getId_bahan() {
             return id_bahan;
@@ -172,9 +272,21 @@ public class Custom4 {
         public void setId_produk(String id_produk) {
             this.id_produk = id_produk;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_bahan);
+            parcel.writeString(nama_bahan);
+            parcel.writeString(id_produk);
+        }
     }
 
-    public static class Ukuran {
+    public static class Ukuran implements Parcelable {
         /**
          * id_ukuran : 9
          * id_produk : 8j506e
@@ -186,6 +298,28 @@ public class Custom4 {
         private String id_produk;
         private String ukuran;
         private String keterangan_ukuran;
+
+        protected Ukuran(Parcel in) {
+            id_ukuran = in.readString();
+            id_produk = in.readString();
+            ukuran = in.readString();
+            keterangan_ukuran = in.readString();
+        }
+
+        public static final Creator<Ukuran> CREATOR = new Creator<Ukuran>() {
+            @Override
+            public Ukuran createFromParcel(Parcel in) {
+                return new Ukuran(in);
+            }
+
+            @Override
+            public Ukuran[] newArray(int size) {
+                return new Ukuran[size];
+            }
+        };
+
+        public Ukuran() {
+        }
 
         public String getId_ukuran() {
             return id_ukuran;
@@ -218,9 +352,22 @@ public class Custom4 {
         public void setKeterangan_ukuran(String keterangan_ukuran) {
             this.keterangan_ukuran = keterangan_ukuran;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_ukuran);
+            parcel.writeString(id_produk);
+            parcel.writeString(ukuran);
+            parcel.writeString(keterangan_ukuran);
+        }
     }
 
-    public static class Warna {
+    public static class Warna implements Parcelable {
         /**
          * id_warna : 6
          * id_produk : 8j506e
@@ -232,6 +379,28 @@ public class Custom4 {
         private String id_produk;
         private String kode_hexa;
         private String keterangan_warna;
+
+        protected Warna(Parcel in) {
+            id_warna = in.readString();
+            id_produk = in.readString();
+            kode_hexa = in.readString();
+            keterangan_warna = in.readString();
+        }
+
+        public static final Creator<Warna> CREATOR = new Creator<Warna>() {
+            @Override
+            public Warna createFromParcel(Parcel in) {
+                return new Warna(in);
+            }
+
+            @Override
+            public Warna[] newArray(int size) {
+                return new Warna[size];
+            }
+        };
+
+        public Warna() {
+        }
 
         public String getId_warna() {
             return id_warna;
@@ -264,9 +433,22 @@ public class Custom4 {
         public void setKeterangan_warna(String keterangan_warna) {
             this.keterangan_warna = keterangan_warna;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_warna);
+            parcel.writeString(id_produk);
+            parcel.writeString(kode_hexa);
+            parcel.writeString(keterangan_warna);
+        }
     }
 
-    public static class Tipe {
+    public static class Tipe implements Parcelable {
         /**
          * id_tipe : 1
          * tipe_jeans : Low Rise
@@ -276,6 +458,27 @@ public class Custom4 {
         private String id_tipe;
         private String tipe_jeans;
         private String id_produk;
+
+        protected Tipe(Parcel in) {
+            id_tipe = in.readString();
+            tipe_jeans = in.readString();
+            id_produk = in.readString();
+        }
+
+        public static final Creator<Tipe> CREATOR = new Creator<Tipe>() {
+            @Override
+            public Tipe createFromParcel(Parcel in) {
+                return new Tipe(in);
+            }
+
+            @Override
+            public Tipe[] newArray(int size) {
+                return new Tipe[size];
+            }
+        };
+
+        public Tipe() {
+        }
 
         public String getId_tipe() {
             return id_tipe;
@@ -299,6 +502,18 @@ public class Custom4 {
 
         public void setId_produk(String id_produk) {
             this.id_produk = id_produk;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_tipe);
+            parcel.writeString(tipe_jeans);
+            parcel.writeString(id_produk);
         }
     }
 }

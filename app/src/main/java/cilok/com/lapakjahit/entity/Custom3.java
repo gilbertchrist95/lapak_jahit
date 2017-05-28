@@ -1,12 +1,15 @@
 package cilok.com.lapakjahit.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
 /**
  * Created by Gilbert on 5/28/2017.
  */
 
-public class Custom3 {
+public class Custom3 implements Parcelable {
 
     /**
      * id_produk : 4o1k3z
@@ -19,6 +22,30 @@ public class Custom3 {
 
     private String id_produk;
     private Product product;
+
+    protected Custom3(Parcel in) {
+        id_produk = in.readString();
+        product = in.readParcelable(Product.class.getClassLoader());
+        kategori = in.createTypedArrayList(KategoriBean.CREATOR);
+        ukuran = in.createTypedArrayList(UkuranBean.CREATOR);
+        warna = in.createTypedArrayList(WarnaBean.CREATOR);
+        motif = in.createTypedArrayList(MotifBean.CREATOR);
+    }
+
+    public static final Creator<Custom3> CREATOR = new Creator<Custom3>() {
+        @Override
+        public Custom3 createFromParcel(Parcel in) {
+            return new Custom3(in);
+        }
+
+        @Override
+        public Custom3[] newArray(int size) {
+            return new Custom3[size];
+        }
+    };
+
+    public Custom3() {
+    }
 
     public Product getProduct() {
         return product;
@@ -82,9 +109,42 @@ public class Custom3 {
         this.motif = motif;
     }
 
-    public static class BahanBean {
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(id_produk);
+        parcel.writeParcelable(product, i);
+        parcel.writeTypedList(kategori);
+        parcel.writeTypedList(ukuran);
+        parcel.writeTypedList(warna);
+        parcel.writeTypedList(motif);
+    }
+
+    public static class BahanBean implements Parcelable{
         private List<BahanLuarBean> bahan_luar;
         private List<BahanDalamBean> bahan_dalam;
+
+        protected BahanBean(Parcel in) {
+        }
+
+        public static final Creator<BahanBean> CREATOR = new Creator<BahanBean>() {
+            @Override
+            public BahanBean createFromParcel(Parcel in) {
+                return new BahanBean(in);
+            }
+
+            @Override
+            public BahanBean[] newArray(int size) {
+                return new BahanBean[size];
+            }
+        };
+
+        public BahanBean() {
+        }
 
         public List<BahanLuarBean> getBahan_luar() {
             return bahan_luar;
@@ -100,6 +160,15 @@ public class Custom3 {
 
         public void setBahan_dalam(List<BahanDalamBean> bahan_dalam) {
             this.bahan_dalam = bahan_dalam;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
         }
 
         public static class BahanLuarBean {
@@ -235,7 +304,7 @@ public class Custom3 {
         }
     }
 
-    public static class KategoriBean {
+    public static class KategoriBean implements Parcelable {
         /**
          * id_jenis : 159
          * nama_fashion : Fashion Wanita
@@ -247,6 +316,28 @@ public class Custom3 {
         private String nama_fashion;
         private String id_kategori;
         private String nama_kategori;
+
+        protected KategoriBean(Parcel in) {
+            id_jenis = in.readString();
+            nama_fashion = in.readString();
+            id_kategori = in.readString();
+            nama_kategori = in.readString();
+        }
+
+        public static final Creator<KategoriBean> CREATOR = new Creator<KategoriBean>() {
+            @Override
+            public KategoriBean createFromParcel(Parcel in) {
+                return new KategoriBean(in);
+            }
+
+            @Override
+            public KategoriBean[] newArray(int size) {
+                return new KategoriBean[size];
+            }
+        };
+
+        public KategoriBean() {
+        }
 
         public String getId_jenis() {
             return id_jenis;
@@ -279,9 +370,22 @@ public class Custom3 {
         public void setNama_kategori(String nama_kategori) {
             this.nama_kategori = nama_kategori;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_jenis);
+            parcel.writeString(nama_fashion);
+            parcel.writeString(id_kategori);
+            parcel.writeString(nama_kategori);
+        }
     }
 
-    public static class UkuranBean {
+    public static class UkuranBean implements Parcelable {
         /**
          * id_ukuran : 5
          * id_produk : 4o1k3z
@@ -293,6 +397,28 @@ public class Custom3 {
         private String id_produk;
         private String ukuran;
         private String keterangan_ukuran;
+
+        protected UkuranBean(Parcel in) {
+            id_ukuran = in.readString();
+            id_produk = in.readString();
+            ukuran = in.readString();
+            keterangan_ukuran = in.readString();
+        }
+
+        public static final Creator<UkuranBean> CREATOR = new Creator<UkuranBean>() {
+            @Override
+            public UkuranBean createFromParcel(Parcel in) {
+                return new UkuranBean(in);
+            }
+
+            @Override
+            public UkuranBean[] newArray(int size) {
+                return new UkuranBean[size];
+            }
+        };
+
+        public UkuranBean() {
+        }
 
         public String getId_ukuran() {
             return id_ukuran;
@@ -325,9 +451,22 @@ public class Custom3 {
         public void setKeterangan_ukuran(String keterangan_ukuran) {
             this.keterangan_ukuran = keterangan_ukuran;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_ukuran);
+            parcel.writeString(id_produk);
+            parcel.writeString(ukuran);
+            parcel.writeString(keterangan_ukuran);
+        }
     }
 
-    public static class WarnaBean {
+    public static class WarnaBean implements Parcelable{
         /**
          * id_warna : 3
          * id_produk : 4o1k3z
@@ -339,6 +478,28 @@ public class Custom3 {
         private String id_produk;
         private String kode_hexa;
         private String keterangan_warna;
+
+        protected WarnaBean(Parcel in) {
+            id_warna = in.readString();
+            id_produk = in.readString();
+            kode_hexa = in.readString();
+            keterangan_warna = in.readString();
+        }
+
+        public static final Creator<WarnaBean> CREATOR = new Creator<WarnaBean>() {
+            @Override
+            public WarnaBean createFromParcel(Parcel in) {
+                return new WarnaBean(in);
+            }
+
+            @Override
+            public WarnaBean[] newArray(int size) {
+                return new WarnaBean[size];
+            }
+        };
+
+        public WarnaBean() {
+        }
 
         public String getId_warna() {
             return id_warna;
@@ -371,9 +532,22 @@ public class Custom3 {
         public void setKeterangan_warna(String keterangan_warna) {
             this.keterangan_warna = keterangan_warna;
         }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_warna);
+            parcel.writeString(id_produk);
+            parcel.writeString(kode_hexa);
+            parcel.writeString(keterangan_warna);
+        }
     }
 
-    public static class MotifBean {
+    public static class MotifBean implements Parcelable {
         /**
          * id_motif : 3
          * id_produk : 4o1k3z
@@ -387,6 +561,29 @@ public class Custom3 {
         private String nama_motif;
         private String path_gambar_motif;
         private String url_gambar;
+
+        protected MotifBean(Parcel in) {
+            id_motif = in.readString();
+            id_produk = in.readString();
+            nama_motif = in.readString();
+            path_gambar_motif = in.readString();
+            url_gambar = in.readString();
+        }
+
+        public static final Creator<MotifBean> CREATOR = new Creator<MotifBean>() {
+            @Override
+            public MotifBean createFromParcel(Parcel in) {
+                return new MotifBean(in);
+            }
+
+            @Override
+            public MotifBean[] newArray(int size) {
+                return new MotifBean[size];
+            }
+        };
+
+        public MotifBean() {
+        }
 
         public String getId_motif() {
             return id_motif;
@@ -426,6 +623,20 @@ public class Custom3 {
 
         public void setUrl_gambar(String url_gambar) {
             this.url_gambar = url_gambar;
+        }
+
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+
+        @Override
+        public void writeToParcel(Parcel parcel, int i) {
+            parcel.writeString(id_motif);
+            parcel.writeString(id_produk);
+            parcel.writeString(nama_motif);
+            parcel.writeString(path_gambar_motif);
+            parcel.writeString(url_gambar);
         }
     }
 }
