@@ -9,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 import cilok.com.lapakjahit.entity.Cart;
-import cilok.com.lapakjahit.entity.Custom;
+import cilok.com.lapakjahit.entity.Custom1;
+import cilok.com.lapakjahit.entity.Custom2;
 import cilok.com.lapakjahit.entity.InboxMessage;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.entity.Transaction;
@@ -25,8 +26,8 @@ import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_cart_status;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_city;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_close_date;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_close_reason;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_deal_request_state;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_delivery_time;
-import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_desc;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_discount_price;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_feedbacks;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_gender;
@@ -59,6 +60,25 @@ import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_subscriber_am
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_top_merchant;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_username;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetCart.KEY_verified_user;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_bahan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_bahan_dalam;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_bahan_luar;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_bahan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_fungsi_bahan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_id_jenis;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_bahan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_ukuran;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_keterangan_warna;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_kode_hexa;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_motif;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_bahan;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_fashion;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_kategori;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_nama_motif;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_path_gambar_motif;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_ukuran;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_url_gambar;
+import static cilok.com.lapakjahit.extras.Keys.EndpointGetCustomProduk.KEY_warna;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetProduct.*;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_agent_commission_amount;
 import static cilok.com.lapakjahit.extras.Keys.EndpointGetTranscation.KEY_amount;
@@ -241,7 +261,7 @@ public class Parser {
         ArrayList<Product> listFavoriteProduct = new ArrayList<>();
         if (response != null && response.length() > 0) {
             try {
-                JSONArray arrayFavorites = response.getJSONArray(KEY_PRODUCT);
+                JSONArray arrayFavorites = response.getJSONArray(KEY_PRODUCTS);
                 for (int i = 0; i < arrayFavorites.length(); i++) {
                     String deal_request_state = Constants.NA;
                     long price = -1;
@@ -933,7 +953,7 @@ public class Parser {
         try {
             if (response != null && response.getString(KEY_cart_status).equals("OK")) {
                 JSONArray arrayCart = response.getJSONArray(KEY_cart);
-                L.m(arrayCart.length()+"");
+                L.m(arrayCart.length() + "");
                 for (int i = 0; i < arrayCart.length(); i++) {
                     Cart.SellerBean sellerBean = new Cart.SellerBean();
                     long sellerId = -1;
@@ -970,7 +990,7 @@ public class Parser {
                     int feedbackspositive = -1;
                     int feedbacksnegative = -1;
                     List<Cart.ItemsBean> itemsBeen = new ArrayList<>();
-                    long agent_commission=-1;
+                    long agent_commission = -1;
                     List<Cart.InstallmentBeann> installment = new ArrayList<>();
 
                     JSONObject currentCart = arrayCart.getJSONObject(i);
@@ -981,10 +1001,10 @@ public class Parser {
                     sellername = objectSeller.getString(KEY_name);
                     sellergender = objectSeller.getString(KEY_gender);
                     selleravatar = objectSeller.getString(KEY_avatar);
-                    sellerlevel = (Utils.contains(objectSeller,KEY_seller_level))?objectSeller.getString(KEY_seller_level):Constants.NA;
+                    sellerlevel = (Utils.contains(objectSeller, KEY_seller_level)) ? objectSeller.getString(KEY_seller_level) : Constants.NA;
                     sellerlevel_badge_url = objectSeller.getString(KEY_level_badge_url);
                     sellerlapak_name = objectSeller.getString(KEY_lapak_name);
-                    sellerlapak_desc = (Utils.contains(objectSeller,KEY_lapak_desc))?objectSeller.getString(KEY_lapak_desc):Constants.NA;
+                    sellerlapak_desc = (Utils.contains(objectSeller, KEY_lapak_desc)) ? objectSeller.getString(KEY_lapak_desc) : Constants.NA;
                     sellerlapak_header = objectSeller.getString(KEY_lapak_header);
                     sellerlast_login = objectSeller.getString(KEY_last_login);
                     sellerjoined_at = objectSeller.getString(KEY_joined_at);
@@ -1024,16 +1044,16 @@ public class Parser {
                         JSONObject currentItems = arrayItems.getJSONObject(j);
                         Cart.ItemsBean itemsBean = new Cart.ItemsBean();
                         long id = -1;
-                        String name=Constants.NA;
-                        int quantity=-1;
-                        long price=-1;
-                        int stock=-1;
-                        String message=Constants.NA;
-                        Product product=new Product();
-                        long original_price=-1;
-                        long discount_price=-1;
+                        String name = Constants.NA;
+                        int quantity = -1;
+                        long price = -1;
+                        int stock = -1;
+                        String message = Constants.NA;
+                        Product product = new Product();
+                        long original_price = -1;
+                        long discount_price = -1;
 
-                        id =currentItems.getLong(Keys.EndpointGetCart.KEY_id);
+                        id = currentItems.getLong(Keys.EndpointGetCart.KEY_id);
                         name = currentItems.getString(KEY_name);
                         quantity = currentItems.getInt(KEY_quantity);
                         price = currentItems.getLong(KEY_price);
@@ -1086,7 +1106,7 @@ public class Parser {
                     sellerBean.setIs_seller(is_seller);
                     sellerBean.setFeedbacks(feedbacks);
 
-                    agent_commission = (Utils.contains(currentCart,KEY_agent_commission))?currentCart.getLong(KEY_agent_commission):-1;
+                    agent_commission = (Utils.contains(currentCart, KEY_agent_commission)) ? currentCart.getLong(KEY_agent_commission) : -1;
 
 
                     if (Utils.contains(currentCart, KEY_INSTALLMENT)) {
@@ -1109,7 +1129,6 @@ public class Parser {
                     }
 
 
-
                     Cart cart = new Cart();
                     cart.setSeller(sellerBean);
                     cart.setItems(itemsBeen);
@@ -1127,7 +1146,7 @@ public class Parser {
         return listCarts;
     }
 
-    public static Product parseProduct(JSONObject response){
+    public static Product parseProduct(JSONObject response) {
         Product product = new Product();
         String deal_request_state = Constants.NA;
         long price = -1;
@@ -1190,7 +1209,7 @@ public class Parser {
         JSONObject currentProduct = null;
         try {
             currentProduct = response;
-            deal_request_state = currentProduct.getString(KEY_REQUEST_STATE);
+            deal_request_state = (Utils.contains(currentProduct,KEY_deal_request_state))?currentProduct.getString(KEY_deal_request_state):Constants.NA;
             price = currentProduct.getLong(KEY_PRICE);
             category_id = (Utils.contains(currentProduct, KEY_CATEGORY_ID)) ? currentProduct.getInt(KEY_CATEGORY_ID) : -1;
             category = (Utils.contains(currentProduct, KEY_CATEGORY)) ? currentProduct.getString(KEY_CATEGORY) : Constants.NA;
@@ -1239,11 +1258,11 @@ public class Parser {
             if (Utils.contains(jsonSpecs, KEY_SPECS_BRAND))
                 specsBrand = jsonSpecs.getString(KEY_SPECS_BRAND);
             if (Utils.contains(jsonSpecs, KEY_SPECS_UKURAN)) {
-                JSONArray arrSpecs_Ukuran = jsonSpecs.getJSONArray(KEY_SPECS_UKURAN);
-                specsUkuran = new String[arrSpecs_Ukuran.length()];
-                for (int j = 0; j < arrSpecs_Ukuran.length(); j++) {
-                    specsUkuran[j] = arrSpecs_Ukuran.getString(j);
-                }
+//                JSONArray arrSpecs_Ukuran = jsonSpecs.getJSONArray(KEY_SPECS_UKURAN);
+//                specsUkuran = new String[arrSpecs_Ukuran.length()];
+//                for (int j = 0; j < arrSpecs_Ukuran.length(); j++) {
+//                    specsUkuran[j] = arrSpecs_Ukuran.getString(j);
+//                }
             }
             force_insurance = currentProduct.getBoolean(KEY_FORCE_INSURANCE);
             if (Utils.contains(currentProduct, Keys.EndpointGetProduct.KEY_ID)) {
@@ -1357,7 +1376,6 @@ public class Parser {
             view_count = currentProduct.getInt(KEY_VIEW_COUNT);
 
 
-
             product.setDeal_request_state(deal_request_state);
             product.setPrice(price);
             product.setCategory_id(category_id);
@@ -1419,10 +1437,205 @@ public class Parser {
         return product;
     }
 
-    public static Custom parseCustomList(JSONObject responseProductBL, JSONObject responseProductCustom) {
-        Custom custom = new Custom();
-        Product product = parseProduct(responseProductBL);
-        custom.setProduct(product);
-        return custom;
+    public static Custom1 parseCustomList1(JSONObject responseProductBL, JSONObject responseProductCustom) {
+        Custom1 custom1 = new Custom1();
+        Product product = new Product();
+        List<Custom1.KategoriBean> kategori = new ArrayList<>();
+        Custom1.KategoriBean kategoriBean = new Custom1.KategoriBean();
+        List<Custom1.BahanBean> bahan = new ArrayList<>();
+        List<Custom1.UkuranBean> ukuran = new ArrayList<>();
+        List<Custom1.WarnaBean> warna = new ArrayList<>();
+        List<Custom1.MotifBean> motif = new ArrayList<>();
+
+        try {
+            product = parseProduct(responseProductBL.getJSONObject(KEY_PRODUCT));
+
+            JSONArray arrayKategori = responseProductCustom.getJSONArray(Keys.EndpointGetCustomProduk.KEY_kategori);
+            JSONObject objectKategori = arrayKategori.getJSONObject(0);
+            String nama_fashion = objectKategori.getString(KEY_nama_fashion);
+            String nama_kategori = objectKategori.getString(KEY_nama_kategori);
+            String id_jenis = objectKategori.getString(KEY_id_jenis);
+            kategoriBean.setId_jenis(id_jenis);
+            kategoriBean.setNama_fashion(nama_fashion);
+            kategoriBean.setNama_kategori(nama_kategori);
+            kategori.add(kategoriBean);
+
+            JSONArray arrayBahan = responseProductCustom.getJSONArray(Keys.EndpointGetCustomProduk.KEY_bahan);
+            for (int i = 0; i < arrayBahan.length(); i++) {
+                JSONObject currentBahan = arrayBahan.getJSONObject(i);
+                Custom1.BahanBean bahanBean = new Custom1.BahanBean();
+                String namaBahan = currentBahan.getString(KEY_nama_bahan);
+                String keterangan_bahan = currentBahan.getString(KEY_keterangan_bahan);
+                bahanBean.setNama_bahan(namaBahan);
+                bahanBean.setKeterangan_bahan(keterangan_bahan);
+                bahan.add(bahanBean);
+            }
+
+            JSONArray arrayUkuran = responseProductCustom.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
+            for (int i = 0; i < arrayUkuran.length(); i++) {
+                JSONObject currentUkuran = arrayUkuran.getJSONObject(i);
+                Custom1.UkuranBean ukuranBean = new Custom1.UkuranBean();
+                String ukuranCustom = currentUkuran.getString(KEY_ukuran);
+                String keteranganProduk = currentUkuran.getString(KEY_keterangan_ukuran);
+                ukuranBean.setUkuran(ukuranCustom);
+                ukuranBean.setKeterangan_ukuran(keteranganProduk);
+                ukuran.add(ukuranBean);
+            }
+
+            JSONArray arrayWarna = responseProductCustom.getJSONArray(KEY_warna);
+            for (int i = 0; i < arrayWarna.length(); i++) {
+                JSONObject currentWarna = arrayWarna.getJSONObject(i);
+                Custom1.WarnaBean warnaBean = new Custom1.WarnaBean();
+                String kode_hexa = currentWarna.getString(KEY_kode_hexa);
+                String keterangan_warna = currentWarna.getString(KEY_keterangan_warna);
+                warnaBean.setKode_hexa(kode_hexa);
+                warnaBean.setKeterangan_warna(keterangan_warna);
+                warna.add(warnaBean);
+            }
+
+            JSONArray arrayMotif = responseProductCustom.getJSONArray(KEY_motif);
+            for (int i = 0; i < arrayMotif.length(); i++) {
+                JSONObject currentMotif = arrayMotif.getJSONObject(i);
+                Custom1.MotifBean motifBean = new Custom1.MotifBean();
+                String nama_motif = currentMotif.getString(KEY_nama_motif);
+                String path_gambar_motif = currentMotif.getString(KEY_path_gambar_motif);
+                String url_gambar = currentMotif.getString(KEY_url_gambar);
+                motifBean.setNama_motif(nama_motif);
+                motifBean.setPath_gambar_motif(path_gambar_motif);
+                motifBean.setUrl_gambar(url_gambar);
+                motif.add(motifBean);
+            }
+
+
+            custom1.setProduct(product);
+            custom1.setKategori(kategori);
+            custom1.setUkuran(ukuran);
+            custom1.setBahan(bahan);
+            custom1.setWarna(warna);
+            custom1.setMotif(motif);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        return custom1;
     }
+
+    public static Custom2 parseCustomList2(JSONObject responseProductBL, JSONObject responseProducrCustom2) {
+
+        Custom2 custom2 = new Custom2();
+        Product product = new Product();
+        List<Custom2.KategoriBean> kategori = new ArrayList<>();
+        Custom2.KategoriBean kategoriBean = new Custom2.KategoriBean();
+        Custom2.BahanBean bahan = new Custom2.BahanBean();
+        List<Custom2.UkuranBean> ukuran = new ArrayList<>();
+        List<Custom2.WarnaBean> warna = new ArrayList<>();
+        List<Custom2.MotifBean> motif = new ArrayList<>();
+
+        try {
+            product = parseProduct(responseProductBL);
+
+            JSONArray arrayKategori = responseProducrCustom2.getJSONArray(Keys.EndpointGetCustomProduk.KEY_kategori);
+            JSONObject objectKategori = arrayKategori.getJSONObject(0);
+            String nama_fashion = objectKategori.getString(KEY_nama_fashion);
+            String nama_kategori = objectKategori.getString(KEY_nama_kategori);
+            String id_jenis = objectKategori.getString(KEY_id_jenis);
+            kategoriBean.setId_jenis(id_jenis);
+            kategoriBean.setNama_fashion(nama_fashion);
+            kategoriBean.setNama_kategori(nama_kategori);
+            kategori.add(kategoriBean);
+
+            JSONObject objectBahan = responseProducrCustom2.getJSONObject(KEY_bahan);
+            Custom2.BahanBean bahanBean2 = new Custom2.BahanBean();
+            JSONArray arrayBahanluar = objectBahan.getJSONArray(KEY_bahan_luar);
+
+            List<Custom2.BahanBean.BahanLuarBean> bahanLuar = new ArrayList<>();
+            for (int j = 0; j < arrayBahanluar.length(); j++) {
+                Custom2.BahanBean.BahanLuarBean bahanLuarBean = new Custom2.BahanBean.BahanLuarBean();
+                JSONObject objectBahanLuar = arrayBahanluar.getJSONObject(j);
+                String id_bahan = objectBahanLuar.getString(KEY_id_bahan);
+                String id_fungsi_bahan = objectBahanLuar.getString(KEY_id_fungsi_bahan);
+                String nama_bahan = objectBahanLuar.getString(KEY_nama_bahan);
+                String keterangan_bahan = (Utils.contains(objectBahanLuar, KEY_keterangan_bahan)) ?
+                        objectBahanLuar.getString(KEY_keterangan_bahan) : Constants.NA;
+                bahanLuarBean.setId_bahan(id_bahan);
+                bahanLuarBean.setId_fungsi_bahan(id_fungsi_bahan);
+                bahanLuarBean.setNama_bahan(nama_bahan);
+                bahanLuarBean.setKeterangan_bahan(keterangan_bahan);
+                bahanLuar.add(bahanLuarBean);
+            }
+
+            JSONArray arrayBahanDalam = objectBahan.getJSONArray(KEY_bahan_dalam);
+            List<Custom2.BahanBean.BahanDalamBean> bahanDalam = new ArrayList<>();
+            for (int j = 0; j < arrayBahanDalam.length(); j++) {
+                Custom2.BahanBean.BahanDalamBean bahanDalamBean = new Custom2.BahanBean.BahanDalamBean();
+                JSONObject objectBahanDalam = arrayBahanDalam.getJSONObject(j);
+                String id_bahan = objectBahanDalam.getString(KEY_id_bahan);
+                String id_fungsi_bahan = objectBahanDalam.getString(KEY_id_fungsi_bahan);
+                String nama_bahan = objectBahanDalam.getString(KEY_nama_bahan);
+                String keterangan_bahan = (Utils.contains(objectBahanDalam, KEY_keterangan_bahan)) ?
+                        objectBahanDalam.getString(KEY_keterangan_bahan) : Constants.NA;
+                bahanDalamBean.setId_bahan(id_bahan);
+                bahanDalamBean.setId_fungsi_bahan(id_fungsi_bahan);
+                bahanDalamBean.setNama_bahan(nama_bahan);
+                bahanDalamBean.setKeterangan_bahan(keterangan_bahan);
+                bahanDalam.add(bahanDalamBean);
+            }
+
+            bahanBean2.setBahan_luar(bahanLuar);
+            bahanBean2.setBahan_dalam(bahanDalam);
+
+
+            JSONArray arrayUkuran = responseProducrCustom2.getJSONArray(Keys.EndpointGetCustomProduk.KEY_ukuran);
+            for (int i = 0; i < arrayUkuran.length(); i++) {
+                JSONObject currentUkuran = arrayUkuran.getJSONObject(i);
+                Custom2.UkuranBean ukuranBean = new Custom2.UkuranBean();
+                String ukuranCustom = currentUkuran.getString(KEY_ukuran);
+                String keteranganProduk = currentUkuran.getString(KEY_keterangan_ukuran);
+                ukuranBean.setUkuran(ukuranCustom);
+                ukuranBean.setKeterangan_ukuran(keteranganProduk);
+                ukuran.add(ukuranBean);
+            }
+
+            JSONArray arrayWarna = responseProducrCustom2.getJSONArray(KEY_warna);
+            for (int i = 0; i < arrayWarna.length(); i++) {
+                JSONObject currentWarna = arrayWarna.getJSONObject(i);
+                Custom2.WarnaBean warnaBean = new Custom2.WarnaBean();
+                String kode_hexa = currentWarna.getString(KEY_kode_hexa);
+                String keterangan_warna = currentWarna.getString(KEY_keterangan_warna);
+                warnaBean.setKode_hexa(kode_hexa);
+                warnaBean.setKeterangan_warna(keterangan_warna);
+                warna.add(warnaBean);
+            }
+
+            JSONArray arrayMotif = responseProductBL.getJSONArray(KEY_motif);
+            for (int i = 0; i < arrayMotif.length(); i++) {
+                JSONObject currentMotif = arrayMotif.getJSONObject(i);
+                Custom2.MotifBean motifBean = new Custom2.MotifBean();
+                String nama_motif = currentMotif.getString(KEY_nama_motif);
+                String path_gambar_motif = currentMotif.getString(KEY_path_gambar_motif);
+                String url_gambar = currentMotif.getString(KEY_url_gambar);
+                motifBean.setNama_motif(nama_motif);
+                motifBean.setPath_gambar_motif(path_gambar_motif);
+                motifBean.setUrl_gambar(url_gambar);
+                motif.add(motifBean);
+            }
+
+
+            custom2.setProduct(product);
+            custom2.setKategori(kategori);
+            custom2.setUkuran(ukuran);
+            custom2.setBahan(bahan);
+            custom2.setWarna(warna);
+            custom2.setMotif(motif);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return custom2;
+    }
+
+
 }

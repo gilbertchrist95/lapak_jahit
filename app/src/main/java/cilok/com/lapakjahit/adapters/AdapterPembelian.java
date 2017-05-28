@@ -1,6 +1,7 @@
 package cilok.com.lapakjahit.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import cilok.com.lapakjahit.R;
+import cilok.com.lapakjahit.activities.DetailTransaksiActivity;
 import cilok.com.lapakjahit.entity.Product;
 import cilok.com.lapakjahit.entity.Transaction;
 import cilok.com.lapakjahit.extras.Constants;
@@ -108,6 +110,9 @@ public class AdapterPembelian extends RecyclerView.Adapter<AdapterPembelian.View
         public void onClick(View view) {
             int index = getAdapterPosition();
             Transaction transaction = mListTransaction.get(index);
+            Intent intent = new Intent(context, DetailTransaksiActivity.class);
+            intent.putExtra("TRANSACTION", transaction);
+            context.startActivity(intent);
 
         }
     }

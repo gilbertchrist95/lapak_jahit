@@ -6,6 +6,7 @@ package cilok.com.lapakjahit.extras;
 
 public class UrlEndpoints {
     public static final String URL_BL = "https://api.bukalapak.com/v2/";
+    public static final String URL_LJ = "https://api.bukalapak.com/v2/";
     public static final String URL_PARAM_AUTHENTICATION = "authenticate";
     public static final String URL_PARAM_FAVORITES = "favorites";
     public static final String URL_PARAM_MESSAGE = "messages";

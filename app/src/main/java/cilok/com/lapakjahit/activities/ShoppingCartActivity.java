@@ -47,7 +47,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements SwipeRefr
         mSwipeRefreshCart = (SwipeRefreshLayout) findViewById(R.id.swipeCart);
         mSwipeRefreshCart.setOnRefreshListener(this);
         mListCart = (RecyclerView) findViewById(R.id.listCart);
-        mListCart = (RecyclerView) findViewById(R.id.listMessageInbox);
+
         //set the layout manager before trying to display data
         mListCart.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         mAdapter = new AdapterShoppingCart(getApplicationContext());
@@ -101,6 +101,19 @@ public class ShoppingCartActivity extends AppCompatActivity implements SwipeRefr
 
     @Override
     public void onRefresh() {
-
+        if (authenticate() == true) {
+            mSwipeRefreshCart.setRefreshing(true);
+            imageViewEmptyCart.setVisibility(View.GONE);
+            taskCart = new TaskCart(this);
+            taskCart.getCartDataInBackground(new GetCartCallback() {
+                @Override
+                public void onGetCartsLoadedListener(ArrayList<Cart> listCarts) {
+                    mAdapter.setListCart(listCarts);
+                    mSwipeRefreshCart.setRefreshing(false);
+                }
+            });
+        } else {
+            mSwipeRefreshCart.setEnabled(false);
+        }
     }
 }

@@ -34,7 +34,8 @@ public interface Keys {
     }
 
     public interface EndpointGetProduct {
-        public static final String KEY_PRODUCT = "products";
+        public static final String KEY_PRODUCTS = "products";
+        public static final String KEY_PRODUCT = "product";
         public static final String KEY_DEAL_INFO = "deal_info";
         public static final String KEY_DEAL_INFO_ORIGINAL_PRICE = "original_price";
         public static final String KEY_DEAL_INFO_DISCOUNT_PRICE = "discount_price";
@@ -239,12 +240,12 @@ public interface Keys {
         public static final String KEY_rejected = "rejected";
         public static final String KEY_recent_trans = "recent_trans";
         public static final String KEY_address = "address";
-//        public static final String KEY_province = "province";
+        //        public static final String KEY_province = "province";
 //        public static final String KEY_city = "city";
         public static final String KEY_subscriber_amount = "subscriber_amount";
-//        public static final String KEY_last_order_schedule = "last_order_schedule";
+        //        public static final String KEY_last_order_schedule = "last_order_schedule";
         public static final String KEY_premium_user = "premium_user";
-//        public static final String KEY_top_merchant = "top_merchant";
+        //        public static final String KEY_top_merchant = "top_merchant";
 //        public static final String KEY_seller_voucher = "seller_voucher";
         public static final String KEY_is_seller = "is_seller";
         public static final String KEY_feedbacks = "feedbacks";
@@ -253,11 +254,11 @@ public interface Keys {
         public static final String KEY_items = "items";
         public static final String KEY_quantity = "quantity";
         public static final String KEY_price = "price";
-//        public static final String KEY_stock = "stock";
+        //        public static final String KEY_stock = "stock";
         public static final String KEY_message = "message";
         public static final String KEY_product = "product";
         public static final String KEY_deal_info = "deal_info";
-//        public static final String KEY_original_price = "original_price";
+        //        public static final String KEY_original_price = "original_price";
 //        public static final String KEY_discount_price = "discount_price";
         public static final String KEY_discount_percentage = "discount_percentage";
         public static final String KEY_discount_date = "discount_date";
@@ -322,5 +323,51 @@ public interface Keys {
         public static final String KEY_discount_price = "discount_price";
         public static final String KEY_installment = "installment";
         public static final String KEY_agent_commission = "agent_commission";
+    }
+
+    public interface EndpointGetCustomProduk {
+        public static final String KEY_kategori = "kategori";
+        public static final String KEY_id_jenis = "id_jenis";
+        public static final String KEY_nama_fashion = "nama_fashion";
+        public static final String KEY_nama_kategori = "nama_kategori";
+        public static final String KEY_bahan = "bahan";
+        public static final String KEY_id_bahan = "id_bahan";
+        public static final String KEY_nama_bahan = "nama_bahan";
+        public static final String KEY_keterangan_bahan = "keterangan_bahan";
+//        public static final String KEY_id_produk = "id_produk";
+        public static final String KEY_ukuran = "ukuran";
+        public static final String KEY_id_ukuran = "id_ukuran";
+        public static final String KEY_keterangan_ukuran = "keterangan_ukuran";
+        public static final String KEY_warna = "warna";
+        public static final String KEY_id_warna = "id_warna";
+//        public static final String KEY_id_produk = "id_produk";
+        public static final String KEY_kode_hexa = "kode_hexa";
+        public static final String KEY_keterangan_warna = "keterangan_warna";
+        public static final String KEY_motif = "motif";
+        public static final String KEY_id_motif = "id_motif";
+        public static final String KEY_id_produk = "id_produk";
+        public static final String KEY_nama_motif = "nama_motif";
+        public static final String KEY_path_gambar_motif = "path_gambar_motif";
+        public static final String KEY_url_gambar = "url_gambar";
+        public static final String KEY_bahan_luar = "bahan_luar";
+        public static final String KEY_id_keterangan = "id_keterangan";
+        public static final String KEY_id_fungsi_bahan = "id_fungsi_bahan";
+//        public static final String KEY_keterangan_bahan = "keterangan_bahan";
+        public static final String KEY_bahan_dalam = "bahan_dalam";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
+//        public static final String KEY_ = "kategori";
     }
 }

@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import cilok.com.lapakjahit.CustomWanitaActivity;
+import cilok.com.lapakjahit.FragmenCustomWanita;
 import cilok.com.lapakjahit.fragments.FragmentProdukWanita;
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.view.SlidingTabLayout;
@@ -38,7 +38,7 @@ public class FashionWanitaActivity extends AppCompatActivity {
 
 
 
-        // Setting Custom Color for the Scroll bar indicator of the Tab View
+        // Setting Custom1 Color for the Scroll bar indicator of the Tab View
         mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
@@ -66,8 +66,8 @@ public class FashionWanitaActivity extends AppCompatActivity {
                 FragmentProdukWanita mFragmentProdukWanita = new FragmentProdukWanita();
                 return mFragmentProdukWanita;
             }else if (position==1){
-                CustomWanitaActivity mCustomWanitaActivity = new CustomWanitaActivity();
-                return mCustomWanitaActivity;
+                FragmenCustomWanita mFragmenCustomWanita = new FragmenCustomWanita();
+                return mFragmenCustomWanita;
             }else{
                 return null;
             }

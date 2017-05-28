@@ -64,7 +64,13 @@
         </activity>
         <activity android:name=".activities.ProductActivity" />
         <activity android:name=".CreateProductActivity" />
-        <activity android:name=".CustomSampleActivity"></activity>
+        <activity android:name=".CustomSampleActivity" />
+        <activity android:name=".activities.DetailTransaksiActivity" />
+        <activity android:name=".ActivityListCustomProduk1">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="cilok.com.lapakjahit.activities.FashionPriaActivity" />
+        </activity>
     </application>
 
 </manifest>

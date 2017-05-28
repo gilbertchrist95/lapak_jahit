@@ -73,7 +73,7 @@ public class FragmentTransaksi extends Fragment {
 //
 //
 //
-//        // Setting Custom Color for the Scroll bar indicator of the Tab View
+//        // Setting Custom1 Color for the Scroll bar indicator of the Tab View
         mTabsTransakssi.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {

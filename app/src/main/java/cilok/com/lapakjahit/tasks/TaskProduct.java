@@ -56,11 +56,11 @@ public class TaskProduct {
             if (productCallback!=null){
                 productCallback.onGetListProductLoadedListener(products);
             }
-            test(products);
+//            test(products);
         }
     }
 
-    private void test(ArrayList<Product> products) {
-        this.list = products;
-    }
+//    private void test(ArrayList<Product> products) {
+//        this.list = products;
+//    }
 }

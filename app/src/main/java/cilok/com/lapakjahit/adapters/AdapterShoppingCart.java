@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -42,13 +43,14 @@ public class AdapterShoppingCart extends RecyclerView.Adapter<AdapterShoppingCar
 
     public void setListCart(ArrayList<Cart> listCart) {
         this.listCart = listCart;
+        notifyDataSetChanged();
     }
 
     @Override
     public ViewHolderShoppingCart onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_cart, parent, false);
-        ViewHolderShoppingCart viewHolderShoppingCart = new ViewHolderShoppingCart(view,mContext);
-        return  viewHolderShoppingCart;
+        ViewHolderShoppingCart viewHolderShoppingCart = new ViewHolderShoppingCart(view, mContext);
+        return viewHolderShoppingCart;
     }
 
     @Override
@@ -56,8 +58,23 @@ public class AdapterShoppingCart extends RecyclerView.Adapter<AdapterShoppingCar
         Cart cart = listCart.get(position);
         Cart.SellerBean sellerBean = cart.getSeller();
         List<Cart.InstallmentBeann> installmentBeen = cart.getInstallment();
-        holder.textViewNameProduk.setText(sellerBean.getName());
-
+        List<Cart.ItemsBean> itemsBeen = cart.getItems();
+        holder.textViewSellerName.setText(sellerBean.getName());
+        Cart.ItemsBean itemsBean = itemsBeen.get(0);
+//        Cart.InstallmentBeann installmentBean = installmentBeen.get(0);
+        holder.textViewNameProduk.setText(itemsBean.getName());
+        holder.textViewHargaProdukm.setText("Rp" + itemsBean.getPrice());
+        int stock = itemsBean.getStock();
+        Integer[] stoks = new Integer[stock];
+        for (int i = 0; i < stock; i++) {
+            stoks[i] = i + 1;
+        }
+        ArrayAdapter<Integer> spinnerArrayAdapter = new ArrayAdapter<Integer>(mContext, android.R.layout.simple_spinner_item, stoks);
+        spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+        holder.spinnerStokProduk.setAdapter(spinnerArrayAdapter);
+        Product product = itemsBeen.get(0).getProduct();
+        String smallImage[] = product.getSmall_images();
+        loadImages(smallImage[0],holder);
 
     }
 
@@ -92,14 +109,14 @@ public class AdapterShoppingCart extends RecyclerView.Adapter<AdapterShoppingCar
 
         public ViewHolderShoppingCart(View itemView, Context context) {
             super(itemView);
-            imageViewProduk = (ImageView)itemView.findViewById(R.id.image_view_cart_produk);
-            textViewSellerName  = (TextView)itemView.findViewById(R.id.nama_pelapak_cart_produk);
-            textViewNameProduk = (TextView)itemView.findViewById(R.id.text_view_nama_produck_cart);
-            textViewCicilan = (TextView)itemView.findViewById(R.id.text_view_cicilan_cart);
-            textViewHargaProdukm = (TextView)itemView.findViewById(R.id.text_view_harga_barang);
-            textViewTotalHarga = (TextView)itemView.findViewById(R.id.text_view_total_harga);
-            spinnerStokProduk = (Spinner)itemView.findViewById(R.id.spinner_jumlah_stock_cart);
-            checkBoxCartProduk = (CheckBox)itemView.findViewById(R.id.check_box_cart_produk);
+            imageViewProduk = (ImageView) itemView.findViewById(R.id.image_view_cart_produk);
+            textViewSellerName = (TextView) itemView.findViewById(R.id.nama_pelapak_cart_produk);
+            textViewNameProduk = (TextView) itemView.findViewById(R.id.text_view_nama_produck_cart);
+            textViewCicilan = (TextView) itemView.findViewById(R.id.text_view_cicilan_cart);
+            textViewHargaProdukm = (TextView) itemView.findViewById(R.id.text_view_harga_barang);
+            textViewTotalHarga = (TextView) itemView.findViewById(R.id.text_view_total_harga);
+            spinnerStokProduk = (Spinner) itemView.findViewById(R.id.spinner_jumlah_stock_cart);
+            checkBoxCartProduk = (CheckBox) itemView.findViewById(R.id.check_box_cart_produk);
 
 
         }

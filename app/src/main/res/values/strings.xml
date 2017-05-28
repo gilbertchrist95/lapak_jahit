@@ -30,6 +30,11 @@
         <item>Produk</item>
         <item>Kustom</item>
     </string-array>
+    <string-array name="tabspembelian">
+        <item>Status</item>
+        <item>Detail</item>
+        <item>Alamat</item>
+    </string-array>
     <string-array name="tabs_transaksi">
         <item>Tagihan</item>
         <item>Pembelian</item>

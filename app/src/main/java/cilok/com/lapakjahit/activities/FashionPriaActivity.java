@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
-import cilok.com.lapakjahit.CustomPriaActivity;
+import cilok.com.lapakjahit.FragmentCustomPria;
 import cilok.com.lapakjahit.fragments.FragmentProdukPria;
 import cilok.com.lapakjahit.R;
 import cilok.com.lapakjahit.view.SlidingTabLayout;
@@ -40,7 +40,7 @@ public class FashionPriaActivity extends AppCompatActivity {
 
 
 
-        // Setting Custom Color for the Scroll bar indicator of the Tab View
+        // Setting Custom1 Color for the Scroll bar indicator of the Tab View
         mTabs.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
             public int getIndicatorColor(int position) {
@@ -74,8 +74,8 @@ public class FashionPriaActivity extends AppCompatActivity {
                 FragmentProdukPria mFragmentProdukPria = new FragmentProdukPria();
                 return mFragmentProdukPria;
             }else if (position==1){
-                CustomPriaActivity mCustomPriaActivity = new CustomPriaActivity();
-                return mCustomPriaActivity;
+                FragmentCustomPria mFragmentCustomPria = new FragmentCustomPria();
+                return mFragmentCustomPria;
             }else{
                 return null;
             }

@@ -7,7 +7,7 @@ import com.android.volley.RequestQueue;
 import java.util.ArrayList;
 
 import cilok.com.lapakjahit.callback.GetCustomProductCallback;
-import cilok.com.lapakjahit.entity.Custom;
+import cilok.com.lapakjahit.entity.Custom1;
 import cilok.com.lapakjahit.extras.CustomUtils;
 import cilok.com.lapakjahit.network.VolleySingleton;
 
@@ -17,6 +17,7 @@ import cilok.com.lapakjahit.network.VolleySingleton;
 
 public class TaskCustomProduct {
 
+//    String url = "http://c66e361b.ngrok.io/lapakjahit/api/produk_kustom/product?id_produk=";
 
 
 
@@ -24,7 +25,7 @@ public class TaskCustomProduct {
         new TaskLoadCustomProduct(callback, id_product).execute();
     }
 
-    public class TaskLoadCustomProduct extends AsyncTask<Void, Void, ArrayList<Custom>>{
+    public class TaskLoadCustomProduct extends AsyncTask<Void, Void, ArrayList<Custom1>>{
         GetCustomProductCallback callback;
         private VolleySingleton volleySingleton;
         private RequestQueue requestQueue;
@@ -39,9 +40,12 @@ public class TaskCustomProduct {
 
 
         @Override
-        protected ArrayList<Custom> doInBackground(Void... voids) {
-            ArrayList<Custom> customProduct = CustomUtils.loadProductFavorites(requestQueue,id_product);
-            return customProduct;
+        protected ArrayList<Custom1> doInBackground(Void... voids) {
+            ArrayList<Custom1> custom1Product = CustomUtils.loadProduct(requestQueue,id_product);
+            return custom1Product;
         }
+
+
     }
+
 }

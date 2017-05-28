@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
@@ -64,7 +65,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
     @Override
     public ViewHolderProduct onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = mInflater.inflate(R.layout.custom_favorite, parent, false);
-        ViewHolderProduct viewHolderProduct = new ViewHolderProduct(view,mContext);
+        ViewHolderProduct viewHolderProduct = new ViewHolderProduct(view, mContext);
         return viewHolderProduct;
     }
 
@@ -82,12 +83,13 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
             public void onClick(View view) {
                 L.m("button buy clicked");
                 String id_produk = currentProduct.getId();
-                CartService cartService = ServiceGenerator.createService(CartService.class,"3051175","qYFEGyXVlo8uveKXurvJ");
+                CartService cartService = ServiceGenerator.createService(CartService.class, "3051175", "qYFEGyXVlo8uveKXurvJ");
                 cartService.addProductToCart(id_produk, 2, new Callback<Response>() {
                     @Override
                     public void success(Response response, Response response2) {
-                        String json =new String (((TypedByteArray)response.getBody()).getBytes());
+                        String json = new String(((TypedByteArray) response.getBody()).getBytes());
                         L.m(json);
+                        Toast.makeText(mContext, ""+json, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -106,13 +108,13 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         long price = currentProduct.getPrice();
 
 
-        if (rating_average_rate.equals(Constants.NA)==false)
+        if (rating_average_rate.equals(Constants.NA) == false)
             holder.ratingAverageRate.setRating(Float.parseFloat(rating_average_rate));
-        holder.userCount.setText("("+rating_user_count+")");
+        holder.userCount.setText("(" + rating_user_count + ")");
 
         if (discount_percentage != -1) {
             holder.discountPercentage.setText(" " + discount_percentage + "% ");
-            holder.originalPrice.setText(" Rp "+original_price);
+            holder.originalPrice.setText(" Rp " + original_price);
             holder.originalPrice.setPaintFlags(holder.originalPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         } else {
             holder.discountPercentage.setVisibility(View.GONE);
@@ -190,8 +192,6 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         private Context context;
 
 
-
-
         public ViewHolderProduct(View itemView, final Context context) {
             super(itemView);
             this.context = context;
@@ -207,7 +207,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
             nameProduct = (TextView) itemView.findViewById(R.id.text_view_name);
             feedback = (TextView) itemView.findViewById(R.id.text_view_persen_feedback);
             userCount = (TextView) itemView.findViewById(R.id.text_view_rating_user_count);
-            ratingAverageRate = (RatingBar)itemView.findViewById(R.id.rating_bar_average_rate);
+            ratingAverageRate = (RatingBar) itemView.findViewById(R.id.rating_bar_average_rate);
             itemView.setOnClickListener(this);
 
         }
@@ -215,9 +215,9 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
         @Override
         public void onClick(View view) {
             int index = getAdapterPosition();
-            Product list  = mListFavorite.get(index);
+            Product list = mListFavorite.get(index);
             Intent intent = new Intent(context, ProductActivity.class);
-            intent.putExtra("PRODUCT",list);
+            intent.putExtra("PRODUCT", list);
             context.startActivity(intent);
 
         }

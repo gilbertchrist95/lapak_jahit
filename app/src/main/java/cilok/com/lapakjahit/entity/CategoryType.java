@@ -11,6 +11,7 @@ public class CategoryType {
     private String mTitle;
     private int mCategoryId;
     private int mType;
+    private int id_custom;
 
 
     public int getmCategoryId() {
@@ -40,9 +41,10 @@ public class CategoryType {
         this.mType = mType;
     }
 
-    public CategoryType(String mTitle,int mCateogryId, int mType) {
+    public CategoryType(String mTitle,int mCateogryId, int mType, int id_custom) {
         this.mTitle = mTitle;
         this.mCategoryId  = mCateogryId;
         this.mType = mType;
+        this.id_custom = id_custom;
     }
 }
